@@ -21,27 +21,45 @@ class CustomIconButton extends StatelessWidget {
   }
 }
 
-class CusomElevatedButton extends StatelessWidget {
-  final String? text;
-  final double? buttonH;
-  final double? buttonW;
+class CustomElevatedButton extends StatelessWidget {
+  final String text;
+  final double? buttonHeigth;
+  final double? buttonWidth;
+  final double? fontSize;
+  final double? radius;
+  final void Function() onPressed;
 
-  const CusomElevatedButton({
+  const CustomElevatedButton({
     Key? key,
-    this.text,
-    this.buttonH,
-    this.buttonW,
+    this.text = "",
+    this.buttonHeigth,
+    this.buttonWidth,
+    this.fontSize,
+    this.radius,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: buttonH,
-      width: buttonW,
+      width: buttonWidth,
+      height: buttonHeigth,
       child: ElevatedButton(
-        onPressed: () {},
-        child: Text("$text"),
-      ),
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(radius ?? 0),
+              ),
+            ),
+          ),
+          onPressed: onPressed,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              text,
+              style: TextStyle(fontSize: fontSize),
+            ),
+          )),
     );
   }
 }

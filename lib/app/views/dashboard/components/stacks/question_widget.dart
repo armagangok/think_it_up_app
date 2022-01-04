@@ -16,7 +16,7 @@ class QuestionWidget extends StatelessWidget {
       ),
       width: MediaQuery.of(context).size.longestSide,
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [

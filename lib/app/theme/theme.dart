@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/theme/colors.dart';
 
 class CustomTheme {
   final ligthTheme =
@@ -54,6 +55,7 @@ class CustomTheme {
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     scaffoldBackgroundColor: Colors.black,
+    // INPUT DECOR
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(fontSize: 14),
       focusedBorder: OutlineInputBorder(
@@ -73,6 +75,14 @@ class CustomTheme {
     // floatingActionButtonTheme: const FloatingActionButtonThemeData(
     //   backgroundColor: Colors.blue,
     // ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(customColor.contColor),
+      ),
+    ),
+
     cupertinoOverrideTheme: const CupertinoThemeData(
       textTheme: CupertinoTextThemeData(
         pickerTextStyle: TextStyle(color: Colors.white),
