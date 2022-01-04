@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/theme/theme.dart';
+import 'package:think_it_up_app/core/initilization/initapp.dart';
 import 'app/views/dashboard/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
+  initApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: CustomTheme().darkTheme,
       home: const DashBoardView(),
     );
   }
