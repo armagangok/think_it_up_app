@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/components/common/padding.dart';
+import 'package:think_it_up_app/app/components/common/widgets/padding.dart';
 import 'package:think_it_up_app/app/components/stacks/stacks.dart';
+
+import 'components/stacks/stacks.dart';
 
 class DashBoardView extends StatelessWidget {
   const DashBoardView({Key? key}) : super(key: key);
@@ -12,7 +14,9 @@ class DashBoardView extends StatelessWidget {
         child: Scaffold(
           body: Column(
             children: const <Widget>[
-              QuestionWidget(text: "Sample question"),
+              QuestionWidget(),
+              SizedBox(height: 20),
+              CommentWidget(),
             ],
           ),
         ),
