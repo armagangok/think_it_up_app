@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
 
 class CommentWidget extends StatelessWidget {
   const CommentWidget({Key? key}) : super(key: key);
@@ -48,28 +49,40 @@ class IconButtonStack extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: const [
-                Icon(CupertinoIcons.arrow_up_square),
-                Text("5k"),
+              children: [
+                CustomIconButton(
+                  icon: const Icon(CupertinoIcons.arrow_up_square),
+                  onPressed: () => {},
+                ),
+                const Text("5k"),
               ],
             ),
             const SizedBox20W(),
             Row(
-              children: const [
-                Icon(CupertinoIcons.arrow_down_square),
-                Text("100"),
+              children: [
+                CustomIconButton(
+                  icon: const Icon(CupertinoIcons.arrow_down_square),
+                  onPressed: () => {},
+                ),
+                const Text("100"),
               ],
             ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Icon(CupertinoIcons.star),
-            SizedBox20W(),
-            Icon(
-              CupertinoIcons.share,
-              color: Colors.green,
+          children: [
+            CustomIconButton(
+              icon: const Icon(CupertinoIcons.star),
+              onPressed: () => {},
+            ),
+            const SizedBox20W(),
+            CustomIconButton(
+              icon: const Icon(
+                CupertinoIcons.share,
+                color: Colors.greenAccent,
+              ),
+              onPressed: () => {},
             ),
           ],
         ),

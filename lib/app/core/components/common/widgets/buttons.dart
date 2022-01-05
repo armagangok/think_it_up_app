@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
-  final Icon? icon;
-  final Widget? viewName;
+  final Icon icon;
   final Function? onPressed;
 
   const CustomIconButton({
     Key? key,
-    this.icon,
-    this.viewName,
+    required this.icon,
     this.onPressed,
   }) : super(key: key);
 
@@ -16,7 +14,7 @@ class CustomIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () => onPressed!(),
-      icon: icon!,
+      icon: icon,
     );
   }
 }
@@ -45,21 +43,22 @@ class CustomElevatedButton extends StatelessWidget {
       width: buttonWidth,
       height: buttonHeigth,
       child: ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(radius ?? 0),
-              ),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(radius ?? 0),
             ),
           ),
-          onPressed: onPressed,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              text,
-              style: TextStyle(fontSize: fontSize),
-            ),
-          )),
+        ),
+        onPressed: onPressed,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            text,
+            style: TextStyle(fontSize: fontSize),
+          ),
+        ),
+      ),
     );
   }
 }

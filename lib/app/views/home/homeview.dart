@@ -13,7 +13,10 @@ class HomeView extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: []),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [],
+          ),
           const Text("Body Text"),
           ElevatedButton(
             onPressed: () {},
