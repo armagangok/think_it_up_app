@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/theme/theme.dart';
-import 'package:think_it_up_app/core/initilization/initapp.dart';
+import 'app/core/theme/theme.dart';
 import 'app/views/dashboard/dashboard.dart';
+import 'background/initilization/initapp.dart';
+  
 
 void main() {
   runApp(const MyApp());

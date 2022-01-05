@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/components/common/widgets/container.dart';
-import 'package:think_it_up_app/app/components/common/widgets/padding.dart';
-import 'package:think_it_up_app/app/components/common/widgets/sizedbox.dart';
+import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 
 class CommentWidget extends StatelessWidget {
   const CommentWidget({Key? key}) : super(key: key);

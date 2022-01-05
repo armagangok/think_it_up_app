@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/components/common/widgets/padding.dart';
-import 'package:think_it_up_app/app/theme/colors.dart';
+import '../../../../core/components/common/alignment/alignment.dart';
+import '../../../../core/theme/colors.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);

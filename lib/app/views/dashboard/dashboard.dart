@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/components/common/buttons.dart';
-import 'package:think_it_up_app/app/components/common/widgets/padding.dart';
-import 'package:think_it_up_app/app/components/common/widgets/sizedbox.dart';
-import 'package:think_it_up_app/app/theme/colors.dart';
+import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
 import 'components/stacks/question_widget.dart';
 import 'components/stacks/comment_widget.dart';
 
