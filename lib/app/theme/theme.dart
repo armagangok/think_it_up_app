@@ -52,17 +52,16 @@ class CustomTheme {
 
   final darkTheme =
       ThemeData.from(colorScheme: const ColorScheme.dark()).copyWith(
+    textSelectionTheme: const TextSelectionThemeData(cursorColor: Colors.black),
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     scaffoldBackgroundColor: Colors.black,
 
     /** INPUT DECOR THEME*/
     inputDecorationTheme: InputDecorationTheme(
-
-      
       fillColor: CustomColor().textField,
       filled: true,
-      labelStyle: const TextStyle(fontSize: 14),
+      labelStyle: const TextStyle(fontSize: 13),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(

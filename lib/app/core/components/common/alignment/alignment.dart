@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../../../theme/colors.dart';
+
+import 'package:think_it_up_app/app/theme/colors.dart';
 
 /* CUSTOM CONTAINER */
 class CustomContainer extends StatelessWidget {
   final Widget child;
+  final Color? color;
 
-  const CustomContainer({Key? key, required this.child}) : super(key: key);
+  const CustomContainer({
+    Key? key,
+    required this.child,
+    this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class CustomContainer extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        color: CustomColor().mainColor,
+        color: color ?? CustomColor().mainColor,
       ),
       child: child,
     );

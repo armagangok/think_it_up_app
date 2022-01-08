@@ -24,6 +24,8 @@ class CustomTextField extends StatelessWidget {
       height: 50,
       child: TextFormField(
         controller: controller,
+        style: const TextStyle(color: Colors.black),
+
         // decoration: InputDecoration(
         //   labelText: label,
         //   suffixIcon: InkWell(

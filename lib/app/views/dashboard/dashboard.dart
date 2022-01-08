@@ -61,22 +61,28 @@ class DashBoardView extends StatelessWidget {
   }
 
   Future<dynamic> bottomSheet(BuildContext context) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<dynamic>(
       backgroundColor: const Color.fromARGB(0, 0, 0, 0),
       context: context,
       builder: (context) => CustomPadding(
-        child: Container(
+        child: CustomContainer(
           color: CustomColor().bottomSheet,
-          height: 700,
           child: CustomPadding(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
-                  children: const [
-                    BottomSheetContainer(),
-                    SizedBox10H(),
-                    CustomTextField(),
+                  children: [
+                    const BottomSheetContainer(),
+                    const SizedBox10H(),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxHeight: 300.0,
+                      ),
+                      child: const TextField(
+                        maxLines: null,
+                      ),
+                    ),
                   ],
                 ),
                 CustomElevatedButton(
