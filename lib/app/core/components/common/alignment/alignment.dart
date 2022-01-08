@@ -6,16 +6,19 @@ import 'package:think_it_up_app/app/theme/colors.dart';
 class CustomContainer extends StatelessWidget {
   final Widget child;
   final Color? color;
+  final double? heigth;
 
   const CustomContainer({
     Key? key,
     required this.child,
     this.color,
+    this.heigth,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: heigth,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
