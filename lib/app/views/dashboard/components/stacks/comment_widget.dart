@@ -51,7 +51,7 @@ class IconButtonStack extends StatelessWidget {
             Row(
               children: [
                 CustomIconButton(
-                  icon: const Icon(CupertinoIcons.arrow_up_square),
+                  icon: Image.asset("assets/icons/like.png"),
                   onPressed: () => debugPrint("like!"),
                 ),
                 const Text("5k"),
@@ -61,7 +61,7 @@ class IconButtonStack extends StatelessWidget {
             Row(
               children: [
                 CustomIconButton(
-                  icon: const Icon(CupertinoIcons.arrow_down_square),
+                  icon: Image.asset("assets/icons/dislike.png"),
                   onPressed: () => debugPrint("disliked!"),
                 ),
                 const Text("100"),

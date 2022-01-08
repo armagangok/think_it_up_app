@@ -39,10 +39,9 @@ class DashBoardView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
+                  CustomIconButton(
                     icon: Image.asset("assets/icons/medal.png"),
                     onPressed: () {},
-                    iconSize: 30,
                   ),
                   CustomIconButton(
                     icon: const Icon(CupertinoIcons.chat_bubble),
