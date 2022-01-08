@@ -7,7 +7,7 @@ class DashBoardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomPadding(
+      child: Padding8(
         child: Scaffold(
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(90),
@@ -33,7 +33,7 @@ class DashBoardView extends StatelessWidget {
             children: [
               const SizedBox10H(),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomIconButton(
                     icon: Image.asset("assets/icons/medal.png"),
@@ -65,26 +65,23 @@ class DashBoardView extends StatelessWidget {
       isScrollControlled: true,
       backgroundColor: const Color.fromARGB(0, 0, 0, 0),
       context: context,
-      builder: (context) => CustomPadding(
+      builder: (context) => Padding8(
         child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
           child: CustomContainer(
             heigth: MediaQuery.of(context).size.height * 0.75,
             color: CustomColor().bottomSheet,
-            child: CustomPadding(
+            child: Padding8(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: [
                       const BottomSheetContainer(),
-                      const SizedBox10H(),
+                      const SizedBox5H(),
                       ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxHeight: 200.0,
-                        ),
-                        child: const TextField(
-                          maxLines: null,
-                        ),
+                        constraints: const BoxConstraints(maxHeight: 200.0),
+                        child: const CustomTextField(),
                       ),
                     ],
                   ),

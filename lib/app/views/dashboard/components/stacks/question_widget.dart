@@ -12,7 +12,7 @@ class QuestionWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          CustomPadding(
+          Padding8(
             child: Text(
               "Question Of The Week",
               style: TextStyle(
@@ -21,7 +21,7 @@ class QuestionWidget extends StatelessWidget {
               ),
             ),
           ),
-          CustomPadding(child: Text("What do you think about this app?")),
+          Padding8(child: Text("What do you think about this app?")),
         ],
       ),
     );

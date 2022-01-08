@@ -1,39 +1,39 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
-  final Function? onTap;
-  final double? textFieldH;
-  final String? label;
-  final TextEditingController? controller;
-  final String? labelText;
+class CustomTextField extends StatefulWidget {
+  final bool? isObsecure;
+  final Function? validate;
+  // final Function valueCatcher;
   final Icon? icon;
+  final TextInputType? inputType;
 
   const CustomTextField({
     Key? key,
-    this.onTap,
-    this.textFieldH,
-    this.label,
-    this.controller,
-    this.labelText,
+    this.isObsecure,
+    this.validate,
+    // required this.valueCatcher,
     this.icon,
+    this.inputType,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: TextFormField(
-        controller: controller,
-        style: const TextStyle(color: Colors.black),
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
 
-        // decoration: InputDecoration(
-        //   labelText: label,
-        //   suffixIcon: InkWell(
-        //     child: icon,
-        //     onTap: () => onTap!(),
-        //     splashColor: null,
-        //   ),
-        // ),
+class _CustomTextFieldState extends State<CustomTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      style: const TextStyle(color: Colors.black, fontSize: 14),
+      maxLines: null,
+      // onChanged: (value) => setState(() => widget.valueCatcher(value)),
+      obscureText: widget.isObsecure ?? false,
+      keyboardType: widget.inputType,
+      decoration: InputDecoration(
+        prefixIcon: widget.icon,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
     );
   }

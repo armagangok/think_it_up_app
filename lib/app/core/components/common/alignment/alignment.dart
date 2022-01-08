@@ -31,10 +31,10 @@ class CustomContainer extends StatelessWidget {
 }
 
 /*PADDING  WIDGETS*/
-class CustomPadding extends StatelessWidget {
+class Padding8 extends StatelessWidget {
   final Widget child;
 
-  const CustomPadding({Key? key, required this.child}) : super(key: key);
+  const Padding8({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,30 @@ class CustomPadding extends StatelessWidget {
   }
 }
 
+class Padding5 extends StatelessWidget {
+  final Widget child;
+
+  const Padding5({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: child,
+    );
+  }
+}
+
 /*SIZED BOX WIDGETS */
+
+class SizedBox5H extends StatelessWidget {
+  const SizedBox5H({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(height: 20);
+  }
+}
 
 class SizedBox10H extends StatelessWidget {
   const SizedBox10H({Key? key}) : super(key: key);

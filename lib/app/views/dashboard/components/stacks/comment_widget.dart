@@ -14,7 +14,7 @@ class CommentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       color: null,
-      child: CustomPadding(
+      child: Padding8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [

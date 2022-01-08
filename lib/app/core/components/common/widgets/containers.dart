@@ -13,7 +13,7 @@ class BottomSheetContainer extends StatelessWidget {
         ),
         color: CustomColor().textField,
       ),
-      height: 4,
+      height: 3,
       width: 44,
     );
   }

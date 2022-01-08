@@ -9,11 +9,11 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomPadding(
+      child: Padding8(
         child: Column(
           children: [
             const Text("Think It Up"),
-            const CustomTextField(),
+            // const CustomTextField(),
             CustomElevatedButton(
               onPressed: () {},
               text: 'Login',
