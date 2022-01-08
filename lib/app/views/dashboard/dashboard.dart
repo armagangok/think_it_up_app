@@ -66,32 +66,34 @@ class DashBoardView extends StatelessWidget {
       backgroundColor: const Color.fromARGB(0, 0, 0, 0),
       context: context,
       builder: (context) => CustomPadding(
-        child: CustomContainer(
-          heigth: MediaQuery.of(context).size.height * 0.75,
-          color: CustomColor().bottomSheet,
-          child: CustomPadding(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    const BottomSheetContainer(),
-                    const SizedBox10H(),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 200.0,
+        child: GestureDetector(
+          child: CustomContainer(
+            heigth: MediaQuery.of(context).size.height * 0.75,
+            color: CustomColor().bottomSheet,
+            child: CustomPadding(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      const BottomSheetContainer(),
+                      const SizedBox10H(),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxHeight: 200.0,
+                        ),
+                        child: const TextField(
+                          maxLines: null,
+                        ),
                       ),
-                      child: const TextField(
-                        maxLines: null,
-                      ),
-                    ),
-                  ],
-                ),
-                CustomElevatedButton(
-                  text: "Share",
-                  onPressed: () {},
-                ),
-              ],
+                    ],
+                  ),
+                  CustomElevatedButton(
+                    text: "Share",
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
           ),
         ),

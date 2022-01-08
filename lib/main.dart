@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'app/theme/theme.dart';
 import 'app/views/dashboard/dashboard.dart';
 import 'background/initilization/initapp.dart';
-  
 
 void main() {
   runApp(const MyApp());
