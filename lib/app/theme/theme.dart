@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/theme/colors.dart';
 
 class CustomTheme {
   final ligthTheme =
@@ -77,8 +78,8 @@ class CustomTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        // backgroundColor:
-        //     MaterialStateProperty.all<Color>(customColor.contColor),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(CustomColor().mainColor),
       ),
     ),
 

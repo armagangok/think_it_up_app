@@ -22,44 +22,42 @@ class CustomIconButton extends StatelessWidget {
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
-  final double? buttonHeigth;
-  final double? buttonWidth;
-  final double? fontSize;
-  final double? radius;
   final void Function() onPressed;
 
   const CustomElevatedButton({
     Key? key,
-    this.text = "",
-    this.buttonHeigth,
-    this.buttonWidth,
-    this.fontSize,
-    this.radius,
+    required this.text,
     required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: buttonWidth,
-      height: buttonHeigth,
+      width: MediaQuery.of(context).size.longestSide,
+      height: 30,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius ?? 0),
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
         ),
         onPressed: onPressed,
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            text,
-            style: TextStyle(fontSize: fontSize),
-          ),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 13),
         ),
       ),
     );
   }
 }
+
+
+// Align(
+//           alignment: Alignment.centerLeft,
+//           child: Text(
+//             text,
+//             style: TextStyle(fontSize: fontSize),
+//           ),
+//         ),

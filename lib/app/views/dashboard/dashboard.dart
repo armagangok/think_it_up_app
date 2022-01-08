@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/text_fields.dart';
+import 'package:think_it_up_app/app/theme/colors.dart';
 import 'components/stacks/question_widget.dart';
 import 'components/stacks/comment_widget.dart';
 
@@ -47,10 +49,16 @@ class DashBoardView extends StatelessWidget {
                     icon: const Icon(CupertinoIcons.chat_bubble),
                     onPressed: () => showModalBottomSheet(
                       context: context,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          color: Colors.grey,
-                          height: 500,
+                      builder: (context) => Container(
+                        color: CustomColor().bottomSheet,
+                        height: 700,
+                        child: Column(
+                          children: [
+                            CustomElevatedButton(
+                              text: "Share",
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
                       ),
                     ),
