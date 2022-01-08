@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
@@ -35,12 +36,27 @@ class DashBoardView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox10H(),
-              CustomElevatedButton(
-                buttonWidth: MediaQuery.of(context).size.longestSide,
-                buttonHeigth: 25,
-                radius: 5,
-                text: "Leave a comment",
-                onPressed: () {},
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon: Image.asset("assets/icons/medal.png"),
+                    onPressed: () {},
+                    iconSize: 30,
+                  ),
+                  CustomIconButton(
+                    icon: const Icon(CupertinoIcons.chat_bubble),
+                    onPressed: () {},
+                  ),
+                  CustomIconButton(
+                    icon: const Icon(CupertinoIcons.home),
+                    onPressed: () {},
+                  ),
+                  CustomIconButton(
+                    icon: const Icon(CupertinoIcons.settings),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ],
           ),

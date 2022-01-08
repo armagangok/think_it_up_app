@@ -15,6 +15,7 @@ class CustomIconButton extends StatelessWidget {
     return IconButton(
       onPressed: () => onPressed!(),
       icon: icon,
+      iconSize: 30,
     );
   }
 }

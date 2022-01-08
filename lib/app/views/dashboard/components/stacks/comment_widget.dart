@@ -52,7 +52,7 @@ class IconButtonStack extends StatelessWidget {
               children: [
                 CustomIconButton(
                   icon: const Icon(CupertinoIcons.arrow_up_square),
-                  onPressed: () => {},
+                  onPressed: () => debugPrint("like!"),
                 ),
                 const Text("5k"),
               ],
@@ -62,7 +62,7 @@ class IconButtonStack extends StatelessWidget {
               children: [
                 CustomIconButton(
                   icon: const Icon(CupertinoIcons.arrow_down_square),
-                  onPressed: () => {},
+                  onPressed: () => debugPrint("disliked!"),
                 ),
                 const Text("100"),
               ],
@@ -72,17 +72,13 @@ class IconButtonStack extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            CustomIconButton(
-              icon: const Icon(CupertinoIcons.star),
-              onPressed: () => {},
-            ),
             const SizedBox20W(),
             CustomIconButton(
               icon: const Icon(
                 CupertinoIcons.share,
                 color: Colors.greenAccent,
               ),
-              onPressed: () => {},
+              onPressed: () => debugPrint("Share!"),
             ),
           ],
         ),

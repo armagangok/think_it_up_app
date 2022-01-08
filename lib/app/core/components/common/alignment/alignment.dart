@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/core/theme/colors.dart';
+import '../../../../theme/colors.dart';
 
 /* CUSTOM CONTAINER */
 class CustomContainer extends StatelessWidget {
@@ -14,7 +14,7 @@ class CustomContainer extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        color: customColor.contColor,
+        color: CustomColor().mainColor,
       ),
       child: child,
     );

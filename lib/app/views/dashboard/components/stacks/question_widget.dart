@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/components/common/alignment/alignment.dart';
-import '../../../../core/theme/colors.dart';
+import '../../../../theme/colors.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class QuestionWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        color: customColor.contColor,
+        color: CustomColor().mainColor,
       ),
       width: MediaQuery.of(context).size.longestSide,
       child: Column(
