@@ -45,7 +45,15 @@ class DashBoardView extends StatelessWidget {
                   ),
                   CustomIconButton(
                     icon: const Icon(CupertinoIcons.chat_bubble),
-                    onPressed: () {},
+                    onPressed: () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          color: Colors.grey,
+                          height: 500,
+                        ),
+                      ),
+                    ),
                   ),
                   CustomIconButton(
                     icon: const Icon(CupertinoIcons.home),
