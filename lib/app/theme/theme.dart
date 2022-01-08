@@ -55,26 +55,30 @@ class CustomTheme {
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     scaffoldBackgroundColor: Colors.black,
-    // INPUT DECOR
+
+    /** INPUT DECOR THEME*/
     inputDecorationTheme: InputDecorationTheme(
+
+      
+      fillColor: CustomColor().textField,
+      filled: true,
       labelStyle: const TextStyle(fontSize: 14),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
-        borderSide: const BorderSide(
-          color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(
+          color: CustomColor().textField,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
-        borderSide: const BorderSide(
-          color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(
+          color: CustomColor().textField,
         ),
       ),
     ),
-    // floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    //   backgroundColor: Colors.blue,
-    // ),
+
+    /** ELEVATED BUTTON THEME */
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -83,6 +87,7 @@ class CustomTheme {
       ),
     ),
 
+    /** CUPERTINO THEME */
     cupertinoOverrideTheme: const CupertinoThemeData(
       textTheme: CupertinoTextThemeData(
         pickerTextStyle: TextStyle(color: Colors.white),

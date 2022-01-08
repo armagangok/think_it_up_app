@@ -1,11 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
-import 'package:think_it_up_app/app/core/components/common/widgets/text_fields.dart';
-import 'package:think_it_up_app/app/theme/colors.dart';
-import 'components/stacks/question_widget.dart';
-import 'components/stacks/comment_widget.dart';
+import './components/export/export.dart';
 
 class DashBoardView extends StatelessWidget {
   const DashBoardView({Key? key}) : super(key: key);
@@ -47,21 +41,7 @@ class DashBoardView extends StatelessWidget {
                   ),
                   CustomIconButton(
                     icon: const Icon(CupertinoIcons.chat_bubble),
-                    onPressed: () => showModalBottomSheet(
-                      context: context,
-                      builder: (context) => Container(
-                        color: CustomColor().bottomSheet,
-                        height: 700,
-                        child: Column(
-                          children: [
-                            CustomElevatedButton(
-                              text: "Share",
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    onPressed: () => bottomSheet(context),
                   ),
                   CustomIconButton(
                     icon: const Icon(CupertinoIcons.home),
@@ -74,6 +54,37 @@ class DashBoardView extends StatelessWidget {
                 ],
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> bottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+      context: context,
+      builder: (context) => CustomPadding(
+        child: Container(
+          color: CustomColor().bottomSheet,
+          height: 700,
+          child: CustomPadding(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: const [
+                    BottomSheetContainer(),
+                    SizedBox10H(),
+                    CustomTextField(),
+                  ],
+                ),
+                CustomElevatedButton(
+                  text: "Share",
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ),
       ),

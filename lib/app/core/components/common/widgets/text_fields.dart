@@ -21,17 +21,17 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: textFieldH ?? 30,
+      height: 50,
       child: TextFormField(
         controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          suffixIcon: InkWell(
-            child: icon,
-            onTap: () => onTap!(),
-            splashColor: null,
-          ),
-        ),
+        // decoration: InputDecoration(
+        //   labelText: label,
+        //   suffixIcon: InkWell(
+        //     child: icon,
+        //     onTap: () => onTap!(),
+        //     splashColor: null,
+        //   ),
+        // ),
       ),
     );
   }
