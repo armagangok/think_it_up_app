@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:think_it_up_app/app/theme/colors.dart';
 
 class CustomTheme {
@@ -91,6 +92,13 @@ class CustomTheme {
       textTheme: CupertinoTextThemeData(
         pickerTextStyle: TextStyle(color: Colors.white),
       ),
+    ),
+
+    /**TEXT THEME */
+    textTheme: TextTheme(
+      caption: GoogleFonts.lato(fontSize: 24, color: Colors.white),
+      bodyText1: GoogleFonts.lato(fontSize: 14, color: Colors.white),
+      bodyText2: GoogleFonts.lato(fontSize: 16, color: Colors.white),
     ),
   );
 }

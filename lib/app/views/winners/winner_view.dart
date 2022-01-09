@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
-
 
 class WinnerView extends StatelessWidget {
   const WinnerView({Key? key}) : super(key: key);
@@ -22,25 +20,28 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        SizedBox10H(),
-        Divider(),
+      children: [
+        const SizedBox10H(),
+        const Divider(),
         Align(
           alignment: Alignment.centerLeft,
-          child: Text24B(text: "Winner Of The Day"),
+          child: Text(
+            "Winner Of The Day",
+            style: ThemeData().textTheme.caption,
+          ),
         ),
-        SizedBox10H(),
-        WinnerWidget(),
-        Divider(),
-        Align(
+        const SizedBox10H(),
+        const WinnerWidget(),
+        const Divider(),
+        const Align(
           alignment: Alignment.centerLeft,
-          child: Text24B(text: "Winners Of The All Times"),
+          child: Text("Winners Of The All Times"),
         ),
-        SizedBox10H(),
-        WinnerWidget(),
-        SizedBox10H(),
-        WinnerWidget(),
-        SizedBox10H(),
+        const SizedBox10H(),
+        const WinnerWidget(),
+        const SizedBox10H(),
+        const WinnerWidget(),
+        const SizedBox10H(),
       ],
     );
   }
@@ -99,7 +100,7 @@ class TopBar extends StatelessWidget {
               ),
             ),
           ),
-          const Text24B(text: "Winners"),
+          const Text("Winners"),
           Row(
             children: [
               Image.asset(
