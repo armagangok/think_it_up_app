@@ -30,7 +30,7 @@ class WinnerView extends StatelessWidget {
         ),
       ),
       body: Column(
-        children: const [
+        children: const  [
           SizedBox10H(),
           Divider(),
           Align(
