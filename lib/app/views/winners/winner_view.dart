@@ -3,6 +3,7 @@ import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 
+
 class WinnerView extends StatelessWidget {
   const WinnerView({Key? key}) : super(key: key);
 
@@ -22,7 +23,24 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
+        SizedBox10H(),
+        Divider(),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text24B(text: "Winner Of The Day"),
+        ),
+        SizedBox10H(),
         WinnerWidget(),
+        Divider(),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text24B(text: "Winners Of The All Times"),
+        ),
+        SizedBox10H(),
+        WinnerWidget(),
+        SizedBox10H(),
+        WinnerWidget(),
+        SizedBox10H(),
       ],
     );
   }
@@ -34,8 +52,30 @@ class WinnerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      heigth: 150,
-      child: Column(),
+      color: null,
+      child: Padding8(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Text(
+              userName,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox10H(),
+            Text("what do you think?"),
+            SizedBox10H(),
+            Text("Answer: "),
+            Text(
+              comment,
+              style: TextStyle(fontSize: 12.5),
+            ),
+            SizedBox10H(),
+          ],
+        ),
+      ),
     );
   }
 }
