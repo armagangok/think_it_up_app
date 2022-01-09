@@ -7,17 +7,19 @@ class DashBoardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Wrapper(
-      topBar: QuestionWidget(),
-      body: [
-        SizedBox20H(),
-        CommentWidget(),
-        SizedBox20H(),
-        CommentWidget(),
-        SizedBox20H(),
-        CommentWidget(),
-      ],
-      bottomBar: BottomNavigationBar(),
+    return Wrapper(
+      topBar: const QuestionWidget(),
+      body: Column(
+        children: const [
+          SizedBox20H(),
+          CommentWidget(),
+          SizedBox20H(),
+          CommentWidget(),
+          SizedBox20H(),
+          CommentWidget(),
+        ],
+      ),
+      bottomBar: const BottomNavigationBar(),
     );
   }
 }

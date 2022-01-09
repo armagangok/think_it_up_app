@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Text24B extends StatelessWidget {
   final String text;
@@ -12,11 +13,7 @@ class Text24B extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        fontFamily: "Monaco",
-      ),
+      style: GoogleFonts.aleo(fontSize: 24),
     );
   }
 }

@@ -98,7 +98,7 @@ class SizedBox20W extends StatelessWidget {
 }
 
 class Wrapper extends StatelessWidget {
-  final List<Widget> body;
+  final Widget body;
   final Widget topBar;
   final Widget? bottomBar;
 
@@ -119,9 +119,7 @@ class Wrapper extends StatelessWidget {
             child: topBar,
           ),
           body: SingleChildScrollView(
-            child: Column(
-              children: body,
-            ),
+            child: body,
           ),
           bottomNavigationBar: bottomBar,
         ),
