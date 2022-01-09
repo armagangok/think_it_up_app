@@ -36,7 +36,12 @@ class BottomNavBar extends StatelessWidget {
             ),
             CustomIconButton(
               icon: const Icon(CupertinoIcons.settings),
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WinnerView(),
+                ),
+              ),
             ),
           ],
         ),

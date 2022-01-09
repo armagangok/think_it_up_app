@@ -98,14 +98,14 @@ class SizedBox20W extends StatelessWidget {
 }
 
 class Wrapper extends StatelessWidget {
-  final Widget body;
   final Widget topBar;
+  final Widget body;
   final Widget? bottomBar;
 
   const Wrapper({
     Key? key,
-    required this.body,
     required this.topBar,
+    required this.body,    
     this.bottomBar,
   }) : super(key: key);
 

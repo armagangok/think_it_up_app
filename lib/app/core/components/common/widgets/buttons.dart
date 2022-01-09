@@ -16,6 +16,7 @@ class CustomIconButton extends StatelessWidget {
       onPressed: () => onPressed!(),
       icon: icon,
       iconSize: 30,
+      splashRadius: 1,
     );
   }
 }
