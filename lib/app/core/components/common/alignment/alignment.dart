@@ -66,7 +66,7 @@ class SizedBox5H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: 20);
+    return const SizedBox(height: 5);
   }
 }
 
@@ -94,5 +94,38 @@ class SizedBox20W extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(width: 20);
+  }
+}
+
+class Wrapper extends StatelessWidget {
+  final List<Widget> body;
+  final Widget topBar;
+  final Widget? bottomBar;
+
+  const Wrapper({
+    Key? key,
+    required this.body,
+    required this.topBar,
+    this.bottomBar,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding8(
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(90),
+            child: topBar,
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: body,
+            ),
+          ),
+          bottomNavigationBar: bottomBar,
+        ),
+      ),
+    );
   }
 }
