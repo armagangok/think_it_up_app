@@ -17,7 +17,7 @@ class QuestionWidget extends StatelessWidget {
             child: Text24B(text: "Question Of The Week"),
           ),
           Padding8(
-            child: Text("What do you think about this app?"),
+            child: Text16(text: "What do you think about this app?"),
           ),
         ],
       ),
