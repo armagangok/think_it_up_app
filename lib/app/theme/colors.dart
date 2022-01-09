@@ -7,9 +7,8 @@ class CustomColor {
     return _singleton;
   }
   CustomColor._internal();
-  Color bgColor = const Color(0xFF000000);
+  Color bgColor = const Color(0xff000000);
   Color mainColor = const Color(0xFF081c34);
   Color bottomSheet = const Color(0xFF646464);
   Color textField = const Color(0xFFC4C4C4);
-
 }

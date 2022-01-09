@@ -30,6 +30,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       obscureText: widget.isObsecure ?? false,
       keyboardType: widget.inputType,
       decoration: InputDecoration(
+        hintText: "type your idea here",
+        hintStyle: const TextStyle(color: Colors.black),
         prefixIcon: widget.icon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: CustomTheme().darkTheme,
       home: const DashBoardView(),
+      
     );
   }
 }

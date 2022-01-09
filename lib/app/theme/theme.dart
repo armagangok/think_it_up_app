@@ -55,7 +55,7 @@ class CustomTheme {
     textSelectionTheme: const TextSelectionThemeData(cursorColor: Colors.black),
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: CustomColor().bgColor,
 
     /** INPUT DECOR THEME*/
     inputDecorationTheme: InputDecorationTheme(
