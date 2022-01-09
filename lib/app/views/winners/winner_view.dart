@@ -10,7 +10,25 @@ class WinnerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrapper(
-      topBar: const TopBar(text: "Winners"),
+      topBar: TopBar(
+        text: "Winners",
+        icons: Row(
+          children: [
+            Image.asset(
+              "assets/icons/goldMedal.png",
+              scale: 4,
+            ),
+            Image.asset(
+              "assets/icons/goldMedal.png",
+              scale: 2.5,
+            ),
+            Image.asset(
+              "assets/icons/goldMedal.png",
+              scale: 4,
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: const [
           SizedBox10H(),

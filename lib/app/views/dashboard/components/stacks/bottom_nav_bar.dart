@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
+import 'package:think_it_up_app/app/views/settings/setting_view.dart';
 import 'package:think_it_up_app/app/views/winners/winner_view.dart';
 import 'bottom_sheet.dart';
 
@@ -39,7 +40,7 @@ class BottomNavBar extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const WinnerView(),
+                  builder: (context) => const SettingView(),
                 ),
               ),
             ),

@@ -6,7 +6,6 @@ import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 
 class TopBar extends StatelessWidget {
   final String text;
-
   final Widget? icons;
 
   const TopBar({
@@ -32,7 +31,7 @@ class TopBar extends StatelessWidget {
             ),
           ),
           Text24B(text: text),
-          icons ?? const SizedBox(),
+          icons ?? const SizedBox(width: 50),
         ],
       ),
     );
