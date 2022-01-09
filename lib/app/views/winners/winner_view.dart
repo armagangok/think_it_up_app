@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 
@@ -34,14 +35,23 @@ class TopBar extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: Row(
-                children: const [
-                  Text("data"),
-                ],
-              ),
-            ),
+            const Text24B(text: "Think"),
+            Row(
+              children: [
+                Image.asset(
+                  "assets/icons/goldMedal.png",
+                  scale: 4,
+                ),
+                Image.asset(
+                  "assets/icons/goldMedal.png",
+                  scale: 2.5,
+                ),
+                Image.asset(
+                  "assets/icons/goldMedal.png",
+                  scale: 4,
+                ),
+              ],
+            )
           ],
         ),
       ),
