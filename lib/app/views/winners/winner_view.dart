@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 
@@ -20,28 +21,25 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const SizedBox10H(),
-        const Divider(),
+      children: const [
+        SizedBox10H(),
+        Divider(),
         Align(
           alignment: Alignment.centerLeft,
-          child: Text(
-            "Winner Of The Day",
-            style: ThemeData().textTheme.caption,
-          ),
+          child: Text24B(text: "Winner Of The Day"),
         ),
-        const SizedBox10H(),
-        const WinnerWidget(),
-        const Divider(),
-        const Align(
+        SizedBox10H(),
+        WinnerWidget(),
+        Divider(),
+        Align(
           alignment: Alignment.centerLeft,
-          child: Text("Winners Of The All Times"),
+          child: Text24B(text: "Winners Of The All Times"),
         ),
-        const SizedBox10H(),
-        const WinnerWidget(),
-        const SizedBox10H(),
-        const WinnerWidget(),
-        const SizedBox10H(),
+        SizedBox10H(),
+        WinnerWidget(),
+        SizedBox10H(),
+        WinnerWidget(),
+        SizedBox10H(),
       ],
     );
   }
@@ -58,21 +56,11 @@ class WinnerWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text(
-              userName,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text16(text: "what do you think?"),
             SizedBox10H(),
-            Text("what do you think?"),
+            Text16(text: userName),
             SizedBox10H(),
-            Text("Answer: "),
-            Text(
-              comment,
-              style: TextStyle(fontSize: 12.5),
-            ),
+            Text14(text: comment),
             SizedBox10H(),
           ],
         ),
@@ -100,7 +88,7 @@ class TopBar extends StatelessWidget {
               ),
             ),
           ),
-          const Text("Winners"),
+          const Text24B(text: "Winners"),
           Row(
             children: [
               Image.asset(

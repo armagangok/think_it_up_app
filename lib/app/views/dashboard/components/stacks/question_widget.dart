@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import '../../../../core/components/common/alignment/alignment.dart';
 
 class QuestionWidget extends StatelessWidget {
@@ -13,13 +14,7 @@ class QuestionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Padding8(
-            child: Text(
-              "Question Of The Week",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: Text24B(text: "Question Of The Week"),
           ),
           Padding8(
             child: Text("What do you think about this app?"),
