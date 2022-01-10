@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/icons.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 import 'package:think_it_up_app/app/views/settings/setting_view.dart';
@@ -15,13 +16,13 @@ class HomeView extends StatelessWidget {
         bottomNavigationBar: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: Container(
-            height: 60,
+            height: 40,
             color: Colors.black,
-            child: const TabBar(
+            child: TabBar(
               tabs: [
-                CustomIcon(icon: CupertinoIcons.star),
-                CustomIcon(icon: CupertinoIcons.home),
-                CustomIcon(icon: CupertinoIcons.settings),
+                SvgPicture.asset("assets/icons/reward.svg"),
+                const CustomIcon(icon: CupertinoIcons.home),
+                const CustomIcon(icon: CupertinoIcons.settings),
               ],
             ),
           ),

@@ -26,11 +26,12 @@ class SettingView extends StatelessWidget {
               onPressed: () {},
             ),
             SettingItem(
-                text: 'Push notification',
-                onPressed: () {},
-                icon: SwitchWidget(
-                  val: true,
-                )),
+              text: 'Push notification',
+              onPressed: () {},
+              icon: SwitchWidget(
+                val: true,
+              ),
+            ),
             SettingItem(
               text: 'Dark mode',
               onPressed: () {},
@@ -65,4 +66,3 @@ class SettingView extends StatelessWidget {
     );
   }
 }
-
