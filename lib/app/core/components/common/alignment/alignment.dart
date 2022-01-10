@@ -8,17 +8,21 @@ class CustomContainer extends StatelessWidget {
   final Color? color;
   final double? heigth;
 
+  final double? width;
+
   const CustomContainer({
     Key? key,
     required this.child,
     this.color,
     this.heigth,
+    this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: heigth,
+      width: width,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
