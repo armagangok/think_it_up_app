@@ -97,8 +97,8 @@ class CustomTheme {
     /**TEXT THEME */
     textTheme: TextTheme(
       caption: GoogleFonts.aleo(fontSize: 24, color: Colors.white),
-      bodyText1: GoogleFonts.lato(fontSize: 14, color: Colors.white),
-      bodyText2: GoogleFonts.lato(fontSize: 16, color: Colors.white),
+      bodyText1: GoogleFonts.lato(fontSize: 14, color: const Color(0XFFE2E2E2)),
+      bodyText2: GoogleFonts.lato(fontSize: 16, color: const Color(0XFFE2E2E2)),
     ),
   );
 }

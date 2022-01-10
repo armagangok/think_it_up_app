@@ -17,21 +17,18 @@ class CommentWidget extends StatelessWidget {
       child: Padding8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               userName,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
-            SizedBox10H(),
+            const SizedBox10H(),
             Text(
               comment,
-              style: TextStyle(fontSize: 12.5),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
-            SizedBox10H(),
-            IconButtonStack(),
+            const SizedBox10H(),
+            const IconButtonStack(),
           ],
         ),
       ),

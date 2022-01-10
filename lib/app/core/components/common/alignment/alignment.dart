@@ -34,12 +34,32 @@ class CustomContainer extends StatelessWidget {
 class Padding8 extends StatelessWidget {
   final Widget child;
 
-  const Padding8({Key? key, required this.child}) : super(key: key);
+  const Padding8({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
+      child: child,
+    );
+  }
+}
+
+class SymmetricPaddingH5 extends StatelessWidget {
+  final Widget child;
+
+  const SymmetricPaddingH5({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: child,
     );
   }
@@ -105,7 +125,7 @@ class Wrapper extends StatelessWidget {
   const Wrapper({
     Key? key,
     required this.topBar,
-    required this.body,    
+    required this.body,
     this.bottomBar,
   }) : super(key: key);
 
@@ -118,8 +138,10 @@ class Wrapper extends StatelessWidget {
             preferredSize: const Size.fromHeight(90),
             child: topBar,
           ),
-          body: SingleChildScrollView(
-            child: body,
+          body: Padding5(
+            child: SingleChildScrollView(
+              child: body,
+            ),
           ),
           bottomNavigationBar: bottomBar,
         ),
