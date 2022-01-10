@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
-import 'package:think_it_up_app/app/views/dashboard/components/stacks/bottom_sheet.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 import 'package:think_it_up_app/app/views/settings/setting_view.dart';
 import 'package:think_it_up_app/app/views/winners/winner_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -15,7 +13,26 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: PreferredSize(
           preferredSize: const Size.fromHeight(0),
-          child: menu(context),
+          child: Container(
+            height: 60,
+            color: Colors.black,
+            child: const TabBar(
+              tabs: [
+                Icon(
+                  CupertinoIcons.star,
+                  size: 30,
+                ),
+                Icon(
+                  CupertinoIcons.home,
+                  size: 30,
+                ),
+                Icon(
+                  CupertinoIcons.settings,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
         ),
         floatingActionButton: Draggable(
           feedback: const SizedBox(),
@@ -35,20 +52,6 @@ class HomeView extends StatelessWidget {
             SettingView(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget menu(context) {
-    return Container(
-      height: 60,
-      color: Colors.black,
-      child: const TabBar(
-        tabs: [
-          Icon(CupertinoIcons.star),
-          Icon(CupertinoIcons.home),
-          Icon(CupertinoIcons.settings),
-        ],
       ),
     );
   }
