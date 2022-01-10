@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/core/components/common/widgets/icons.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 import 'package:think_it_up_app/app/views/settings/setting_view.dart';
@@ -18,31 +19,11 @@ class HomeView extends StatelessWidget {
             color: Colors.black,
             child: const TabBar(
               tabs: [
-                Icon(
-                  CupertinoIcons.star,
-                  size: 30,
-                ),
-                Icon(
-                  CupertinoIcons.home,
-                  size: 30,
-                ),
-                Icon(
-                  CupertinoIcons.settings,
-                  size: 30,
-                ),
+                CustomIcon(icon: CupertinoIcons.star),
+                CustomIcon(icon: CupertinoIcons.home),
+                CustomIcon(icon: CupertinoIcons.settings),
               ],
             ),
-          ),
-        ),
-        floatingActionButton: Draggable(
-          feedback: const SizedBox(),
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(
-              CupertinoIcons.chat_bubble,
-              color: Colors.white,
-            ),
-            backgroundColor: Colors.black,
           ),
         ),
         body: const TabBarView(
