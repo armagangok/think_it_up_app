@@ -20,7 +20,8 @@ class SettingItem extends StatelessWidget {
       child: Padding5(
         child: CustomContainer(
           heigth: 40,
-          child: SymmetricPaddingH5(
+          child: SymmetricPadding(
+            horizontal: 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -34,4 +35,3 @@ class SettingItem extends StatelessWidget {
     );
   }
 }
-

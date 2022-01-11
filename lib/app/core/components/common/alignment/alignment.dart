@@ -7,7 +7,6 @@ class CustomContainer extends StatelessWidget {
   final Widget child;
   final Color? color;
   final double? heigth;
-
   final double? width;
 
   const CustomContainer({
@@ -52,18 +51,25 @@ class Padding8 extends StatelessWidget {
   }
 }
 
-class SymmetricPaddingH5 extends StatelessWidget {
+class SymmetricPadding extends StatelessWidget {
   final Widget child;
+  final double? horizontal;
+  final double? vertical;
 
-  const SymmetricPaddingH5({
+  const SymmetricPadding({
     Key? key,
     required this.child,
+    this.horizontal,
+    this.vertical,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontal ?? 0,
+        vertical: vertical ?? 0,
+      ),
       child: child,
     );
   }

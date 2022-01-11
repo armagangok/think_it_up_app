@@ -17,7 +17,6 @@ class DashBoardView extends StatelessWidget {
           CommentWidget(),
         ],
       ),
-      // bottomBar: const BottomNavBar(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 
@@ -9,18 +10,23 @@ class TimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: const [
-        TimeContainer(),
+        TimeContainer(text: "22" "h"),
         SizedBox5H(),
         Text24B(text: ":"),
         SizedBox5H(),
-        TimeContainer(),
+        TimeContainer(text: "12" "m"),
       ],
     );
   }
 }
 
 class TimeContainer extends StatelessWidget {
-  const TimeContainer({Key? key}) : super(key: key);
+  final String text;
+
+  const TimeContainer({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +45,9 @@ class TimeContainer extends StatelessWidget {
               ),
             ],
           ),
-          child: const Text(
-            "22",
-            style: TextStyle(),
+          child: Text(
+            text,
+            style: const TextStyle(),
           ),
         ),
       ),

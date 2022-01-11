@@ -10,20 +10,34 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Padding8(
-                child: Text24B(text: "Question Of The Week"),
+          Expanded(
+            child: SingleChildScrollView(
+              child: SymmetricPadding(
+                horizontal: 5,
+                child: Column(
+                  children: const [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text24B(text: "Question Of The Week"),
+                    ),
+                    Text16(
+                      text:
+                          "How on the earth Einstein succed? where me you could be x axis flutter github? firebase linkedin books math",
+                    ),
+                  ],
+                ),
               ),
-              Padding8(
-                child: Text16(text: "What do you think about this app?"),
-              ),
-            ],
+            ),
           ),
-          const TimeWidget(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              Text16(text: "Deadline"),
+              TimeWidget(),
+            ],
+          )
         ],
       ),
     );
