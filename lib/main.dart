@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/views/home/homeview.dart';
+import 'package:think_it_up_app/app/views/auth/login/login.dart';
+// import 'package:think_it_up_app/app/views/home/homeview.dart';
 import 'app/theme/theme.dart';
 import 'background/initilization/initapp.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: CustomTheme().darkTheme,
-      home:  const HomeView(),
+      home: const LoginView(),
     );
   }
 }

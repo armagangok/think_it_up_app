@@ -128,13 +128,13 @@ class SizedBox20W extends StatelessWidget {
 }
 
 class Wrapper extends StatelessWidget {
-  final Widget topBar;
+  final Widget? topBar;
   final Widget body;
   final Widget? bottomBar;
 
   const Wrapper({
     Key? key,
-    required this.topBar,
+    this.topBar,
     required this.body,
     this.bottomBar,
   }) : super(key: key);
@@ -146,12 +146,10 @@ class Wrapper extends StatelessWidget {
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(90),
-            child: topBar,
+            child: topBar ?? const SizedBox(),
           ),
           body: Padding5(
-            child: SingleChildScrollView(
-              child: body,
-            ),
+            child: SingleChildScrollView(child: body),
           ),
           bottomNavigationBar: bottomBar,
         ),

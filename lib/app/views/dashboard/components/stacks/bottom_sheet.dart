@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
@@ -27,7 +28,14 @@ Future<dynamic> bottomSheet(BuildContext context) {
                       const SizedBox5H(),
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxHeight: 200.0),
-                        child: const CustomTextField(),
+                        child: CustomTextField(
+                          boolean: false,
+                          iconButton: IconButton(
+                            onPressed: () => print("hello"),
+                            icon: const Icon(CupertinoIcons.eye),
+                          ),
+                          valueCatcher: () {},
+                        ),
                       ),
                     ],
                   ),

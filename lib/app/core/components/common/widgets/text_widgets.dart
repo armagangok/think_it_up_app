@@ -17,6 +17,24 @@ class Text24B extends StatelessWidget {
   }
 }
 
+class Text36B extends StatelessWidget {
+  final String text;
+
+  const Text36B({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.headline1,
+      
+    );
+  }
+}
+
 class Text14 extends StatelessWidget {
   final String text;
 

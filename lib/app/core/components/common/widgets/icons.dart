@@ -9,3 +9,5 @@ class CustomIcon extends StatelessWidget {
     return Icon(icon, size: 30);
   }
 }
+
+const Icon eye = Icon(CupertinoIcons.eye_fill);

@@ -47,7 +47,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 13),
+          style: Theme.of(context).textTheme.headline3,
         ),
       ),
     );
@@ -55,10 +55,3 @@ class CustomElevatedButton extends StatelessWidget {
 }
 
 
-// Align(
-//           alignment: Alignment.centerLeft,
-//           child: Text(
-//             text,
-//             style: TextStyle(fontSize: fontSize),
-//           ),
-//         ),
