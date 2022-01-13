@@ -3,6 +3,7 @@ import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.
 import 'package:think_it_up_app/app/core/components/stacks/stacks.dart';
 import 'package:think_it_up_app/app/views/auth/register/signup.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
+import 'package:think_it_up_app/app/views/home/homeview.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -38,7 +39,10 @@ class LoginView extends StatelessWidget {
               const SizedBox(height: 40),
               CustomElevatedButton(
                 text: "Login",
-                onPressed: () => print("login button"),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeView()),
+                ),
               ),
               const SizedBox(height: 40),
               InkWell(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/app/views/auth/login/login.dart';
 
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/winners/components/stacks/top_bar.dart';
@@ -14,7 +15,7 @@ class SettingView extends StatelessWidget {
     return Wrapper(
       topBar: const TopBar(text: "Settings"),
       body: SizedBox(
-        height: MediaQuery.of(context).size.longestSide - 180,
+        height: MediaQuery.of(context).size.longestSide,
         child: Column(
           children: [
             SettingItem(
@@ -59,6 +60,14 @@ class SettingView extends StatelessWidget {
             SettingItem(
               text: 'Terms & Co',
               onPressed: () {},
+            ),
+            
+            SettingItem(
+              text: 'Logout',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginView()),
+              ),
             ),
           ],
         ),
