@@ -3,13 +3,13 @@ import 'package:think_it_up_app/app/core/components/common/alignment/alignment.d
 
 class SettingItem extends StatelessWidget {
   final String text;
-  final Widget? icon;
+  final Widget icon;
   final Function onPressed;
 
   const SettingItem({
     Key? key,
     required this.text,
-    this.icon,
+    this.icon = const Icon(Icons.arrow_forward_ios_rounded, size: 30),
     required this.onPressed,
   }) : super(key: key);
 
@@ -24,10 +24,7 @@ class SettingItem extends StatelessWidget {
             horizontal: 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(text),
-                icon ?? const Icon(Icons.arrow_forward_ios_rounded, size: 30),
-              ],
+              children: [Text(text), icon],
             ),
           ),
         ),
