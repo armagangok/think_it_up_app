@@ -8,7 +8,6 @@ import 'background/initilization/initapp.dart';
 
 void main() {
   initApp();
-
   runApp(
     MultiProvider(
       providers: ProviderHelper().providers,
@@ -30,3 +29,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

@@ -1,27 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:think_it_up_app/background/local/base/switch_base.dart';
 
-class SwitchWidget extends StatefulWidget {
-  bool val = false;
-  SwitchWidget({
-    Key? key,
-    required this.val,
-  }) : super(key: key);
+class SwitchWidget extends StatelessWidget {
+  final BaseViewModel switchProvider;
 
-  @override
-  State<SwitchWidget> createState() => _SwitchWidgetState();
-}
+  const SwitchWidget({Key? key, required this.switchProvider})
+      : super(key: key);
 
-class _SwitchWidgetState extends State<SwitchWidget> {
-  @override
   @override
   Widget build(BuildContext context) {
     return CupertinoSwitch(
-      value: widget.val,
-      onChanged: (t) {
-        setState(() {
-          widget.val = t;
-        });
-      },
+      value: switchProvider.switchVal,
+      onChanged: (t) => switchProvider.changeSwicth(),
     );
   }
 }

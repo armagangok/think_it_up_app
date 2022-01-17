@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:think_it_up_app/app/views/auth/login/login.dart';
-
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/winners/components/stacks/top_bar.dart';
-
+import 'package:think_it_up_app/background/local/base/switch_base.dart';
+import 'package:think_it_up_app/background/local/viewmodels/notification_provider.dart';
+import 'package:think_it_up_app/background/local/viewmodels/theme_provider.dart';
 import 'components/stacks/stacks.dart';
 import 'components/widgets/switch_widget.dart';
 
@@ -30,14 +32,14 @@ class SettingView extends StatelessWidget {
               text: 'Push notification',
               onPressed: () {},
               icon: SwitchWidget(
-                val: true,
+                switchProvider: Provider.of<NotificationProvider>(context),
               ),
             ),
             SettingItem(
               text: 'Dark mode',
               onPressed: () {},
               icon: SwitchWidget(
-                val: false,
+                switchProvider: Provider.of<ThemeProvider>(context),
               ),
             ),
             SettingItem(
@@ -46,8 +48,10 @@ class SettingView extends StatelessWidget {
             ),
             const Divider(),
             const Padding5(
-              child:
-                  Align(alignment: Alignment.centerLeft, child: Text("More")),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text("More"),
+              ),
             ),
             SettingItem(
               text: 'About us',
@@ -61,7 +65,6 @@ class SettingView extends StatelessWidget {
               text: 'Terms & Co',
               onPressed: () {},
             ),
-            
             SettingItem(
               text: 'Logout',
               onPressed: () => Navigator.push(
