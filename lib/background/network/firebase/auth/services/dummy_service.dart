@@ -24,9 +24,7 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
-        ppURL: "ppURL",
-        createdAt: DateTime(1999),
-        updatedAt:  DateTime(1999),
+        
       );
     }
   }
@@ -71,9 +69,7 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
-        ppURL: "ppURL",
-        createdAt: DateTime(1999),
-        updatedAt:  DateTime(1999),
+        
       );
   }
 
@@ -87,9 +83,7 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
-        ppURL: "ppURL",
-        createdAt: DateTime(1999),
-        updatedAt:  DateTime(1999),
+        
       );
   }
 

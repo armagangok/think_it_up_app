@@ -25,9 +25,7 @@ class FirebaseAuthService implements AuthBase {
         email: user.email,
         id: user.uid,
         userName: user.displayName,
-        createdAt: null,
-        ppURL: '',
-        updatedAt: null,
+        
       );
     }
   }
