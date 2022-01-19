@@ -43,6 +43,8 @@ class LoginView extends StatelessWidget {
               CustomElevatedButton(
                 text: "Login",
                 onPressed: () async {
+                  
+
                   await _userViewModel.signInByEmailPassword(
                     textControllers.emailLogin.text,
                     textControllers.passwordLogin.text,

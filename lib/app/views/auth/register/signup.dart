@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/core/components/stacks/stacks.dart';
 import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
+import 'package:think_it_up_app/app/views/auth/components/dialogs.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/background/network/firebase/auth/viewmodels/user_viewmodel.dart';
 
@@ -58,12 +59,15 @@ class SignupView extends StatelessWidget {
               const SizedBox(height: 40),
               CustomElevatedButton(
                 text: "Signup",
-                onPressed: () async =>
-                    await _userViewModel.createUserByEmailPassword(
-                  textControllers.emailRegister.text,
-                  textControllers.passwordRegister1.text,
-                  textControllers.passwordRegister2.text,
-                ),
+                onPressed: () async {
+                  dialog(context);
+                  await _userViewModel.createUserByEmailPassword(
+                    textControllers.emailRegister.text,
+                    textControllers.passwordRegister1.text,
+                    textControllers.passwordRegister2.text,
+                  );
+                  
+                },
               ),
               const SizedBox20H(),
             ],
