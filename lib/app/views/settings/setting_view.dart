@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/app/views/auth/login/login.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/winners/components/stacks/top_bar.dart';
-import 'package:think_it_up_app/background/local/base/switch_base.dart';
 import 'package:think_it_up_app/background/local/viewmodels/notification_provider.dart';
 import 'package:think_it_up_app/background/local/viewmodels/theme_provider.dart';
+import 'package:think_it_up_app/background/network/firebase/auth/viewmodels/user_viewmodel.dart';
 import 'components/stacks/stacks.dart';
 import 'components/widgets/switch_widget.dart';
 
@@ -14,6 +13,8 @@ class SettingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserViewModel _userModel = Provider.of<UserViewModel>(context);
+
     return Wrapper(
       topBar: const TopBar(text: "Settings"),
       body: SizedBox(
@@ -67,10 +68,7 @@ class SettingView extends StatelessWidget {
             ),
             SettingItem(
               text: 'Logout',
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginView()),
-              ),
+              onPressed: () async => await _userModel.signOut(),
             ),
           ],
         ),

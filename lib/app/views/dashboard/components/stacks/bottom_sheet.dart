@@ -34,7 +34,7 @@ Future<dynamic> bottomSheet(BuildContext context) {
                             onPressed: () => print("hello"),
                             icon: const Icon(CupertinoIcons.eye),
                           ),
-                          valueCatcher: () {},
+                          controller: TextEditingController(),
                         ),
                       ),
                     ],

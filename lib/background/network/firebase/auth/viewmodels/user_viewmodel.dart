@@ -5,7 +5,6 @@ import '../models/user_model.dart';
 import '../repository/user_repository.dart';
 import '../services/auth_base.dart';
 
-
 enum ViewState { idle, busy }
 
 class UserViewModel with ChangeNotifier implements AuthBase {
@@ -89,6 +88,10 @@ class UserViewModel with ChangeNotifier implements AuthBase {
     String password1,
     String password2,
   ) async {
+    debugPrint(email);
+    debugPrint(password1);
+    debugPrint(password2);
+
     if (password1.length < 7 && password2.length < 7) {
       debugPrint("Please make sure you input longer then 6 characters.");
       return null;
@@ -108,7 +111,12 @@ class UserViewModel with ChangeNotifier implements AuthBase {
         return _user;
       } catch (e) {
         debugPrint(
-            "Error in UserVievModel, at createUserByEmailPassword() method. \n [$e]");
+            "Error in UserVievModel, at createUserByEmailPassword() method.");
+
+        debugPrint(" [$e]");
+        debugPrint(
+            "Error in UserVievModel, at createUserByEmailPassword() method.");
+
         return null;
       } finally {
         state = ViewState.idle;
@@ -127,7 +135,8 @@ class UserViewModel with ChangeNotifier implements AuthBase {
       return _user;
     } catch (e) {
       debugPrint(
-          "Error in UserVievModel, at signInByEmailPassword() method. \n [$e]");
+          "Error in UserVievModel, at signInByEmailPassword() method. \n [$e] \n ${e.hashCode};");
+
       return null;
     } finally {
       state = ViewState.idle;

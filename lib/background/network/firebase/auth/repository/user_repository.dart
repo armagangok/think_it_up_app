@@ -3,12 +3,12 @@ import '../../firestore/services/current_db_service.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
 import '../services/dummy_service.dart';
-import '../services/services.dart';
+import '../services/current_service.dart';
 
 enum AppMode { debug, release }
 
 class UserRepository implements AuthBase {
-  final FirebaseAuthService _authService = locator<FirebaseAuthService>();
+  final CurrentService _authService = locator<CurrentService>();
   final DummyService _dummyAuthService = locator<DummyService>();
   final CurrentDbService _currentDbService = locator<CurrentDbService>();
 

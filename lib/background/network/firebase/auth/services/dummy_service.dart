@@ -24,7 +24,6 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
-        
       );
     }
   }
@@ -65,12 +64,7 @@ class DummyService implements AuthBase {
   @override
   Future<RenewedUser?> signInByEmailPassword(
       String email, String password) async {
-    return RenewedUser(
-        id: "id",
-        email: "email",
-        userName: "userName",
-        
-      );
+    return RenewedUser(id: "id", email: "email", userName: "userName");
   }
 
   @override
@@ -80,17 +74,14 @@ class DummyService implements AuthBase {
     String password2,
   ) async {
     return RenewedUser(
-        id: "id",
-        email: "email",
-        userName: "userName",
-        
-      );
+      id: "id",
+      email: "email",
+      userName: "userName",
+    );
   }
 
   @override
-  bool? isVerified() {
-    return true;
-  }
+  bool? isVerified() => true;
 
   @override
   Future<bool> verifyMail() async {
@@ -98,7 +89,5 @@ class DummyService implements AuthBase {
   }
 
   @override
-  bool? isAnonim() {
-    return true;
-  }
+  bool? isAnonim() => true;
 }

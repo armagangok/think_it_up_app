@@ -4,8 +4,10 @@ import 'package:think_it_up_app/background/local/base/switch_base.dart';
 class SwitchWidget extends StatelessWidget {
   final BaseViewModel switchProvider;
 
-  const SwitchWidget({Key? key, required this.switchProvider})
-      : super(key: key);
+  const SwitchWidget({
+    Key? key,
+    required this.switchProvider,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/core/components/stacks/stacks.dart';
+import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
 import 'package:think_it_up_app/app/views/auth/register/signup.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
-import 'package:think_it_up_app/app/views/home/homeview.dart';
+import 'package:think_it_up_app/background/network/firebase/auth/viewmodels/user_viewmodel.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final UserViewModel _userViewModel = Provider.of<UserViewModel>(context);
     return AuthWrapper(
       child: Column(
         children: [
@@ -20,29 +23,31 @@ class LoginView extends StatelessWidget {
             children: [
               const Text14(text: "mail"),
               CustomTextField(
+                controller: textControllers.emailLogin,
                 boolean: false,
                 maxLines: 1,
-                valueCatcher: () {},
               ),
               const SizedBox20H(),
               const Text14(text: "password"),
               CustomTextField(
+                controller: textControllers.passwordLogin,
                 boolean: true,
                 iconButton: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () => print("hello!!!!!"),
+                  onPressed: () async {},
                   icon: const Icon(CupertinoIcons.eye),
                 ),
                 maxLines: 1,
-                valueCatcher: () => print("value"),
               ),
               const SizedBox(height: 40),
               CustomElevatedButton(
                 text: "Login",
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeView()),
-                ),
+                onPressed: () async {
+                  await _userViewModel.signInByEmailPassword(
+                    textControllers.emailLogin.text,
+                    textControllers.passwordLogin.text,
+                  );
+                },
               ),
               const SizedBox(height: 40),
               InkWell(

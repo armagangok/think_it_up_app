@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user_model.dart';
 import 'auth_base.dart';
 
-class FirebaseAuthService implements AuthBase {
+class CurrentService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
   RenewedUser? currentUser() {
@@ -94,7 +94,7 @@ class FirebaseAuthService implements AuthBase {
   Future<RenewedUser?> createUserByEmailPassword(
     String email,
     String password1,
-    String? password2,
+    String password2,
   ) async {
     try {
       UserCredential authCredential =
