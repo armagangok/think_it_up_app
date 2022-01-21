@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text14(text: "mail"),
+              const Text13(text: "mail"),
               CustomTextField(
                 initialValue: "1armagangok@gmail.com",
                 controller: textControllers.emailLogin,
@@ -31,7 +31,7 @@ class LoginView extends StatelessWidget {
                 maxLines: 1,
               ),
               const SizedBox20H(),
-              const Text14(text: "password"),
+              const Text13(text: "password"),
               CustomTextField(
                 initialValue: "19033412",
                 controller: textControllers.passwordLogin,

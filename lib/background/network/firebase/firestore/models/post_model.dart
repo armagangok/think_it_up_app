@@ -1,22 +1,22 @@
 class PostModel {
   String userName = "";
   String comment = "";
-  int like = 0;
-  int dislike = 0;
+  int likes = 0;
+  int dislikes = 0;
 
   PostModel({
     required this.userName,
     required this.comment,
-    required this.like,
-    required this.dislike,
+    required this.likes,
+    required this.dislikes,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'userName': userName,
       'comment': comment,
-      'like': like,
-      'dislike': dislike,
+      'likes': likes,
+      'dislikes': dislikes,
     };
   }
 
@@ -24,8 +24,8 @@ class PostModel {
     return PostModel(
       userName: map['userName'] ?? '',
       comment: map['comment'] ?? '',
-      like: map['like']?.toInt() ?? 0,
-      dislike: map['dislike']?.toInt() ?? 0,
+      likes: map['likes']?.toInt() ?? 0,
+      dislikes: map['dislikes']?.toInt() ?? 0,
     );
   }
 }

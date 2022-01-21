@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class Text24B extends StatelessWidget {
@@ -27,18 +28,19 @@ class Text36B extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AutoSizeText(
       text,
+      maxLines: 1,
+      minFontSize: 30,
       style: Theme.of(context).textTheme.headline1,
-      
     );
   }
 }
 
-class Text14 extends StatelessWidget {
+class Text13 extends StatelessWidget {
   final String text;
 
-  const Text14({
+  const Text13({
     Key? key,
     required this.text,
   }) : super(key: key);

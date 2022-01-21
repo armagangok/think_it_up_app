@@ -29,27 +29,29 @@ class WinnerView extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: const  [
-          SizedBox10H(),
-          Divider(),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text24B(text: "Winner Of The Day"),
-          ),
-          SizedBox10H(),
-          WinnerWidget(),
-          Divider(),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text24B(text: "Winners Of The All Times"),
-          ),
-          SizedBox10H(),
-          WinnerWidget(),
-          SizedBox10H(),
-          WinnerWidget(),
-          SizedBox10H(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SizedBox10H(),
+            Divider(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text24B(text: "Winner Of The Day"),
+            ),
+            SizedBox10H(),
+            WinnerWidget(),
+            Divider(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text24B(text: "Winners Of The All Times"),
+            ),
+            SizedBox10H(),
+            WinnerWidget(),
+            SizedBox10H(),
+            WinnerWidget(),
+            SizedBox10H(),
+          ],
+        ),
       ),
     );
   }

@@ -19,58 +19,60 @@ class SettingView extends StatelessWidget {
       topBar: const TopBar(text: "Settings"),
       body: SizedBox(
         height: MediaQuery.of(context).size.longestSide,
-        child: Column(
-          children: [
-            SettingItem(
-              text: 'Edit profile',
-              onPressed: () {},
-            ),
-            SettingItem(
-              text: 'Change password',
-              onPressed: () {},
-            ),
-            SettingItem(
-              text: 'Push notification',
-              onPressed: () {},
-              icon: SwitchWidget(
-                switchProvider: Provider.of<NotificationProvider>(context),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SettingItem(
+                text: 'Edit profile',
+                onPressed: () {},
               ),
-            ),
-            SettingItem(
-              text: 'Dark mode',
-              onPressed: () {},
-              icon: SwitchWidget(
-                switchProvider: Provider.of<ThemeProvider>(context),
+              SettingItem(
+                text: 'Change password',
+                onPressed: () {},
               ),
-            ),
-            SettingItem(
-              text: 'Get premium',
-              onPressed: () {},
-            ),
-            const Divider(),
-            const Padding5(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text("More"),
+              SettingItem(
+                text: 'Push notification',
+                onPressed: () {},
+                icon: SwitchWidget(
+                  switchProvider: Provider.of<NotificationProvider>(context),
+                ),
               ),
-            ),
-            SettingItem(
-              text: 'About us',
-              onPressed: () {},
-            ),
-            SettingItem(
-              text: 'Privacy & Policy',
-              onPressed: () {},
-            ),
-            SettingItem(
-              text: 'Terms & Co',
-              onPressed: () {},
-            ),
-            SettingItem(
-              text: 'Logout',
-              onPressed: () async => await _userModel.signOut(),
-            ),
-          ],
+              SettingItem(
+                text: 'Dark mode',
+                onPressed: () {},
+                icon: SwitchWidget(
+                  switchProvider: Provider.of<ThemeProvider>(context),
+                ),
+              ),
+              SettingItem(
+                text: 'Get premium',
+                onPressed: () {},
+              ),
+              const Divider(),
+              const Padding5(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("More"),
+                ),
+              ),
+              SettingItem(
+                text: 'About us',
+                onPressed: () {},
+              ),
+              SettingItem(
+                text: 'Privacy & Policy',
+                onPressed: () {},
+              ),
+              SettingItem(
+                text: 'Terms & Co',
+                onPressed: () {},
+              ),
+              SettingItem(
+                text: 'Logout',
+                onPressed: () async => await _userModel.signOut(),
+              ),
+            ],
+          ),
         ),
       ),
     );

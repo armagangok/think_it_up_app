@@ -27,14 +27,14 @@ class SignupView extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text14(text: "mail"),
+              const Text13(text: "mail"),
               CustomTextField(
                 boolean: false,
                 maxLines: 1,
                 controller: textControllers.emailRegister,
               ),
               const SizedBox20H(),
-              const Text14(text: "password"),
+              const Text13(text: "password"),
               CustomTextField(
                 controller: textControllers.passwordRegister1,
                 boolean: true,
@@ -46,7 +46,7 @@ class SignupView extends StatelessWidget {
                 maxLines: 1,
               ),
               const SizedBox20H(),
-              const Text14(text: "password"),
+              const Text13(text: "password"),
               CustomTextField(
                 controller: textControllers.passwordRegister2,
                 boolean: true,

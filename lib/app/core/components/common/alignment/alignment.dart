@@ -131,12 +131,14 @@ class Wrapper extends StatelessWidget {
   final Widget? topBar;
   final Widget body;
   final Widget? bottomBar;
+  final double topBarHeight;
 
   const Wrapper({
     Key? key,
     this.topBar,
     required this.body,
     this.bottomBar,
+    this.topBarHeight = 90,
   }) : super(key: key);
 
   @override
@@ -145,7 +147,7 @@ class Wrapper extends StatelessWidget {
       child: Padding8(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(90),
+            preferredSize: Size.fromHeight(topBarHeight),
             child: topBar ?? const SizedBox(),
           ),
           body: Padding5(

@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:think_it_up_app/app/theme/colors.dart';
 
 class CustomTheme {
-
-
   final darkTheme =
       ThemeData.from(colorScheme: const ColorScheme.dark()).copyWith(
     textSelectionTheme: const TextSelectionThemeData(cursorColor: Colors.black),
@@ -68,7 +66,7 @@ class CustomTheme {
       headline3: GoogleFonts.aleo(
         fontSize: 16,
       ),
-      bodyText1: GoogleFonts.lato(fontSize: 14, color: const Color(0XFFE2E2E2)),
+      bodyText1: GoogleFonts.lato(fontSize: 13, color: const Color(0XFFE2E2E2)),
       bodyText2: GoogleFonts.lato(fontSize: 16, color: const Color(0XFFE2E2E2)),
     ),
   );
