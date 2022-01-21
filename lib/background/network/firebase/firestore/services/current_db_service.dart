@@ -10,12 +10,14 @@ class CurrentDbService implements DbBase {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  @override
   Future<List<PostModel>> getPosts() async {
     var querySnapshot = await _firestore.collection("posts").get();
 
     List<PostModel> _postModels = [];
 
     for (var postModel in querySnapshot.docs) {
+      print(postModel.data());
       _postModels.add(PostModel.fromMap(postModel.data()));
     }
 

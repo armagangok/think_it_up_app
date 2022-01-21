@@ -1,4 +1,3 @@
-
 class PostModel {
   String userName = "";
   String comment = "";
@@ -14,7 +13,7 @@ class PostModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'username': userName,
+      'userName': userName,
       'comment': comment,
       'like': like,
       'dislike': dislike,
@@ -23,7 +22,7 @@ class PostModel {
 
   factory PostModel.fromMap(Map<String, dynamic> map) {
     return PostModel(
-      userName: map['username'] ?? '',
+      userName: map['userName'] ?? '',
       comment: map['comment'] ?? '',
       like: map['like']?.toInt() ?? 0,
       dislike: map['dislike']?.toInt() ?? 0,

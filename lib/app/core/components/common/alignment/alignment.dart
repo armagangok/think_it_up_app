@@ -149,7 +149,7 @@ class Wrapper extends StatelessWidget {
             child: topBar ?? const SizedBox(),
           ),
           body: Padding5(
-            child: SingleChildScrollView(child: body),
+            child: body,
           ),
           bottomNavigationBar: bottomBar,
         ),

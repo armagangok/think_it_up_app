@@ -2,29 +2,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
-
-const String comment =
-    "What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-const String userName = "@SampleUser1";
+import 'package:think_it_up_app/background/network/firebase/firestore/models/post_model.dart';
 
 class CommentWidget extends StatelessWidget {
-  const CommentWidget({Key? key}) : super(key: key);
+  final PostModel post;
+  const CommentWidget({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      color: null,
       child: Padding8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              userName,
+              post.userName,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox10H(),
             Text(
-              comment,
+              post.comment,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             const SizedBox10H(),
@@ -88,3 +88,7 @@ class IconButtonStack extends StatelessWidget {
     );
   }
 }
+
+const String comment =
+    "What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+const String userName = "@SampleUser1";
