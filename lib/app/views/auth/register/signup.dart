@@ -5,6 +5,7 @@ import 'package:think_it_up_app/app/core/components/stacks/stacks.dart';
 import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
 import 'package:think_it_up_app/app/views/auth/components/dialogs.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
+import 'package:think_it_up_app/background/network/firebase/auth/models/user_model.dart';
 import 'package:think_it_up_app/background/network/firebase/auth/viewmodels/user_viewmodel.dart';
 
 class SignupView extends StatelessWidget {
@@ -60,13 +61,20 @@ class SignupView extends StatelessWidget {
               CustomElevatedButton(
                 text: "Signup",
                 onPressed: () async {
-                  dialog(context);
-                  await _userViewModel.createUserByEmailPassword(
+                  // dialog(context, greeting);
+
+                  RenewedUser? response =
+                      await _userViewModel.createUserByEmailPassword(
                     textControllers.emailRegister.text,
                     textControllers.passwordRegister1.text,
                     textControllers.passwordRegister2.text,
                   );
-                  
+
+                  print("response => $response");
+
+                  response == null
+                      ? dialog(context, error)
+                      : dialog(context, verification) ;
                 },
               ),
               const SizedBox20H(),
@@ -77,3 +85,10 @@ class SignupView extends StatelessWidget {
     );
   }
 }
+
+const String error =
+    "Invalid password or email. \n There may be an account with that email.";
+
+const String verification = """\nHello There!\n
+    Verification link has been sent your e-mail.\n
+    Do you really think that you can signin without verification? \n""";

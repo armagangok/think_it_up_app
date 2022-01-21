@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/app/core/components/stacks/stacks.dart';
 import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
+import 'package:think_it_up_app/app/views/auth/components/dialogs.dart';
 import 'package:think_it_up_app/app/views/auth/register/signup.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/background/network/firebase/auth/viewmodels/user_viewmodel.dart';
@@ -13,6 +14,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserViewModel _userViewModel = Provider.of<UserViewModel>(context);
+
     return AuthWrapper(
       child: Column(
         children: [
@@ -23,6 +25,7 @@ class LoginView extends StatelessWidget {
             children: [
               const Text14(text: "mail"),
               CustomTextField(
+                initialValue: "1armagangok@gmail.com",
                 controller: textControllers.emailLogin,
                 boolean: false,
                 maxLines: 1,
@@ -30,6 +33,7 @@ class LoginView extends StatelessWidget {
               const SizedBox20H(),
               const Text14(text: "password"),
               CustomTextField(
+                initialValue: "19033412",
                 controller: textControllers.passwordLogin,
                 boolean: true,
                 iconButton: IconButton(
@@ -43,9 +47,7 @@ class LoginView extends StatelessWidget {
               CustomElevatedButton(
                 text: "Login",
                 onPressed: () async {
-                  
-
-                  await _userViewModel.signInByEmailPassword(
+                  var a = await _userViewModel.signInByEmailPassword(
                     textControllers.emailLogin.text,
                     textControllers.passwordLogin.text,
                   );

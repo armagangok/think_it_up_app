@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../locator/locator.dart';
 import '../models/user_model.dart';
 import '../repository/user_repository.dart';
@@ -14,6 +13,8 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   ViewState _state = ViewState.idle;
   ViewState get state => _state;
   RenewedUser? get user => _user;
+  bool isPasswordCorrect = true;
+  bool isMailCorrect = true;
 
   set state(ViewState value) {
     _state = value;
@@ -88,39 +89,31 @@ class UserViewModel with ChangeNotifier implements AuthBase {
     String password1,
     String password2,
   ) async {
-    debugPrint(email);
-    debugPrint(password1);
-    debugPrint(password2);
-
-    if (password1.length < 7 && password2.length < 7) {
-      debugPrint("Please make sure you input longer then 6 characters.");
-      return null;
-    } else if (password2 != password1) {
-      debugPrint("Passwords are not same!");
-      return null;
-    } else {
+    if (emailControl(email) && passwordControll(password1, password2)) {
       try {
-        state = ViewState.busy;
-        _user = await _userRepository.createUserByEmailPassword(
+        // print("------------> trying....");
+        
+        RenewedUser? _user = await _userRepository.createUserByEmailPassword(
           email,
           password1,
           password2,
         );
-        await verifyMail();
 
+        await verifyMail();
+        // print("----------> $_user");
         return _user;
       } catch (e) {
-        debugPrint(
-            "Error in UserVievModel, at createUserByEmailPassword() method.");
+        // debugPrint(
+        //     "------------> Error in UserVievModel, at createUserByEmailPassword() method.");
 
         debugPrint(" [$e]");
-        debugPrint(
-            "Error in UserVievModel, at createUserByEmailPassword() method.");
+        // debugPrint(
+        //     "------------> Error in UserVievModel, at createUserByEmailPassword() method.");
 
         return null;
-      } finally {
-        state = ViewState.idle;
       }
+    } else {
+      return null;
     }
   }
 
@@ -161,5 +154,21 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   bool? isAnonim() {
     debugPrint("UserVievModel , at isANonim \n ${_userRepository.isAnonim()}");
     return _userRepository.isAnonim();
+  }
+
+  bool emailControl(String email) {
+    if (email.contains("@")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool passwordControll(String password1, String password2) {
+    if (password1 == password2 && password1.length > 6) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

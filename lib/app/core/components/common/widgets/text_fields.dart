@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
 
 class CustomTextField extends StatefulWidget {
+  final String? initialValue;
   final bool? isObsecure;
   final TextInputType? inputType;
   final int? maxLines;
@@ -11,6 +12,7 @@ class CustomTextField extends StatefulWidget {
 
   const CustomTextField({
     Key? key,
+    this.initialValue,
     this.isObsecure,
     this.inputType,
     this.maxLines,
@@ -31,6 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return SizedBox(
       height: 30,
       child: TextFormField(
+        //initialValue: widget.initialValue,
         controller: widget.controller,
         style: const TextStyle(color: Colors.black, fontSize: 14),
         maxLines: widget.maxLines,

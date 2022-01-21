@@ -9,22 +9,23 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewModel _userModel = Provider.of<UserViewModel>(context);
+    return const HomeView();
+      // final UserViewModel _userModel = Provider.of<UserViewModel>(context);
 
-    if (_userModel.state == ViewState.idle) {
-      if (_userModel.user != null && _userModel.isVerified() == true) {
-        debugPrint("${_userModel.user!.id}");
-        debugPrint("${_userModel.isAnonim()}");
-        debugPrint("${_userModel.isVerified()}");
-        return const HomeView();
-      } else {
-        debugPrint("Error occured, I'm in rootview currently.");
-        return const LoginView();
-      }
-    } else {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
+      // if (_userModel.state == ViewState.idle) {
+      //   if (_userModel.user != null && _userModel.isVerified() == true) {
+      //     debugPrint("${_userModel.user!.id}");
+      //     debugPrint("${_userModel.isAnonim()}");
+      //     debugPrint("${_userModel.isVerified()}");
+      //     return const HomeView();
+      //   } else {
+      //     debugPrint("Error occured, I'm in rootview currently.");
+      //     return LoginView();
+      //   }
+      // } else {
+      //   return const Scaffold(
+      //     body: Center(child: CircularProgressIndicator()),
+      //   );
+      // }
   }
 }

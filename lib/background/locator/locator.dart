@@ -11,4 +11,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => DummyService());
   locator.registerLazySingleton(() => UserRepository());
   locator.registerLazySingleton(() => CurrentDbService());
+  locator.registerLazySingleton(() => CurrentDbService());
 }

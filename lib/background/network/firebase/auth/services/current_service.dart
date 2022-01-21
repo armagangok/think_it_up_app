@@ -7,6 +7,11 @@ import 'auth_base.dart';
 class CurrentService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
+
+  void test() {
+    
+  }
+
   RenewedUser? currentUser() {
     try {
       User? user = _firebaseAuth.currentUser;
@@ -25,7 +30,6 @@ class CurrentService implements AuthBase {
         email: user.email,
         id: user.uid,
         userName: user.displayName,
-        
       );
     }
   }
@@ -75,11 +79,12 @@ class CurrentService implements AuthBase {
       final GoogleSignInAuthentication _googleAuth =
           await _googleUser.authentication;
       if (_googleAuth.idToken != null && _googleAuth.accessToken != null) {
-        UserCredential _credential = await _firebaseAuth
-            .signInWithCredential(GoogleAuthProvider.credential(
-          idToken: _googleAuth.idToken,
-          accessToken: _googleAuth.accessToken,
-        ));
+        UserCredential _credential = await _firebaseAuth.signInWithCredential(
+          GoogleAuthProvider.credential(
+            idToken: _googleAuth.idToken,
+            accessToken: _googleAuth.accessToken,
+          ),
+        );
         final User? _user = _credential.user;
         return _userFromFirebase(_user);
       } else {
