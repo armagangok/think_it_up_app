@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:think_it_up_app/app/views/root.dart';
-import 'package:think_it_up_app/background/network/firebase/firestore/services/current_db_service.dart';
 import 'package:think_it_up_app/background/provider/provider_helper.dart';
 import 'app/theme/theme.dart';
 import 'background/initilization/initapp.dart';

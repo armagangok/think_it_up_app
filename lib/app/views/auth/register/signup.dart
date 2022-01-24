@@ -22,7 +22,7 @@ class SignupView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Text36B(text: "Think It Up"),
+          const AutoText(text: "Think It Up"),
           const SizedBox20H(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

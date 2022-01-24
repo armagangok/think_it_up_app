@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/app/core/components/widgets_text_controller.dart';
 
 class CustomTextField extends StatefulWidget {
   final String? initialValue;
@@ -8,6 +7,7 @@ class CustomTextField extends StatefulWidget {
   final int? maxLines;
   final IconButton? iconButton;
   final bool boolean;
+  final double? height;
   final TextEditingController controller;
 
   const CustomTextField({
@@ -18,6 +18,7 @@ class CustomTextField extends StatefulWidget {
     this.maxLines,
     this.iconButton,
     required this.boolean,
+    this.height,
     required this.controller,
   }) : super(key: key);
 
@@ -30,29 +31,27 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 30,
-      child: TextFormField(
-        //initialValue: widget.initialValue,
-        controller: widget.controller,
-        style: const TextStyle(color: Colors.black, fontSize: 14),
-        maxLines: widget.maxLines,
-        obscureText: _passwordVisible,
-        keyboardType: widget.inputType,
-        decoration: InputDecoration(
-          hintStyle: const TextStyle(color: Colors.black),
-          suffixIcon: IconButton(
-            padding: EdgeInsets.zero,
-            icon: NewWidget(widget: widget, passwordVisible: _passwordVisible),
-            onPressed: () {
-              if (widget.boolean == true) {
-                setState(() => _passwordVisible = !_passwordVisible);
-              }
-            },
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+    return TextFormField(
+      //initialValue: widget.initialValue,
+      controller: widget.controller,
+      style: const TextStyle(color: Colors.black, fontSize: 14),
+      maxLines: widget.maxLines,
+      textAlign: TextAlign.start,
+      obscureText: _passwordVisible,
+      keyboardType: widget.inputType,
+      decoration: InputDecoration(
+        hintStyle: const TextStyle(color: Colors.black),
+        suffixIcon: IconButton(
+          padding: EdgeInsets.zero,
+          icon: NewWidget(widget: widget, passwordVisible: _passwordVisible),
+          onPressed: () {
+            if (widget.boolean == true) {
+              setState(() => _passwordVisible = !_passwordVisible);
+            }
+          },
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );

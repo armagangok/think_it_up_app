@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:think_it_up_app/app/core/components/common/widgets/icons.dart';
+import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/dashboard.dart';
 import 'package:think_it_up_app/app/views/settings/setting_view.dart';
 import 'package:think_it_up_app/app/views/winners/winner_view.dart';
@@ -10,7 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         bottomNavigationBar: PreferredSize(
           preferredSize: const Size.fromHeight(0),
@@ -20,6 +21,7 @@ class HomeView extends StatelessWidget {
             child: const TabBar(
               tabs: [
                 CustomIcon(icon: CupertinoIcons.star),
+                CustomIcon(icon: CupertinoIcons.chat_bubble),
                 CustomIcon(icon: CupertinoIcons.home),
                 CustomIcon(icon: CupertinoIcons.settings),
               ],
@@ -29,6 +31,7 @@ class HomeView extends StatelessWidget {
         body: const TabBarView(
           children: [
             WinnerView(),
+            SharePostView(),
             DashBoardView(),
             SettingView(),
           ],

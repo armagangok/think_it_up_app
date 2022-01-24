@@ -4,17 +4,19 @@ import 'package:think_it_up_app/app/views/dashboard/components/export/export.dar
 class TopBar extends StatelessWidget {
   final String text;
   final Widget? icons;
+  final double heigth;
 
   const TopBar({
     Key? key,
     required this.text,
     this.icons,
+    this.heigth = 70,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      heigth: 70,
+      heigth: heigth,
       child: Padding8(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

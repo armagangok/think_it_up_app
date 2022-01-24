@@ -18,10 +18,10 @@ class Text24B extends StatelessWidget {
   }
 }
 
-class Text36B extends StatelessWidget {
+class AutoText extends StatelessWidget {
   final String text;
 
-  const Text36B({
+  const AutoText({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -31,7 +31,8 @@ class Text36B extends StatelessWidget {
     return AutoSizeText(
       text,
       maxLines: 1,
-      minFontSize: 30,
+      maxFontSize: 24,
+      minFontSize: 20,
       style: Theme.of(context).textTheme.headline1,
     );
   }

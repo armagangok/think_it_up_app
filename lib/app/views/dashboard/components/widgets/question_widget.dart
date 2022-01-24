@@ -5,24 +5,25 @@ import 'package:think_it_up_app/app/core/components/common/widgets/text_widgets.
 import 'package:think_it_up_app/app/views/dashboard/components/export/export.dart';
 import 'package:think_it_up_app/app/views/dashboard/components/widgets/clock_widget.dart';
 
+import 'bottom_sheet.dart';
+
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
-            child: SymmetricPadding(
-              horizontal: 5,
+            child: Padding8(
               child: SingleChildScrollView(
                 child: Column(
                   children: const [
                     Align(
                       alignment: Alignment.topLeft,
-                      child: Text36B(text: header),
+                      child: AutoText(text: header),
                     ),
                     SizedBox5H(),
                     AutoSizeText(question, maxLines: 3, minFontSize: 13),
@@ -31,32 +32,35 @@ class QuestionWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(),
-          Padding5(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  children: const [
-                    TimeWidget(),
-                    Text13(text: "Deadline"),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      child: AssetIcon().chat,
-                      onTap: () {},
-                    ),
-                    const Text13(text: "leave a comment!"),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          // Padding5(
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //     children: [
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.end,
+          //         children: const [
+          //           TimeWidget(),
+          //           SizedBox10H(),
+          //           Text13(text: "Deadline"),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
+    );
+  }
+}
+
+class SharePostView extends StatelessWidget {
+  const SharePostView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrapper(
+      body: Column(),
+      topBar: AppBar(),
     );
   }
 }
