@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/app/views/root.dart';
-import 'package:think_it_up_app/background/provider/provider_helper.dart';
-import 'app/theme/theme.dart';
-import 'background/initilization/initapp.dart';
+import 'package:think_it_up_app/screens/root.dart';
+import 'core/theme/theme.dart';
+import 'global/initilization/initapp.dart';
+import 'global/provider/provider_helper.dart';
+
 
 void main() async {
   await initApp();
