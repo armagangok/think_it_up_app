@@ -7,18 +7,14 @@ import 'package:think_it_up_app/global/network/firebase/firestore/viewmodels/db_
 import 'components/widgets/comment_widget.dart';
 import 'components/widgets/question_widget.dart';
 
-
-
-
 class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-  
     DbViewModel _posts = Provider.of<DbViewModel>(context, listen: false);
 
-    return FutureBuilder<List<PostModel>> (
+    return FutureBuilder<List<PostModel>>(
       future: _posts.getPosts(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         late final List<PostModel> post = snapshot.data;

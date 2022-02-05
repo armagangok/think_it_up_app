@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/question_model.dart';
 
 class QuestionService {
   QuestionService._private();

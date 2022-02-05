@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:think_it_up_app/core/components/common/widgets/icons.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_dashboard/dashboard.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_post_sharing/post_share.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_settings/setting_screen.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_winners/winner_screen.dart';
+import 'package:think_it_up_app/screens/screens_app/screen_settings/setting.dart';
+import 'package:think_it_up_app/screens/screens_app/screen_winners/winners.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

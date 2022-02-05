@@ -11,7 +11,7 @@ class ProviderHelper {
     ChangeNotifierProvider(create: (_) => ThemeProvider()),
     ChangeNotifierProvider(create: (_) => NotificationProvider()),
     ChangeNotifierProvider(create: (_) => UserViewModel()),
-    ChangeNotifierProvider(create: (_) => DbViewModel()),
+    Provider(create: (_) => DbViewModel()),
     Provider(create: (_) => QuestionService()),
   ];
 }

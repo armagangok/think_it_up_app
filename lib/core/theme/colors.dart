@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+
 class CustomColor {
   static final CustomColor _singleton = CustomColor._internal();
 
-  factory CustomColor() {
-    return _singleton;
-  }
+  factory CustomColor() => _singleton;
 
   CustomColor._internal();
   Color bgColor = const Color(0xff000000);

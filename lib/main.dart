@@ -5,7 +5,6 @@ import 'core/theme/theme.dart';
 import 'global/initilization/initapp.dart';
 import 'global/provider/provider_helper.dart';
 
-
 void main() async {
   await initApp();
   runApp(
@@ -18,7 +17,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

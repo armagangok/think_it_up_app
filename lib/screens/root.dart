@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:think_it_up_app/global/network/firebase/auth/viewmodels/user_viewmodel.dart';
-import 'screens_app/screen_home/home_screen.dart';
+import 'screens_app/screen_home/home.dart';
 import 'screens_auth/screen_login/login.dart';
 
 

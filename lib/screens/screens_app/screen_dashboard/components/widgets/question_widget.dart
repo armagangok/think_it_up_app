@@ -5,24 +5,11 @@ import 'package:think_it_up_app/core/components/common/alignment/alignment.dart'
 import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_dashboard/services/question_service.dart';
 
-class QuestionWidget extends StatefulWidget {
+class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
-
-  @override
-  State<QuestionWidget> createState() => _QuestionWidgetState();
-}
-
-class _QuestionWidgetState extends State<QuestionWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    QuestionService _question =
-        Provider.of<QuestionService>(context, listen: false);
-
+    final QuestionService _question = Provider.of<QuestionService>(context);
     return FutureBuilder(
       future: _question.getQuestion(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -81,8 +68,5 @@ class Q extends StatelessWidget {
     );
   }
 }
-
-const String question =
-    "How on the earth Einstein succed? where me you mememememememememememememememememememecould be x axis flutter github? firebase linkedin books mathgithubmathgithubmathgithubmathgithubmathgithub?";
 
 const String header = "Question Of The Week";
