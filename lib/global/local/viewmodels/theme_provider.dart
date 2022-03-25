@@ -8,7 +8,7 @@ class ThemeProvider extends ChangeNotifier implements BaseViewModel {
   bool switchVal = true;
 
   @override
-  void changeSwicth() {
+  void changeSwitch() {
     switchVal = !switchVal;
     notifyListeners();
   }

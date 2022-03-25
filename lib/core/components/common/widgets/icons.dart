@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CustomIcon extends StatelessWidget {
   final IconData icon;
@@ -13,12 +14,19 @@ class CustomIcon extends StatelessWidget {
 class AssetIcon {
   static final AssetIcon _singleton = AssetIcon._internal();
 
-  factory AssetIcon() {
-    return _singleton;
-  }
+  factory AssetIcon() => _singleton;
 
   AssetIcon._internal();
 
+  Icon heart = const Icon(CupertinoIcons.heart);
+  Icon redHeart = const Icon(
+    CupertinoIcons.heart_fill,
+    color: Colors.redAccent,
+  );
+Icon brokenHeart = const Icon(
+    CupertinoIcons.heart_fill,
+    color: Colors.redAccent,
+  );
   Icon eye = const Icon(CupertinoIcons.eye_fill);
   Image dislike =
       Image.asset("assets/icons/dislike.png", height: 20, width: 20);

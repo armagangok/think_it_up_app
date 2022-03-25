@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/core/components/common/widgets/buttons.dart';
 import 'package:think_it_up_app/core/components/common/widgets/icons.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/post_model.dart';
+import 'package:think_it_up_app/screens/screens_app/screen_dashboard/viewmodels/icon_state.dart';
 
 class CommentWidget extends StatelessWidget {
   final PostModel post;
@@ -20,16 +23,16 @@ class CommentWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post.userName,
+              post.userName!,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox10H(),
             Text(
-              post.comment,
+              post.comment!,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             const SizedBox10H(),
-            IconButtonStack(post: post),
+            InteractionRow(post: post),
           ],
         ),
       ),
@@ -37,9 +40,9 @@ class CommentWidget extends StatelessWidget {
   }
 }
 
-class IconButtonStack extends StatelessWidget {
+class InteractionRow extends StatelessWidget {
   final PostModel post;
-  const IconButtonStack({
+  const InteractionRow({
     Key? key,
     required this.post,
   }) : super(key: key);
@@ -55,35 +58,22 @@ class IconButtonStack extends StatelessWidget {
           children: [
             Row(
               children: [
-                CustomIconButton(
-                  icon: AssetIcon().like,
-                  onPressed: () => debugPrint("like!"),
-                ),
+                LikeButton(post: post),
                 Text("${post.likes}"),
               ],
             ),
             const SizedBox20W(),
-            Row(
-              children: [
-                CustomIconButton(
-                  icon: AssetIcon().dislike,
-                  onPressed: () => debugPrint("disliked!"),
-                ),
-                Text("${post.dislikes}"),
-              ],
-            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const SizedBox20W(),
+          children: const [
+            SizedBox20W(),
             CustomIconButton(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.share,
                 color: Colors.greenAccent,
               ),
-              onPressed: () => debugPrint("Share!"),
             ),
           ],
         ),
@@ -92,3 +82,15 @@ class IconButtonStack extends StatelessWidget {
   }
 }
 
+class LikeButton extends StatelessWidget {
+  final PostModel post;
+  const LikeButton({Key? key, required this.post}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomIconButton(
+      icon: post.isLiked ? AssetIcon().redHeart : AssetIcon().heart,
+      onPressed: () => post.isLikedChange(),
+    );
+  }
+}

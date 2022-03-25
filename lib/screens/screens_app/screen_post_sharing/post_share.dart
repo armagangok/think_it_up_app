@@ -7,8 +7,8 @@ class SharePostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrapper(
-      body: Column(),
       topBar: AppBar(),
+      body: Column(),
     );
   }
 }

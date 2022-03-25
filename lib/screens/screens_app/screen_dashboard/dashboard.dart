@@ -9,26 +9,24 @@ import 'components/widgets/question_widget.dart';
 
 class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    DbViewModel _posts = Provider.of<DbViewModel>(context, listen: false);
+    DbViewModel _posts = Provider.of<DbViewModel>(context);
 
     return FutureBuilder<List<PostModel>>(
       future: _posts.getPosts(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        late final List<PostModel> post = snapshot.data;
-
+        late final List<PostModel> posts = snapshot.data;
         if (snapshot.hasData) {
           return Wrapper(
             topBarHeight: context.longestSide(0.235),
             topBar: const QuestionWidget(),
             body: ListView.builder(
-              itemCount: post.length,
+              itemCount: posts.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    CommentWidget(post: post[index]),
+                    CommentWidget(post: posts[index]),
                     const SizedBox002(),
                   ],
                 );
@@ -36,9 +34,7 @@ class DashBoardScreen extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasError) {
-          return const Center(
-            child: Text("There is a problem."),
-          );
+          return const Center(child: Text("There is a problem."));
         }
         return const Center(child: CircularProgressIndicator());
       },

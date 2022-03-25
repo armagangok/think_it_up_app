@@ -14,7 +14,7 @@ class SwitchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoSwitch(
       value: switchProvider.switchVal,
-      onChanged: (t) => switchProvider.changeSwicth(),
+      onChanged: (t) => switchProvider.changeSwitch(),
     );
   }
 }
