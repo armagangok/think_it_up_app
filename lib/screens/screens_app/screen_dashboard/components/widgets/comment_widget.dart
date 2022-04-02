@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/core/components/common/widgets/buttons.dart';
 import 'package:think_it_up_app/core/components/common/widgets/icons.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/post_model.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/viewmodels/icon_state.dart';
+import 'package:think_it_up_app/screens/screens_app/screen_dashboard/viewmodels/dashboard_viewmodel.dart';
 
 class CommentWidget extends StatelessWidget {
   final PostModel post;
@@ -82,15 +81,30 @@ class InteractionRow extends StatelessWidget {
   }
 }
 
-class LikeButton extends StatelessWidget {
+class LikeButton extends StatefulWidget {
   final PostModel post;
   const LikeButton({Key? key, required this.post}) : super(key: key);
 
   @override
+  State<LikeButton> createState() => _LikeButtonState();
+}
+
+class _LikeButtonState extends State<LikeButton> {
+  late bool isLiked;
+  @override
   Widget build(BuildContext context) {
+    DashVievModel dashBoardVievModel = Provider.of<DashVievModel>(context);
     return CustomIconButton(
-      icon: post.isLiked ? AssetIcon().redHeart : AssetIcon().heart,
-      onPressed: () => post.isLikedChange(),
+      icon: dashBoardVievModel.posts[dashBoardVievModel.indexOfComment].isLiked
+          ? AssetIcon().redHeart
+          : AssetIcon().heart,
+      onPressed: () {
+        setState(() {
+          dashBoardVievModel.posts[dashBoardVievModel.indexOfComment].isLiked =
+              !dashBoardVievModel
+                  .posts[dashBoardVievModel.indexOfComment].isLiked;
+        });
+      },
     );
   }
 }

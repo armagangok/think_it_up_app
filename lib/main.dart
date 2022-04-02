@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:think_it_up_app/screens/root.dart';
 import 'core/theme/theme.dart';
 import 'global/initilization/initapp.dart';
-import 'global/provider/provider_helper.dart';
+import 'screens/root.dart';
 
-void main() async {
-  await initApp();
-  runApp(
-    MultiProvider(
-      providers: ProviderHelper().providers,
-      child: const MyApp(),
-    ),
-  );
-}
-
-
+void main() async => await initApp();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

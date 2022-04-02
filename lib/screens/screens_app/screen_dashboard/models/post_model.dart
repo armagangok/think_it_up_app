@@ -15,11 +15,6 @@ class PostModel extends ChangeNotifier {
     this.isLiked = false,
   });
 
-  void isLikedChange() {
-    print(isLiked);
-    isLiked = !isLiked;
-    notifyListeners();
-  }
 
   PostModel copyWith({
     String? userName,
