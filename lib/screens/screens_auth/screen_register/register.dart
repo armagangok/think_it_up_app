@@ -1,23 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/components/common/widgets/buttons.dart';
-import 'package:think_it_up_app/core/components/common/widgets/text_fields.dart';
-import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
-import 'package:think_it_up_app/core/components/stacks/stacks.dart';
-import 'package:think_it_up_app/core/components/widgets_text_controller.dart';
-import 'package:think_it_up_app/global/constants/constants.dart';
-import 'package:think_it_up_app/global/network/firebase/auth/models/user_model.dart';
-import 'package:think_it_up_app/global/network/firebase/auth/viewmodels/user_viewmodel.dart';
-import 'package:think_it_up_app/screens/screens_auth/components/dialogs.dart';
+import 'package:think_it_up_app/screens/screens_auth/components/text_form_field.dart';
 
-class SignupView extends StatelessWidget {
+import '../../../core/components/common/alignment/alignment.dart';
+import '../../../core/components/common/widgets/buttons.dart';
+import '../../../core/components/common/widgets/text_widgets.dart';
+import '../../../core/components/stacks/stacks.dart';
+import '../../../global/constants/constants.dart';
+import '../../../global/network/firebase/auth/models/user_model.dart';
+import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../components/dialogs.dart';
+
+class SignupView extends StatefulWidget {
   const SignupView({Key? key}) : super(key: key);
 
   @override
+  State<SignupView> createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  @override
   Widget build(BuildContext context) {
     final UserViewModel _userViewModel = Provider.of<UserViewModel>(context);
+    final TextEditingController _usernameRegister = TextEditingController();
+    final TextEditingController _emailRegister = TextEditingController();
+    final TextEditingController _passwordRegister1 = TextEditingController();
+    final TextEditingController _passwordRegister2 = TextEditingController();
 
     return AuthWrapper(
       appBar: PreferredSize(
@@ -32,53 +41,50 @@ class SignupView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text13(text: "mail"),
-              CustomTextField(
+              AuthTextField(
                 boolean: false,
-                maxLines: 1,
-                controller: textControllers.emailRegister,
+                controller: _emailRegister,
               ),
               const SizedBox20H(),
               const Text13(text: "password"),
-              CustomTextField(
-                controller: textControllers.passwordRegister1,
+              AuthTextField(
+                controller: _passwordRegister1,
                 boolean: true,
                 iconButton: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {},
                   icon: const Icon(CupertinoIcons.eye),
                 ),
-                maxLines: 1,
               ),
               const SizedBox20H(),
               const Text13(text: "password"),
-              CustomTextField(
-                controller: textControllers.passwordRegister2,
+              AuthTextField(
+                controller: _passwordRegister2,
                 boolean: true,
                 iconButton: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {},
                   icon: const Icon(CupertinoIcons.eye),
                 ),
-                maxLines: 1,
               ),
               const SizedBox(height: 40),
               CustomElevatedButton(
                 text: "Signup",
                 onPressed: () async {
-                  // dialog(context, greeting);
+                  dialog(context, "greeting");
 
                   RenewedUser? response =
                       await _userViewModel.createUserByEmailPassword(
-                    textControllers.emailRegister.text,
-                    textControllers.passwordRegister1.text,
-                    textControllers.passwordRegister2.text,
+                    _emailRegister.text,
+                    _passwordRegister1.text,
+                    _passwordRegister2.text,
                   );
 
                   print("response => $response");
 
                   response == null
                       ? dialog(context, ConstText().error)
-                      : dialog(context, ConstText().verification) ;
+                      : dialog(context, ConstText().verification);
                 },
               ),
               const SizedBox20H(),
@@ -89,4 +95,3 @@ class SignupView extends StatelessWidget {
     );
   }
 }
-

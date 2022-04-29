@@ -8,7 +8,7 @@ import 'package:think_it_up_app/core/components/stacks/stacks.dart';
 import 'package:think_it_up_app/core/components/widgets_text_controller.dart';
 import 'package:think_it_up_app/global/network/firebase/auth/viewmodels/user_viewmodel.dart';
 import 'package:think_it_up_app/screens/screens_auth/components/text_form_field.dart';
-import 'package:think_it_up_app/screens/screens_auth/screen_register/signup.dart';
+import 'package:think_it_up_app/screens/screens_auth/screen_register/register.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);

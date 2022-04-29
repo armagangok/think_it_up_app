@@ -99,11 +99,28 @@ class _LikeButtonState extends State<LikeButton> {
           ? AssetIcon().redHeart
           : AssetIcon().heart,
       onPressed: () {
-        setState(() {
-          dashBoardVievModel.posts[dashBoardVievModel.indexOfComment].isLiked =
-              !dashBoardVievModel
-                  .posts[dashBoardVievModel.indexOfComment].isLiked;
-        });
+        setState(
+          () {
+            dashBoardVievModel
+                    .posts[dashBoardVievModel.indexOfComment].isLiked =
+                !dashBoardVievModel
+                    .posts[dashBoardVievModel.indexOfComment].isLiked;
+
+            if (dashBoardVievModel
+                    .posts[dashBoardVievModel.indexOfComment].isLiked ==
+                true) {
+              dashBoardVievModel.posts[dashBoardVievModel.indexOfComment]
+                  .likes = (dashBoardVievModel
+                      .posts[dashBoardVievModel.indexOfComment].likes! +
+                  1);
+            } else {
+              dashBoardVievModel.posts[dashBoardVievModel.indexOfComment]
+                  .likes = (dashBoardVievModel
+                      .posts[dashBoardVievModel.indexOfComment].likes! +
+                  1);
+            }
+          },
+        );
       },
     );
   }
