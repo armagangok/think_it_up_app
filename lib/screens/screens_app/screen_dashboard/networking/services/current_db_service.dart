@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/post_model.dart';
+import '../../../../../global/network/firestore/services/db_base.dart';
+import '../models/post_model.dart';
 
-import '../../../../global/network/firebase/firestore/services/db_base.dart';
 
 class CurrentDbService implements DbBase {
   CurrentDbService._private();

@@ -1,8 +1,10 @@
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/base/db_base.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/post_model.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/services/current_db_service.dart';
 
-import '../../../../locator/locator.dart';
+
+import '../../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
+import '../../../../../screens/screens_app/screen_dashboard/networking/services/base/db_base.dart';
+import '../../../../../screens/screens_app/screen_dashboard/networking/services/current_db_service.dart';
+import '../../../locator/locator.dart';
+
 
 class DbViewModel implements DbBase {
   final CurrentDbService _service = locator<CurrentDbService>();

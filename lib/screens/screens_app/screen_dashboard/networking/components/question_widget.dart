@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
 import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/services/question_service.dart';
+
+
+import '../services/question_service.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
@@ -20,9 +22,7 @@ class QuestionWidget extends StatelessWidget {
             child: Text("ERROR"),
           );
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const SizedBox();
         }
       },
     );

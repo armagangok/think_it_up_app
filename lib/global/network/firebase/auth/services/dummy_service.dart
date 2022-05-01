@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../models/user_model.dart';
 import 'auth_base.dart';
 
@@ -24,6 +25,7 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
+        comment: [],
       );
     }
   }
@@ -64,7 +66,12 @@ class DummyService implements AuthBase {
   @override
   Future<RenewedUser?> signInByEmailPassword(
       String email, String password) async {
-    return RenewedUser(id: "id", email: "email", userName: "userName");
+    return RenewedUser(
+      id: "id",
+      email: "email",
+      userName: "userName",
+      comment: [],
+    );
   }
 
   @override
@@ -77,6 +84,7 @@ class DummyService implements AuthBase {
       id: "id",
       email: "email",
       userName: "userName",
+      comment: [],
     );
   }
 

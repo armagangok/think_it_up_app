@@ -1,9 +1,9 @@
+import '../../../../../screens/screens_app/screen_dashboard/networking/services/current_db_service.dart';
 import '../../../../locator/locator.dart';
-import '../../../../../screens/screens_app/screen_dashboard/services/current_db_service.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
-import '../services/dummy_service.dart';
 import '../services/current_service.dart';
+import '../services/dummy_service.dart';
 
 enum AppMode { debug, release }
 

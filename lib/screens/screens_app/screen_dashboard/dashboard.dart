@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/extensions/context_extension.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/viewmodels/dashboard_viewmodel.dart';
-import 'components/widgets/comment_widget.dart';
-import 'components/widgets/question_widget.dart';
+
+import './networking/components/comment_widget.dart';
+import './networking/components/question_widget.dart';
+import './viewmodels/dashboard_viewmodel.dart';
+import '../../../core/components/common/alignment/alignment.dart';
+import '../../../core/extensions/context_extension.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);

@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
               CustomElevatedButton(
                 text: "Login",
                 onPressed: () async {
-                  var a = await _userViewModel.signInByEmailPassword(
+                  await _userViewModel.signInByEmailPassword(
                     textControllers.emailLogin.text,
                     textControllers.passwordLogin.text,
                   );

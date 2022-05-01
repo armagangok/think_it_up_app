@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/components/common/widgets/buttons.dart';
-import 'package:think_it_up_app/core/components/common/widgets/icons.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/models/post_model.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/viewmodels/dashboard_viewmodel.dart';
+
+import '../../../../../core/components/common/alignment/alignment.dart';
+import '../../../../../core/components/common/widgets/buttons.dart';
+import '../../../../../core/components/common/widgets/icons.dart';
+import '../../viewmodels/dashboard_viewmodel.dart';
+import '../models/post_model.dart';
 
 class CommentWidget extends StatelessWidget {
   final PostModel post;
