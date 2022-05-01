@@ -14,7 +14,7 @@ class CurrentService implements AuthBase {
   void test() {}
 
   @override
-  RenewedUser? currentUser() {
+  AppUser? currentUser() {
     try {
       User? user = _firebaseAuth.currentUser;
       return _userFromFirebase(user);
@@ -24,15 +24,15 @@ class CurrentService implements AuthBase {
     }
   }
 
-  RenewedUser? _userFromFirebase(User? user) {
+  AppUser? _userFromFirebase(User? user) {
     if (user == null) {
       return null;
     } else {
-      return RenewedUser(
+      return AppUser(
         email: user.email,
+        password1: "admin",
         id: user.uid,
         userName: user.displayName,
-        comment: [],
       );
     }
   }
@@ -63,7 +63,7 @@ class CurrentService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signinAnonim() async {
+  Future<AppUser?> signinAnonim() async {
     try {
       UserCredential authCredential = await _firebaseAuth.signInAnonymously();
       return _userFromFirebase(authCredential.user);
@@ -74,7 +74,7 @@ class CurrentService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByGoogle() async {
+  Future<AppUser?> signInByGoogle() async {
     final GoogleSignIn _googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? _googleUser = await _googleSignIn.signIn();
 
@@ -99,14 +99,20 @@ class CurrentService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> createUserByEmailPassword(
-    String email,
-    String password1,
-    String password2,
-  ) async {
+  Future<AppUser?> createUserByEmailPassword(AppUser user) async {
     try {
-      UserCredential authCredential = await _firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: password1);
+      UserCredential authCredential =
+          await _firebaseAuth.createUserWithEmailAndPassword(
+        email: "armagan.gok.business@gmail.com",
+        password: "123456",
+      );
+
+      user.setID = authCredential.user!.uid;
+
+      await _firestore
+          .collection("users")
+          .doc(authCredential.user!.uid)
+          .set(user.toMap());
 
       return _userFromFirebase(authCredential.user);
     } catch (e) {
@@ -116,8 +122,7 @@ class CurrentService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByEmailPassword(
-      String email, String password) async {
+  Future<AppUser?> signInByEmailPassword(String email, String password) async {
     try {
       debugPrint(
           "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");

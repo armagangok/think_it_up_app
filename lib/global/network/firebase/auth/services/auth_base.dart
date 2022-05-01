@@ -1,12 +1,12 @@
 import '../models/user_model.dart';
 
 abstract class AuthBase {
-  RenewedUser? currentUser();
-  Future<RenewedUser?> signinAnonim();
+  AppUser? currentUser();
+  Future<AppUser?> signinAnonim();
   Future<bool> signOut();
-  Future<RenewedUser?> signInByGoogle();
-  Future<RenewedUser?> signInByEmailPassword(String email, String password);
-  Future<RenewedUser?> createUserByEmailPassword(String email, String password1, String password2);
+  Future<AppUser?> signInByGoogle();
+  Future<AppUser?> signInByEmailPassword(String email, String password);
+  Future<AppUser?> createUserByEmailPassword(AppUser appUser);
   bool? isVerified();
   Future<void> verifyMail();
   bool? isAnonim();

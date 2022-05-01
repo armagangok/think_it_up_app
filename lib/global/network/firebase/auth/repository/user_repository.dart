@@ -15,7 +15,7 @@ class UserRepository implements AuthBase {
   AppMode appMode = AppMode.release;
 
   @override
-  RenewedUser? currentUser() {
+  AppUser? currentUser() {
     if (appMode == AppMode.debug) {
       return _dummyAuthService.currentUser();
     } else {
@@ -33,7 +33,7 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signinAnonim() async {
+  Future<AppUser?> signinAnonim() async {
     if (appMode == AppMode.debug) {
       return await _dummyAuthService.signinAnonim();
     } else {
@@ -42,7 +42,7 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByGoogle() async {
+  Future<AppUser?> signInByGoogle() async {
     if (appMode == AppMode.debug) {
       return await _dummyAuthService.signInByGoogle();
     } else {
@@ -51,7 +51,7 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByEmailPassword(
+  Future<AppUser?> signInByEmailPassword(
     String email,
     String password,
   ) async {
@@ -63,20 +63,16 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> createUserByEmailPassword(
-    String email,
-    String password1,
-    String password2,
+  Future<AppUser?> createUserByEmailPassword(
+    AppUser user
   ) async {
     if (appMode == AppMode.debug) {
       return await _dummyAuthService.createUserByEmailPassword(
-        email,
-        password1,
-        password2,
+        user
       );
     } else {
-      final RenewedUser? _renewedUser = await _authService
-          .createUserByEmailPassword(email, password1, password2);
+      final AppUser? _renewedUser = await _authService
+          .createUserByEmailPassword(user);
       return _renewedUser;
     }
   }

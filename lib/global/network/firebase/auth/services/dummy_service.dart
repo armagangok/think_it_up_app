@@ -7,7 +7,7 @@ import 'auth_base.dart';
 class DummyService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
-  RenewedUser? currentUser() {
+  AppUser? currentUser() {
     try {
       User? user = _firebaseAuth.currentUser;
       return _userFromFirebase(user);
@@ -17,15 +17,15 @@ class DummyService implements AuthBase {
     }
   }
 
-  RenewedUser? _userFromFirebase(User? user) {
+  AppUser? _userFromFirebase(User? user) {
     if (user == null) {
       return null;
     } else {
-      return RenewedUser(
+      return AppUser(
         id: "id",
         email: "email",
         userName: "userName",
-        comment: [],
+        password1: 'admin',
       );
     }
   }
@@ -42,7 +42,7 @@ class DummyService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signinAnonim() async {
+  Future<AppUser?> signinAnonim() async {
     try {
       UserCredential authCredential = await _firebaseAuth.signInAnonymously();
       return _userFromFirebase(authCredential.user);
@@ -53,7 +53,7 @@ class DummyService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByGoogle() async {
+  Future<AppUser?> signInByGoogle() async {
     try {
       UserCredential authCredential = await _firebaseAuth.signInAnonymously();
       return _userFromFirebase(authCredential.user);
@@ -64,27 +64,22 @@ class DummyService implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByEmailPassword(
-      String email, String password) async {
-    return RenewedUser(
+  Future<AppUser?> signInByEmailPassword(String email, String password) async {
+    return AppUser(
       id: "id",
       email: "email",
       userName: "userName",
-      comment: [],
+      password1: 'admin',
     );
   }
 
   @override
-  Future<RenewedUser?> createUserByEmailPassword(
-    String email,
-    String? password1,
-    String password2,
-  ) async {
-    return RenewedUser(
+  Future<AppUser?> createUserByEmailPassword(AppUser user) async {
+    return AppUser(
       id: "id",
       email: "email",
       userName: "userName",
-      comment: [],
+      password1: 'admin',
     );
   }
 

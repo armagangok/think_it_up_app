@@ -1,22 +1,24 @@
-class RenewedUser {
+class AppUser {
   String? id;
   String? email;
   String? userName;
-  List? comment;
+  String? password1;
 
-  RenewedUser({
+  AppUser({
     required this.id,
     required this.email,
     required this.userName,
-    required this.comment,
+    required this.password1,
   });
+
+  set setID(String? uid) => id = uid;
 
   Map<String, dynamic> toMap() {
     return {
       "id": id,
       "email": email,
       "userName": userName,
-      "comment": comment,
+      "password": password1,
     };
   }
 }

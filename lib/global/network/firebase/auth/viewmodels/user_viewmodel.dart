@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../locator/locator.dart';
 import '../models/user_model.dart';
 import '../repository/user_repository.dart';
@@ -9,10 +10,10 @@ enum ViewState { idle, busy }
 class UserViewModel with ChangeNotifier implements AuthBase {
   final UserRepository _userRepository = locator<UserRepository>();
 
-  RenewedUser? _user;
+  AppUser? _user;
   ViewState _state = ViewState.idle;
   ViewState get state => _state;
-  RenewedUser? get user => _user;
+  AppUser? get user => _user;
   bool isPasswordCorrect = true;
   bool isMailCorrect = true;
 
@@ -26,7 +27,7 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  RenewedUser? currentUser() {
+  AppUser? currentUser() {
     try {
       state = ViewState.busy;
       _user = _userRepository.currentUser();
@@ -55,7 +56,7 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signinAnonim() async {
+  Future<AppUser?> signinAnonim() async {
     try {
       state = ViewState.busy;
       _user = await _userRepository.signinAnonim();
@@ -70,7 +71,7 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByGoogle() async {
+  Future<AppUser?> signInByGoogle() async {
     try {
       state = ViewState.busy;
       _user = await _userRepository.signInByGoogle();
@@ -84,21 +85,13 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> createUserByEmailPassword(
-    String email,
-    String password1,
-    String password2,
-  ) async {
-    if (emailControl(email) && passwordControll(password1, password2)) {
+  Future<AppUser?> createUserByEmailPassword(AppUser user) async {
+    if (emailControl(user.email!)
+        // passwordControll(user.password1!, "user.password2")
+        ) {
       try {
         // print("------------> trying....");
-        
-        RenewedUser? _user = await _userRepository.createUserByEmailPassword(
-          email,
-          password1,
-          password2,
-        );
-
+        AppUser? _user = await _userRepository.createUserByEmailPassword(user);
         await verifyMail();
         // print("----------> $_user");
         return _user;
@@ -109,7 +102,6 @@ class UserViewModel with ChangeNotifier implements AuthBase {
         debugPrint(" [$e]");
         // debugPrint(
         //     "------------> Error in UserVievModel, at createUserByEmailPassword() method.");
-
         return null;
       }
     } else {
@@ -118,7 +110,7 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  Future<RenewedUser?> signInByEmailPassword(
+  Future<AppUser?> signInByEmailPassword(
     String email,
     String password,
   ) async {
@@ -164,11 +156,11 @@ class UserViewModel with ChangeNotifier implements AuthBase {
     }
   }
 
-  bool passwordControll(String password1, String password2) {
-    if (password1 == password2 && password1.length > 6) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // bool passwordControll(String password1, String password2) {
+  //   if (password1 == password2 && password1.length > 6) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }
