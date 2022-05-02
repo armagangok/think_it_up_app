@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/core/components/common/widgets/icons.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/dashboard.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_post_sharing/post_share.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_settings/setting.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_winners/winners.dart';
+
+import '../../../core/components/widgets/icons.dart';
+import '../screen_dashboard/dashboard.dart';
+import '../screen_post_sharing/post_share.dart';
+import '../screen_settings/setting.dart';
+import '../screen_winners/winners.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,12 +29,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            WinnerScreen(),
+            const WinnerScreen(),
             SharePostScreen(),
-            DashBoardScreen(),
-            SettingScreen(),
+            const DashBoardScreen(),
+            const SettingScreen(),
           ],
         ),
       ),

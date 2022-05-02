@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
-import 'components/stacks/top_bar.dart';
-import 'components/stacks/winner_widget.dart';
+
+import '../../../core/components/alignment/alignment.dart';
+import '../../../core/components/widgets/text_widgets.dart';
+import './components/stacks/top_bar.dart';
+import './components/stacks/winner_widget.dart';
 
 class WinnerScreen extends StatelessWidget {
   const WinnerScreen({Key? key}) : super(key: key);

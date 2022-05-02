@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
+
+
+import '../../../../../core/components/alignment/alignment.dart';
 
 
 class SettingItem extends StatelessWidget {

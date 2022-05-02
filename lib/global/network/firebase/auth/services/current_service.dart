@@ -10,8 +10,7 @@ class CurrentService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  @override
-  void test() {}
+
 
   @override
   AppUser? currentUser() {

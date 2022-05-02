@@ -10,4 +10,5 @@ class IconState extends ChangeNotifier implements IconStateBase {
     isLiked = !isLiked;
     notifyListeners();
   }
+
 }

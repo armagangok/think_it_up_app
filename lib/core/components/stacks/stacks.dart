@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
 
+import '../alignment/alignment.dart';
 
 class AuthWrapper extends StatelessWidget {
   final Widget child;

@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/components/common/alignment/alignment.dart';
-import '../../../core/components/common/widgets/buttons.dart';
-import '../../../core/components/common/widgets/text_widgets.dart';
+import '../../../core/components/alignment/alignment.dart';
+
 import '../../../core/components/stacks/stacks.dart';
+import '../../../core/components/widgets/buttons.dart';
+import '../../../core/components/widgets/text_widgets.dart';
 import '../../../global/constants/constants.dart';
 import '../../../global/network/firebase/auth/models/user_model.dart';
 import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';

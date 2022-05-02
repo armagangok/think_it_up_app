@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/global/local/viewmodels/notification_provider.dart';
-import 'package:think_it_up_app/global/local/viewmodels/theme_provider.dart';
-import 'package:think_it_up_app/global/network/firebase/auth/viewmodels/user_viewmodel.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_winners/components/stacks/top_bar.dart';
+
+import '../../../core/components/alignment/alignment.dart';
+import '../../../global/local/viewmodels/notification_provider.dart';
+import '../../../global/local/viewmodels/theme_provider.dart';
+import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../screen_winners/components/stacks/top_bar.dart';
 import 'components/stacks/stacks.dart';
 import 'components/widgets/switch_widget.dart';
 

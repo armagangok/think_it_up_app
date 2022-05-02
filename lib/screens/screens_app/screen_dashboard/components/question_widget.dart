@@ -1,11 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
 
-
-import '../services/question_service.dart';
+import '../../../../core/components/alignment/alignment.dart';
+import '../../../../core/components/widgets/text_widgets.dart';
+import '../networking/services/question_service.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
@@ -47,10 +46,7 @@ class Q extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: AutoText(text: header),
-                    ),
+                    const AutoText(text: header),
                     const SizedBox5H(),
                     AutoSizeText(
                       data,

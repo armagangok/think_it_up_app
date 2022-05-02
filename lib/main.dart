@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'core/theme/theme.dart';
-import 'global/initilization/initapp.dart';
-import 'screens/root.dart';
+
+import './core/theme/theme.dart';
+import './global/initilization/initapp.dart';
+import './screens/root.dart';
 
 void main() async => await initApp();
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './networking/components/comment_widget.dart';
-import './networking/components/question_widget.dart';
+import '../../../core/components/alignment/alignment.dart';
+import './components/comment_widget.dart';
+import './components/question_widget.dart';
 import './viewmodels/dashboard_viewmodel.dart';
-import '../../../core/components/common/alignment/alignment.dart';
+
 import '../../../core/extensions/context_extension.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -23,8 +24,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final DashVievModel _dashViewModel =
-        Provider.of<DashVievModel>(context);
+    final DashVievModel _dashViewModel = Provider.of<DashVievModel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),

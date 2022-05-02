@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../../core/components/common/alignment/alignment.dart';
-import '../../../../../core/components/common/widgets/buttons.dart';
-import '../../../../../core/components/common/widgets/icons.dart';
-import '../../viewmodels/dashboard_viewmodel.dart';
-import '../models/post_model.dart';
+import '../../../../core/components/alignment/alignment.dart';
+import '../../../../core/components/widgets/buttons.dart';
+import '../../../../core/components/widgets/icons.dart';
+import '../networking/models/post_model.dart';
 
 class CommentWidget extends StatelessWidget {
   final PostModel post;
@@ -23,12 +21,12 @@ class CommentWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post.userName!,
+              post.userName,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox10H(),
             Text(
-              post.comment!,
+              post.comment,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             const SizedBox10H(),
@@ -91,38 +89,11 @@ class LikeButton extends StatefulWidget {
 }
 
 class _LikeButtonState extends State<LikeButton> {
-  late bool isLiked;
   @override
   Widget build(BuildContext context) {
-    DashVievModel dashBoardVievModel = Provider.of<DashVievModel>(context);
     return CustomIconButton(
-      icon: dashBoardVievModel.posts[dashBoardVievModel.indexOfComment].isLiked
-          ? AssetIcon().redHeart
-          : AssetIcon().heart,
-      onPressed: () {
-        setState(
-          () {
-            dashBoardVievModel
-                    .posts[dashBoardVievModel.indexOfComment].isLiked =
-                !dashBoardVievModel
-                    .posts[dashBoardVievModel.indexOfComment].isLiked;
-
-            if (dashBoardVievModel
-                    .posts[dashBoardVievModel.indexOfComment].isLiked ==
-                true) {
-              dashBoardVievModel.posts[dashBoardVievModel.indexOfComment]
-                  .likes = (dashBoardVievModel
-                      .posts[dashBoardVievModel.indexOfComment].likes! +
-                  1);
-            } else {
-              dashBoardVievModel.posts[dashBoardVievModel.indexOfComment]
-                  .likes = (dashBoardVievModel
-                      .posts[dashBoardVievModel.indexOfComment].likes! +
-                  1);
-            }
-          },
-        );
-      },
+      icon: AssetIcon().redHeart,
+      onPressed: () => setState(() {}),
     );
   }
 }

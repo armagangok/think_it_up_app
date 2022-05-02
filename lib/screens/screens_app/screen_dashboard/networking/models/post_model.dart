@@ -1,32 +1,29 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 class PostModel extends ChangeNotifier {
-  String? userName;
-  String? comment;
-  int? likes;
-  bool isLiked;
+  String userName;
+  String comment;
+  String postID;
+  int likes;
 
   PostModel({
-    this.userName = "",
-    this.comment = "",
-    this.likes = 0,
-    this.isLiked = false,
+    required this.userName,
+    required this.comment,
+    required this.postID,
+    required this.likes,
   });
-
 
   PostModel copyWith({
     String? userName,
     String? comment,
+    String? postID,
     int? likes,
-    bool? isLiked,
   }) {
     return PostModel(
       userName: userName ?? this.userName,
       comment: comment ?? this.comment,
+      postID: postID ?? this.postID,
       likes: likes ?? this.likes,
-      isLiked: isLiked ?? this.isLiked,
     );
   }
 
@@ -34,8 +31,8 @@ class PostModel extends ChangeNotifier {
     return {
       'userName': userName,
       'comment': comment,
+      'postID': postID,
       'likes': likes,
-      'isLiked': isLiked,
     };
   }
 
@@ -43,37 +40,8 @@ class PostModel extends ChangeNotifier {
     return PostModel(
       userName: map['userName'] ?? '',
       comment: map['comment'] ?? '',
+      postID: map['postID'] ?? '',
       likes: map['likes']?.toInt() ?? 0,
-      isLiked: map['isLiked'] ?? false,
     );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory PostModel.fromJson(String source) =>
-      PostModel.fromMap(json.decode(source));
-
-  @override
-  String toString() {
-    return 'PostModel(userName: $userName, comment: $comment, likes: $likes, isLiked: $isLiked)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is PostModel &&
-        other.userName == userName &&
-        other.comment == comment &&
-        other.likes == likes &&
-        other.isLiked == isLiked;
-  }
-
-  @override
-  int get hashCode {
-    return userName.hashCode ^
-        comment.hashCode ^
-        likes.hashCode ^
-        isLiked.hashCode;
   }
 }

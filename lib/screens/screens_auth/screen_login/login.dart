@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:think_it_up_app/core/components/common/alignment/alignment.dart';
-import 'package:think_it_up_app/core/components/common/widgets/buttons.dart';
-import 'package:think_it_up_app/core/components/common/widgets/text_widgets.dart';
-import 'package:think_it_up_app/core/components/stacks/stacks.dart';
-import 'package:think_it_up_app/core/components/widgets_text_controller.dart';
-import 'package:think_it_up_app/global/network/firebase/auth/viewmodels/user_viewmodel.dart';
-import 'package:think_it_up_app/screens/screens_auth/components/text_form_field.dart';
-import 'package:think_it_up_app/screens/screens_auth/screen_register/register.dart';
+
+
+
+import '../../../core/components/alignment/alignment.dart';
+import '../../../core/components/stacks/stacks.dart';
+import '../../../core/components/widgets/buttons.dart';
+import '../../../core/components/widgets/text_widgets.dart';
+import '../../../core/components/widgets_text_controller.dart';
+import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../components/text_form_field.dart';
+import '../screen_register/register.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
