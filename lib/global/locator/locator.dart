@@ -12,6 +12,6 @@ void setupLocator() {
   locator.registerLazySingleton(() => CurrentService());
   locator.registerLazySingleton(() => DummyService());
   locator.registerLazySingleton(() => UserRepository());
-  locator.registerLazySingleton(() => CurrentDbService());
+  locator.registerLazySingleton(() => FirebaseService());
   locator.registerLazySingleton(() => QuestionService());
 }

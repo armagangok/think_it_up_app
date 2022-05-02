@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/components/alignment/alignment.dart';
 import './components/comment_widget.dart';
 import './components/question_widget.dart';
-import './viewmodels/dashboard_viewmodel.dart';
-
+import './networking/viewmodels/dashboard_viewmodel.dart';
+import './networking/viewmodels/firebase_viewmodel.dart';
+import '../../../core/components/alignment/alignment.dart';
 import '../../../core/extensions/context_extension.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -18,18 +18,20 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
-    DashVievModel().getPosts();
+    FirebaseViewmodel().getPosts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final DashVievModel _dashViewModel = Provider.of<DashVievModel>(context);
+    final DashVievmodel _dashViewModel = Provider.of<DashVievmodel>(context);
+    final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
+
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),
       body: ListView.builder(
-        itemCount: _dashViewModel.posts.length,
+        itemCount: _firebase.posts.length,
         itemBuilder: (context, index) {
           _dashViewModel.changeIndexOfComment(index);
           return ListTile(
@@ -37,7 +39,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             title: Column(
               children: [
                 const SizedBox002(),
-                CommentWidget(post: _dashViewModel.posts[index]),
+                CommentWidget(post: _firebase.posts[index]),
                 const SizedBox002(),
               ],
             ),

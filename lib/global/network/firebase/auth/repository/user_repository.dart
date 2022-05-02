@@ -10,7 +10,7 @@ enum AppMode { debug, release }
 class UserRepository implements AuthBase {
   final CurrentService _authService = locator<CurrentService>();
   final DummyService _dummyAuthService = locator<DummyService>();
-  final CurrentDbService _currentDbService = locator<CurrentDbService>();
+  final FirebaseService _currentDbService = locator<FirebaseService>();
 
   AppMode appMode = AppMode.release;
 
