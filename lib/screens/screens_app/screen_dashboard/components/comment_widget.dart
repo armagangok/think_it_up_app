@@ -21,7 +21,7 @@ class CommentWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post.userName,
+              "@" + post.userName,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox10H(),

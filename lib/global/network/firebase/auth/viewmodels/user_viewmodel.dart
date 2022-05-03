@@ -88,11 +88,10 @@ class FirebaseModel with ChangeNotifier implements AuthBase {
   Future<AppUser?> createUserByEmailPassword(AppUser user) async {
     if (emailControl(user.email!)) {
       try {
-        // print("------------> trying....");
-        passwordControll(user.password!, user.password2!);
+        // passwordControll(user.password!, user.password2!);
         AppUser? _user = await _userRepository.createUserByEmailPassword(user);
         await verifyMail();
-        // print("----------> $_user");
+
         return _user;
       } catch (e) {
         return null;
@@ -152,11 +151,11 @@ class FirebaseModel with ChangeNotifier implements AuthBase {
     }
   }
 
-  bool passwordControll(String password1, String password2) {
-    if (password1 == password2 && password1.length > 6) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // bool passwordControll(String password1, String password2) {
+  //   if (password1 == password2 && password1.length > 6) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }

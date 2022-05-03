@@ -1,20 +1,13 @@
 class CustomColor {
   static final CustomColor _singleton = CustomColor._internal();
 
-  factory CustomColor() {
-    return _singleton;
-  }
-
+  factory CustomColor() => _singleton;
   CustomColor._internal();
 }
 
 class ConstText {
   static final ConstText _singleton = ConstText._internal();
-
-  factory ConstText() {
-    return _singleton;
-  }
-
+  factory ConstText() => _singleton;
   ConstText._internal();
 
   String error =

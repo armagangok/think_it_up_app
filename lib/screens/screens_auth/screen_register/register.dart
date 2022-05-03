@@ -64,14 +64,19 @@ class _SignupViewState extends State<SignupView> {
                     password: _password1.text,
                   );
 
-                  AppUser? response =
-                      await _userViewModel.createUserByEmailPassword(user);
+                  try {
+                    AppUser? response =
+                        await _userViewModel.createUserByEmailPassword(user);
 
-                  print("response => $response");
+                    print("response => $response");
 
-                  response == null
-                      ? dialog(context, ConstText().error)
-                      : dialog(context, ConstText().verification);
+                    response == null
+                        ? dialog(context, ConstText().error)
+                        : dialog(context, ConstText().verification);
+                  } catch (e) {
+                    dialog(context, "$e");
+                    
+                  }
                 },
               ),
               const SizedBox20H(),
