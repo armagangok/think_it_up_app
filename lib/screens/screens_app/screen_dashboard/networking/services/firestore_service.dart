@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/networking/services/base/db_base.dart';
 
+import './base/db_base.dart';
 import '../models/post_model.dart';
 
-class FirebaseService implements BaseDatabaseService {
-  FirebaseService._private();
+class FirestoreService implements BaseDatabaseService {
+  FirestoreService._private();
 
-  static final FirebaseService _instance = FirebaseService._private();
-  factory FirebaseService() => _instance;
+  static final FirestoreService _instance = FirestoreService._private();
+  factory FirestoreService() => _instance;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -19,6 +19,7 @@ class FirebaseService implements BaseDatabaseService {
 
     for (var postModel in querySnapshot.docs) {
       _postModels.add(PostModel.fromMap(postModel.data()));
+      print(postModel);
     }
 
     return _postModels;

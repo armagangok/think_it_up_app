@@ -1,14 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-
 
 import '../../../core/components/alignment/alignment.dart';
 import '../../../core/components/stacks/stacks.dart';
 import '../../../core/components/widgets/buttons.dart';
 import '../../../core/components/widgets/text_widgets.dart';
-import '../../../core/components/widgets_text_controller.dart';
 import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
 import '../components/text_form_field.dart';
 import '../screen_register/register.dart';
@@ -18,7 +14,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewModel _userViewModel = Provider.of<UserViewModel>(context);
+    final TextEditingController _emailLogin =
+        TextEditingController(text: "1armagangok@gmail.com");
+    final TextEditingController _passwordLogin =
+        TextEditingController(text: "1234567");
+
+    final FirebaseModel _userViewModel = Provider.of<FirebaseModel>(context);
 
     return AuthWrapper(
       child: Column(
@@ -29,28 +30,17 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text13(text: "mail"),
-              AuthTextField(
-                controller: textControllers.emailLogin,
-                boolean: false,
-              ),
+              AuthTextField(controller: _emailLogin),
               const SizedBox20H(),
               const Text13(text: "password"),
-              AuthTextField(
-                controller: textControllers.passwordLogin,
-                boolean: true,
-                iconButton: IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () async {},
-                  icon: const Icon(CupertinoIcons.eye),
-                ),
-              ),
+              AuthTextField(controller: _passwordLogin, isObscure: true),
               const SizedBox(height: 40),
               CustomElevatedButton(
                 text: "Login",
                 onPressed: () async {
                   await _userViewModel.signInByEmailPassword(
-                    textControllers.emailLogin.text,
-                    textControllers.passwordLogin.text,
+                    _emailLogin.text,
+                    _passwordLogin.text,
                   );
                 },
               ),

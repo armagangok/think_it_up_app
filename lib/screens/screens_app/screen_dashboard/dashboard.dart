@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import './components/comment_widget.dart';
 import './components/question_widget.dart';
-import './networking/viewmodels/dashboard_viewmodel.dart';
 import './networking/viewmodels/firebase_viewmodel.dart';
 import '../../../core/components/alignment/alignment.dart';
 import '../../../core/extensions/context_extension.dart';
@@ -24,16 +23,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final DashVievmodel _dashViewModel = Provider.of<DashVievmodel>(context);
     final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
-
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),
       body: ListView.builder(
         itemCount: _firebase.posts.length,
         itemBuilder: (context, index) {
-          _dashViewModel.changeIndexOfComment(index);
           return ListTile(
             key: Key("$index"),
             title: Column(

@@ -12,7 +12,7 @@ class ProviderHelper {
   List<SingleChildWidget> providers = [
     ChangeNotifierProvider(create: (_) => ThemeProvider()),
     ChangeNotifierProvider(create: (_) => NotificationProvider()),
-    ChangeNotifierProvider(create: (_) => UserViewModel()), 
+    ChangeNotifierProvider(create: (_) => FirebaseModel()), 
     ChangeNotifierProvider(create: (_) => DashVievmodel()),
     ChangeNotifierProvider(create: (_) => FirebaseViewmodel()),
     Provider(create: (_) => QuestionService()),

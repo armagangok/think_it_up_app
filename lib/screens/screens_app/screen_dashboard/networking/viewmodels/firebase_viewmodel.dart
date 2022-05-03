@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../models/post_model.dart';
 import '../services/base/db_base.dart';
-import '../services/current_db_service.dart';
+import '../services/firestore_service.dart';
 
 
 
@@ -12,7 +12,7 @@ class FirebaseViewmodel with ChangeNotifier implements BaseDatabaseService {
   static final FirebaseViewmodel _instance = FirebaseViewmodel._private();
   factory FirebaseViewmodel() => _instance;
 
-  final FirebaseService _firebaseService = FirebaseService();
+  final FirestoreService _firebaseService = FirestoreService();
   List<PostModel> posts = [];
 
   @override

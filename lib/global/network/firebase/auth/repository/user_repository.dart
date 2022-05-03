@@ -1,4 +1,4 @@
-import '../../../../../screens/screens_app/screen_dashboard/networking/services/current_db_service.dart';
+
 import '../../../../locator/locator.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
@@ -10,14 +10,13 @@ enum AppMode { debug, release }
 class UserRepository implements AuthBase {
   final CurrentService _authService = locator<CurrentService>();
   final DummyService _dummyAuthService = locator<DummyService>();
-  final FirebaseService _currentDbService = locator<FirebaseService>();
 
   AppMode appMode = AppMode.release;
 
   @override
-  AppUser? currentUser() {
+  Future<AppUser?> currentUser() async{
     if (appMode == AppMode.debug) {
-      return _dummyAuthService.currentUser();
+      return await _dummyAuthService.currentUser();
     } else {
       return _authService.currentUser();
     }

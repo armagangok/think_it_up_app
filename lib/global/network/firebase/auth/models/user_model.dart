@@ -2,13 +2,16 @@ class AppUser {
   String? id;
   String? email;
   String? userName;
-  String? password1;
+  String? password;
+  String? password2;
 
   AppUser({
     required this.id,
     required this.email,
     required this.userName,
-    required this.password1,
+    required this.password,
+     this.password2,
+    
   });
 
   set setID(String? uid) => id = uid;
@@ -18,7 +21,9 @@ class AppUser {
       "id": id,
       "email": email,
       "userName": userName,
-      "password": password1,
+      "password": password,
+      "password2": password2,
     };
   }
 }
+

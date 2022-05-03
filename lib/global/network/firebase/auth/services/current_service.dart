@@ -10,28 +10,28 @@ class CurrentService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-
-
   @override
-  AppUser? currentUser() {
+  Future<AppUser?> currentUser() async {
     try {
       User? user = _firebaseAuth.currentUser;
-      return _userFromFirebase(user);
+      return await _userFromFirebase(user);
     } catch (e) {
       debugPrint("$e");
       return null;
     }
   }
 
-  AppUser? _userFromFirebase(User? user) {
+  Future<AppUser?> _userFromFirebase(User? user) async {
     if (user == null) {
       return null;
     } else {
+      DocumentSnapshot<Map<String, dynamic>> a =
+          await _firestore.collection("users").doc(user.uid).get();
       return AppUser(
         email: user.email,
-        password1: "admin",
+        password: "admin",
         id: user.uid,
-        userName: user.displayName,
+        userName: a["userName"],
       );
     }
   }
@@ -102,8 +102,8 @@ class CurrentService implements AuthBase {
     try {
       UserCredential authCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
-        email: "armagan.gok.business@gmail.com",
-        password: "123456",
+        email: user.email!,
+        password:user.password!,
       );
 
       user.setID = authCredential.user!.uid;

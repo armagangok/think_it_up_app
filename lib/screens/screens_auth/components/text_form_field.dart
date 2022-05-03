@@ -2,22 +2,18 @@ import 'package:flutter/material.dart';
 
 class AuthTextField extends StatefulWidget {
   final String? initialValue;
-  final bool? isObsecure;
   final TextInputType? inputType;
-  final IconButton? iconButton;
-  final bool boolean;
   final double? height;
   final TextEditingController controller;
+  final bool isObscure;
 
   const AuthTextField({
     Key? key,
     this.initialValue,
-    this.isObsecure,
     this.inputType,
-    this.iconButton,
-    required this.boolean,
     this.height,
     required this.controller,
+    this.isObscure = false,
   }) : super(key: key);
 
   @override
@@ -45,7 +41,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             padding: EdgeInsets.zero,
             icon: NewWidget(widget: widget, passwordVisible: _passwordVisible),
             onPressed: () {
-              if (widget.boolean == true) {
+              if (widget.isObscure == true) {
                 setState(() => _passwordVisible = !_passwordVisible);
               }
             },
@@ -73,7 +69,7 @@ class NewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Icon(
-      widget.boolean
+      widget.isObscure
           ? _passwordVisible
               ? Icons.visibility_off
               : Icons.visibility

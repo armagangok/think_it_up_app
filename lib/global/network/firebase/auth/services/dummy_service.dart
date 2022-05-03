@@ -7,17 +7,17 @@ import 'auth_base.dart';
 class DummyService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
-  AppUser? currentUser() {
+  Future<AppUser?> currentUser() async {
     try {
       User? user = _firebaseAuth.currentUser;
-      return _userFromFirebase(user);
+      return await _userFromFirebase(user);
     } catch (e) {
       debugPrint("$e");
       return null;
     }
   }
 
-  AppUser? _userFromFirebase(User? user) {
+  Future<AppUser?> _userFromFirebase(User? user) async {
     if (user == null) {
       return null;
     } else {
@@ -25,7 +25,7 @@ class DummyService implements AuthBase {
         id: "id",
         email: "email",
         userName: "userName",
-        password1: 'admin',
+        password: 'admin',
       );
     }
   }
@@ -69,7 +69,7 @@ class DummyService implements AuthBase {
       id: "id",
       email: "email",
       userName: "userName",
-      password1: 'admin',
+      password: 'admin',
     );
   }
 
@@ -79,7 +79,7 @@ class DummyService implements AuthBase {
       id: "id",
       email: "email",
       userName: "userName",
-      password1: 'admin',
+      password: 'admin',
     );
   }
 

@@ -7,7 +7,7 @@ import '../services/auth_base.dart';
 
 enum ViewState { idle, busy }
 
-class UserViewModel with ChangeNotifier implements AuthBase {
+class FirebaseModel with ChangeNotifier implements AuthBase {
   final UserRepository _userRepository = locator<UserRepository>();
 
   AppUser? _user;
@@ -22,15 +22,15 @@ class UserViewModel with ChangeNotifier implements AuthBase {
     notifyListeners();
   }
 
-  UserViewModel() {
+  FirebaseModel() {
     currentUser();
   }
 
   @override
-  AppUser? currentUser() {
+  Future<AppUser?> currentUser() async {
     try {
       state = ViewState.busy;
-      _user = _userRepository.currentUser();
+      _user = await _userRepository.currentUser();
       return _user;
     } catch (e) {
       debugPrint("Error in viewmodel, at currenUser() method. \n [$e]");
@@ -86,22 +86,15 @@ class UserViewModel with ChangeNotifier implements AuthBase {
 
   @override
   Future<AppUser?> createUserByEmailPassword(AppUser user) async {
-    if (emailControl(user.email!)
-        // passwordControll(user.password1!, "user.password2")
-        ) {
+    if (emailControl(user.email!)) {
       try {
         // print("------------> trying....");
+        passwordControll(user.password!, user.password2!);
         AppUser? _user = await _userRepository.createUserByEmailPassword(user);
         await verifyMail();
         // print("----------> $_user");
         return _user;
       } catch (e) {
-        // debugPrint(
-        //     "------------> Error in UserVievModel, at createUserByEmailPassword() method.");
-
-        debugPrint(" [$e]");
-        // debugPrint(
-        //     "------------> Error in UserVievModel, at createUserByEmailPassword() method.");
         return null;
       }
     } else {
@@ -116,12 +109,15 @@ class UserViewModel with ChangeNotifier implements AuthBase {
   ) async {
     try {
       state = ViewState.busy;
-      _user = await _userRepository.signInByEmailPassword(email, password);
+      _user = await _userRepository.signInByEmailPassword(
+        email,
+        password,
+      );
       return _user;
     } catch (e) {
       debugPrint(
-          "Error in UserVievModel, at signInByEmailPassword() method. \n [$e] \n ${e.hashCode};");
-
+        "Error in UserVievModel, at signInByEmailPassword() method. \n [$e] \n ${e.hashCode};",
+      );
       return null;
     } finally {
       state = ViewState.idle;
@@ -156,11 +152,11 @@ class UserViewModel with ChangeNotifier implements AuthBase {
     }
   }
 
-  // bool passwordControll(String password1, String password2) {
-  //   if (password1 == password2 && password1.length > 6) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  bool passwordControll(String password1, String password2) {
+    if (password1 == password2 && password1.length > 6) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

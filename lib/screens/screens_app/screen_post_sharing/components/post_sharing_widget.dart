@@ -18,7 +18,7 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewModel userViewModel = Provider.of<UserViewModel>(context);
+    final FirebaseModel userViewModel = Provider.of<FirebaseModel>(context);
     final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
     final TextEditingController commentController = TextEditingController();
 
@@ -54,16 +54,13 @@ class PostSharingWidget extends StatelessWidget {
                         CustomElevatedButton(
                           text: "Share",
                           onPressed: () async {
-                            var id2 = userViewModel.currentUser()!.id;
-
                             PostModel postModel = PostModel(
-                              userName: userViewModel.currentUser()!.userName ??
-                                  userViewModel.currentUser()!.userName!,
+                              userName: userViewModel.user!.userName!,
                               comment: commentController.text,
-                              postID: id2!,
+                              postID: userViewModel.user!.id!,
                               likes: 0,
                             );
-
+                            print(userViewModel.user!.userName!);                      
                             await _firebase.sharePost(postModel);
                           },
                         ),
