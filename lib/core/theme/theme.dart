@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'colors.dart';
+
+import '../../global/constants/constants.dart';
 
 class CustomTheme {
   final darkTheme =
@@ -9,24 +10,24 @@ class CustomTheme {
     textSelectionTheme: const TextSelectionThemeData(cursorColor: Colors.black),
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: CustomColor().bgColor,
+    scaffoldBackgroundColor: kColor.bgColor,
 
     /** INPUT DECOR THEME*/
     inputDecorationTheme: InputDecorationTheme(
-      fillColor: CustomColor().textField,
+      fillColor: kColor.textField,
       filled: true,
       labelStyle: const TextStyle(fontSize: 13),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(
-          color: CustomColor().textField,
+          color: kColor.textField,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(
-          color: CustomColor().textField,
+          color: kColor.textField,
         ),
       ),
     ),
@@ -35,8 +36,7 @@ class CustomTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(CustomColor().mainColor),
+        backgroundColor: MaterialStateProperty.all<Color>(kColor.mainColor),
       ),
     ),
 

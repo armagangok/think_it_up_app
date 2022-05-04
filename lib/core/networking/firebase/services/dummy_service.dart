@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../models/user_model.dart';
+import '../../../../../core/networking/firebase/models/user_model.dart';
 import 'auth_base.dart';
 
 class DummyService implements AuthBase {

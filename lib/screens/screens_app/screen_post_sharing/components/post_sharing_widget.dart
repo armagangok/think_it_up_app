@@ -6,8 +6,8 @@ import '../../../../core/components/widgets/buttons.dart';
 import '../../../../core/components/widgets/containers.dart';
 import '../../../../core/components/widgets/text_fields.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/theme/colors.dart';
-import '../../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
+import '../../../../global/constants/constants.dart';
 import '../../screen_dashboard/networking/models/post_model.dart';
 import '../../screen_dashboard/networking/viewmodels/firebase_viewmodel.dart';
 
@@ -18,7 +18,7 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseModel userViewModel = Provider.of<FirebaseModel>(context);
+    final UserViewmodel userViewModel = Provider.of<UserViewmodel>(context);
     final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
     final TextEditingController commentController = TextEditingController();
 
@@ -34,7 +34,7 @@ class PostSharingWidget extends StatelessWidget {
                 onTap: () => FocusScope.of(context).unfocus(),
                 child: CustomContainer(
                   heigth: context.getHeight(0.5),
-                  color: CustomColor().bottomSheet,
+                  color: kColor.bottomSheet,
                   child: Padding5(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +60,7 @@ class PostSharingWidget extends StatelessWidget {
                               postID: userViewModel.user!.id!,
                               likes: 0,
                             );
-                            print(userViewModel.user!.userName!);                      
+                            print(userViewModel.user!.userName!);
                             await _firebase.sharePost(postModel);
                           },
                         ),

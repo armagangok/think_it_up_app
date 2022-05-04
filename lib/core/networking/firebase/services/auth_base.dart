@@ -1,4 +1,4 @@
-import '../models/user_model.dart';
+import '../../../../../core/networking/firebase/models/user_model.dart';
 
 abstract class AuthBase {
   Future<AppUser?> currentUser();

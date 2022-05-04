@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../core/components/alignment/alignment.dart';
 import '../../../global/local/viewmodels/notification_provider.dart';
 import '../../../global/local/viewmodels/theme_provider.dart';
-import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../screen_winners/components/stacks/top_bar.dart';
 import 'components/stacks/stacks.dart';
 import 'components/widgets/switch_widget.dart';
@@ -14,7 +14,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseModel _userModel = Provider.of<FirebaseModel>(context);
+    final UserViewmodel _userModel = Provider.of<UserViewmodel>(context);
 
     return Wrapper(
       topBar: const TopBar(text: "Settings"),

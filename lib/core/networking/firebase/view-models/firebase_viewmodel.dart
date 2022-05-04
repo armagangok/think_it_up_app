@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../locator/locator.dart';
+import '../services/auth_base.dart';
+import '../locator/locator.dart';
 import '../models/user_model.dart';
 import '../repository/user_repository.dart';
-import '../services/auth_base.dart';
 
 enum ViewState { idle, busy }
 
-class FirebaseModel with ChangeNotifier implements AuthBase {
+class UserViewmodel with ChangeNotifier implements AuthBase {
   final UserRepository _userRepository = locator<UserRepository>();
 
   AppUser? _user;
@@ -22,7 +22,7 @@ class FirebaseModel with ChangeNotifier implements AuthBase {
     notifyListeners();
   }
 
-  FirebaseModel() {
+  UserViewmodel() {
     currentUser();
   }
 

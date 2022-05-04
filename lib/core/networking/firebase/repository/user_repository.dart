@@ -1,9 +1,10 @@
 
-import '../../../../locator/locator.dart';
+import '../locator/locator.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
 import '../services/current_service.dart';
 import '../services/dummy_service.dart';
+
 
 enum AppMode { debug, release }
 

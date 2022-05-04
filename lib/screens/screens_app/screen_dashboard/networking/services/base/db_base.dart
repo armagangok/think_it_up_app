@@ -5,4 +5,5 @@ abstract class BaseDatabaseService {
   Future deletePost();
   Future editPost();
   Future<void> sharePost(PostModel postModel);
+
 }

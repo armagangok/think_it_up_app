@@ -5,9 +5,9 @@ import '../../../core/components/alignment/alignment.dart';
 import '../../../core/components/stacks/stacks.dart';
 import '../../../core/components/widgets/buttons.dart';
 import '../../../core/components/widgets/text_widgets.dart';
+import '../../../core/networking/firebase/models/user_model.dart';
+import '../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../../../global/constants/constants.dart';
-import '../../../global/network/firebase/auth/models/user_model.dart';
-import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
 import '../components/dialogs.dart';
 import '../components/text_form_field.dart';
 
@@ -21,7 +21,7 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
-    final FirebaseModel _userViewModel = Provider.of<FirebaseModel>(context);
+    final UserViewmodel _userViewModel = Provider.of<UserViewmodel>(context);
     final TextEditingController _username = TextEditingController();
     final TextEditingController _email =
         TextEditingController(text: "1armagangok@gmail.com");
@@ -75,7 +75,6 @@ class _SignupViewState extends State<SignupView> {
                         : dialog(context, ConstText().verification);
                   } catch (e) {
                     dialog(context, "$e");
-                    
                   }
                 },
               ),

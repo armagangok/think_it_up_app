@@ -5,7 +5,7 @@ import '../../../core/components/alignment/alignment.dart';
 import '../../../core/components/stacks/stacks.dart';
 import '../../../core/components/widgets/buttons.dart';
 import '../../../core/components/widgets/text_widgets.dart';
-import '../../../global/network/firebase/auth/viewmodels/user_viewmodel.dart';
+import '../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../components/text_form_field.dart';
 import '../screen_register/register.dart';
 
@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController _passwordLogin =
         TextEditingController(text: "1234567");
 
-    final FirebaseModel _userViewModel = Provider.of<FirebaseModel>(context);
+    final UserViewmodel _userViewModel = Provider.of<UserViewmodel>(context);
 
     return AuthWrapper(
       child: Column(

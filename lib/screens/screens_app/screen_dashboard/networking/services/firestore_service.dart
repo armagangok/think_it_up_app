@@ -19,7 +19,6 @@ class FirestoreService implements BaseDatabaseService {
 
     for (var postModel in querySnapshot.docs) {
       _postModels.add(PostModel.fromMap(postModel.data()));
-      print(postModel);
     }
 
     return _postModels;

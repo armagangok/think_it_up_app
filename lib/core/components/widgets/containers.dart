@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/core/theme/colors.dart';
+import '../../../global/constants/constants.dart';
 
 class BottomSheetContainer extends StatelessWidget {
   const BottomSheetContainer({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class BottomSheetContainer extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        color: CustomColor().textField,
+        color: kColor.textField,
       ),
       height: 3,
       width: 44,

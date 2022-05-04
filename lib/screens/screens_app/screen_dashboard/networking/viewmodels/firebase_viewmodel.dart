@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import '../models/post_model.dart';
 import '../services/base/db_base.dart';
 import '../services/firestore_service.dart';
-
-
 
 class FirebaseViewmodel with ChangeNotifier implements BaseDatabaseService {
   FirebaseViewmodel._private();
