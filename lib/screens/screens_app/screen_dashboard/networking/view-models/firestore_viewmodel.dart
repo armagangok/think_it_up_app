@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../models/post_model.dart';
-import '../services/base/db_base.dart';
+import '../base_services/firestore_base_service.dart';
 import '../services/firestore_service.dart';
 
-class FirebaseViewmodel with ChangeNotifier implements BaseDatabaseService {
-  FirebaseViewmodel._private();
-  static final FirebaseViewmodel _instance = FirebaseViewmodel._private();
-  factory FirebaseViewmodel() => _instance;
-
+class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
+  FirestoreViewmodel._private();
+  static final FirestoreViewmodel _instance = FirestoreViewmodel._private();
+  factory FirestoreViewmodel() => _instance;
   final FirestoreService _firebaseService = FirestoreService();
+
   List<PostModel> posts = [];
 
   @override
@@ -24,6 +24,13 @@ class FirebaseViewmodel with ChangeNotifier implements BaseDatabaseService {
     notifyListeners();
     return posts;
   }
+
+  @override
+  Future<void> updateLikes(PostModel post) async {
+    await _firebaseService.updateLikes(post);
+  }
+
+  
 
   @override
   Future<void> sharePost(PostModel postModel) async {

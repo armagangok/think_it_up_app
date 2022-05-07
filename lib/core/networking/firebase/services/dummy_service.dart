@@ -26,6 +26,7 @@ class DummyService implements AuthBase {
         email: "email",
         userName: "userName",
         password: 'admin',
+        likedPosts: [],
       );
     }
   }
@@ -70,6 +71,7 @@ class DummyService implements AuthBase {
       email: "email",
       userName: "userName",
       password: 'admin',
+      likedPosts: [],
     );
   }
 
@@ -80,6 +82,7 @@ class DummyService implements AuthBase {
       email: "email",
       userName: "userName",
       password: 'admin',
+      likedPosts: [],
     );
   }
 

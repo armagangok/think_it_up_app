@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 import './components/comment_widget.dart';
 import './components/question_widget.dart';
-import './networking/viewmodels/firebase_viewmodel.dart';
 import '../../../core/components/alignment/alignment.dart';
 import '../../../core/extensions/context_extension.dart';
+import 'networking/view-models/firestore_viewmodel.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -17,13 +17,14 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
-    FirebaseViewmodel().getPosts();
+    FirestoreViewmodel().getPosts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
+    final FirestoreViewmodel _firebase =
+        Provider.of<FirestoreViewmodel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),

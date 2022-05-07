@@ -14,7 +14,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewmodel _userModel = Provider.of<UserViewmodel>(context);
+    final FirebaseViewmodel _userModel = Provider.of<FirebaseViewmodel>(context);
 
     return Wrapper(
       topBar: const TopBar(text: "Settings"),

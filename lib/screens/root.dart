@@ -10,7 +10,7 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewmodel _userModel = Provider.of<UserViewmodel>(context);
+    final FirebaseViewmodel _userModel = Provider.of<FirebaseViewmodel>(context);
 
     if (_userModel.state == ViewState.idle) {
       if (_userModel.user != null && _userModel.isVerified() == true) {

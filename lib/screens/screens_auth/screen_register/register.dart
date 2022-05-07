@@ -21,7 +21,7 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
-    final UserViewmodel _userViewModel = Provider.of<UserViewmodel>(context);
+    final FirebaseViewmodel _userViewModel = Provider.of<FirebaseViewmodel>(context);
     final TextEditingController _username = TextEditingController();
     final TextEditingController _email =
         TextEditingController(text: "1armagangok@gmail.com");
@@ -62,6 +62,7 @@ class _SignupViewState extends State<SignupView> {
                     email: _email.text,
                     userName: _username.text,
                     password: _password1.text,
+                    likedPosts: [],
                   );
 
                   try {

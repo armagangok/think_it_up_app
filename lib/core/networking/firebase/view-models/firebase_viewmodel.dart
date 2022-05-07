@@ -7,7 +7,7 @@ import '../repository/user_repository.dart';
 
 enum ViewState { idle, busy }
 
-class UserViewmodel with ChangeNotifier implements AuthBase {
+class FirebaseViewmodel with ChangeNotifier implements AuthBase {
   final UserRepository _userRepository = locator<UserRepository>();
 
   AppUser? _user;
@@ -22,7 +22,7 @@ class UserViewmodel with ChangeNotifier implements AuthBase {
     notifyListeners();
   }
 
-  UserViewmodel() {
+  FirebaseViewmodel() {
     currentUser();
   }
 

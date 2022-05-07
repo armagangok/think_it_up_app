@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import './base/db_base.dart';
+import '../base_services/firestore_base_service.dart';
 import '../models/post_model.dart';
 
-class FirestoreService implements BaseDatabaseService {
+class FirestoreService implements BaseFirestoreService {
   FirestoreService._private();
 
   static final FirestoreService _instance = FirestoreService._private();
@@ -33,23 +33,16 @@ class FirestoreService implements BaseDatabaseService {
   }
 
   @override
-  Future deletePost() {
-    throw UnimplementedError();
-  }
+  Future deletePost() async {}
 
   @override
-  Future editPost() {
-    throw UnimplementedError();
+  Future editPost() async {}
+
+
+
+  @override
+  Future<void> updateLikes(PostModel post) async {
+    await _firestore.collection("posts").doc(post.postID).set(post.toMap());
   }
-
-  // @override
-  // Future deletePost() {
-  //   throw UnimplementedError();
-  // }
-
-  // @override
-  // Future editPost() {
-  //   throw UnimplementedError();
-  // }
-
 }
+

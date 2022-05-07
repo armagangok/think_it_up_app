@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:think_it_up_app/screens/screens_app/screen_dashboard/networking/view-models/firestore_viewmodel.dart';
 
 import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/buttons.dart';
@@ -9,7 +10,6 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../../../../global/constants/constants.dart';
 import '../../screen_dashboard/networking/models/post_model.dart';
-import '../../screen_dashboard/networking/viewmodels/firebase_viewmodel.dart';
 
 class PostSharingWidget extends StatelessWidget {
   const PostSharingWidget({
@@ -18,8 +18,8 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserViewmodel userViewModel = Provider.of<UserViewmodel>(context);
-    final FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
+    final FirebaseViewmodel userViewModel = Provider.of<FirebaseViewmodel>(context);
+    final FirestoreViewmodel _firebase = Provider.of<FirestoreViewmodel>(context);
     final TextEditingController commentController = TextEditingController();
 
     return SizedBox(

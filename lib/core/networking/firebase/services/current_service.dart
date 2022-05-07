@@ -25,13 +25,14 @@ class CurrentService implements AuthBase {
     if (user == null) {
       return null;
     } else {
-      DocumentSnapshot<Map<String, dynamic>> a =
+      DocumentSnapshot<Map<String, dynamic>> userFromFirebase =
           await _firestore.collection("users").doc(user.uid).get();
       return AppUser(
         email: user.email,
         password: "admin",
         id: user.uid,
-        userName: a["userName"],
+        userName: userFromFirebase["userName"],
+        likedPosts: userFromFirebase["likedPosts"],
       );
     }
   }
@@ -103,7 +104,7 @@ class CurrentService implements AuthBase {
       UserCredential authCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
         email: user.email!,
-        password:user.password!,
+        password: user.password!,
       );
 
       user.setID = authCredential.user!.uid;
