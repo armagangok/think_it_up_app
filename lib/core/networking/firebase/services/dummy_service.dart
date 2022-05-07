@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
+import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 import 'auth_base.dart';
 
 class DummyService implements AuthBase {
@@ -96,4 +97,9 @@ class DummyService implements AuthBase {
 
   @override
   bool? isAnonim() => true;
+
+  @override
+  Future<void> setLikedPostID(PostModel post, AppUser user) async{
+    
+  }
 }

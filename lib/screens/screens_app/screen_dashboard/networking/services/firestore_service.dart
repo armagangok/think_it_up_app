@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../../../core/networking/firebase/models/user_model.dart';
 import '../base_services/firestore_base_service.dart';
 import '../models/post_model.dart';
 
@@ -38,11 +39,15 @@ class FirestoreService implements BaseFirestoreService {
   @override
   Future editPost() async {}
 
-
-
   @override
   Future<void> updateLikes(PostModel post) async {
     await _firestore.collection("posts").doc(post.postID).set(post.toMap());
   }
-}
 
+  @override
+  Future<AppUser?> getUserData(String userID) async {
+    await _firestore.collection("users").doc(userID).get();
+
+    return null;
+  }
+}

@@ -57,6 +57,7 @@ class _SignupViewState extends State<SignupView> {
               CustomElevatedButton(
                 text: "Signup",
                 onPressed: () async {
+
                   AppUser user = AppUser(
                     id: "id",
                     email: _email.text,
@@ -68,6 +69,7 @@ class _SignupViewState extends State<SignupView> {
                   try {
                     AppUser? response =
                         await _userViewModel.createUserByEmailPassword(user);
+                        
 
                     print("response => $response");
 

@@ -66,7 +66,21 @@ class _CommentWidgetState extends State<CommentWidget> {
                           ),
                           onPressed: () async {
                             setState(() => _iconState.like());
-                            await _state(_iconState, _firestore);
+                            if (_iconState.isLiked == true) {
+                              setState(() => {widget.post.likes++});
+                              await _firestore.updateLikes(widget.post);
+                              await _userViewodel.setLikedPostID(
+                                widget.post,
+                                _userViewodel.user!,
+                              );
+                            } else if (_iconState.isLiked == false) {
+                              setState(() => {widget.post.likes--});
+                              await _firestore.updateLikes(widget.post);
+                              await _userViewodel.setLikedPostID(
+                                widget.post,
+                                _userViewodel.user!,
+                              );
+                            }
                           },
                         ),
                         Text("${widget.post.likes}"),
@@ -90,26 +104,21 @@ class _CommentWidgetState extends State<CommentWidget> {
     );
   }
 
-  Future<void> _state(
-    IconState _iconState,
-    FirestoreViewmodel _firestore,
-  ) async {
-    if (_iconState.isLiked == true) {
-      setState(() => {widget.post.likes++});
-      await _firestore.updateLikes(widget.post);
-    } else if (_iconState.isLiked == false) {
-      setState(() => {widget.post.likes--});
-      await _firestore.updateLikes(widget.post);
-    }
-  }
+  // Future<void> _state(
+  //   IconState _iconState,
+  //   FirestoreViewmodel _firestore,
+  //   FirebaseViewmodel _firebase,
+  // ) async {
+
+  // }
 
   Widget setIcon(
     IconState iconState,
-    List<dynamic> likedPosts,
+    List<dynamic> likedPostsIDS,
     PostModel post,
   ) {
-    for (String likedPost in likedPosts) {
-      if (likedPost == post.postID) {
+    for (String likedPostID in likedPostsIDS) {
+      if (likedPostID == post.postID) {
         return AssetIcon().redHeart;
       } else {
         return AssetIcon().heart;

@@ -1,10 +1,10 @@
+import 'package:think_it_up_app/screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 
 import '../locator/locator.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
 import '../services/current_service.dart';
 import '../services/dummy_service.dart';
-
 
 enum AppMode { debug, release }
 
@@ -15,7 +15,7 @@ class UserRepository implements AuthBase {
   AppMode appMode = AppMode.release;
 
   @override
-  Future<AppUser?> currentUser() async{
+  Future<AppUser?> currentUser() async {
     if (appMode == AppMode.debug) {
       return await _dummyAuthService.currentUser();
     } else {
@@ -63,16 +63,12 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<AppUser?> createUserByEmailPassword(
-    AppUser user
-  ) async {
+  Future<AppUser?> createUserByEmailPassword(AppUser user) async {
     if (appMode == AppMode.debug) {
-      return await _dummyAuthService.createUserByEmailPassword(
-        user
-      );
+      return await _dummyAuthService.createUserByEmailPassword(user);
     } else {
-      final AppUser? _renewedUser = await _authService
-          .createUserByEmailPassword(user);
+      final AppUser? _renewedUser =
+          await _authService.createUserByEmailPassword(user);
       return _renewedUser;
     }
   }
@@ -101,6 +97,15 @@ class UserRepository implements AuthBase {
       return _dummyAuthService.isAnonim();
     } else {
       return _authService.isAnonim();
+    }
+  }
+
+  @override
+  Future<void> setLikedPostID(PostModel post, AppUser user) async {
+    if (appMode == AppMode.debug) {
+      await _dummyAuthService.setLikedPostID(post, user);
+    } else {
+      await _authService.setLikedPostID(post, user);
     }
   }
 }

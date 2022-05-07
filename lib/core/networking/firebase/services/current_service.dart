@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
+import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 import 'auth_base.dart';
 
 class CurrentService implements AuthBase {
@@ -153,5 +154,16 @@ class CurrentService implements AuthBase {
   bool? isAnonim() {
     debugPrint("isAnonim: [${_firebaseAuth.currentUser?.isAnonymous}]");
     return _firebaseAuth.currentUser?.isAnonymous;
+  }
+
+  @override
+  Future<void> setLikedPostID(PostModel post, AppUser user) async{
+
+    await _firestore
+          .collection("users")
+          .doc(user.id)
+          .set(post.toMap());
+
+    
   }
 }

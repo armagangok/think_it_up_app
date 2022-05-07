@@ -1,3 +1,4 @@
+import '../../../../../core/networking/firebase/models/user_model.dart';
 import '../models/post_model.dart';
 
 abstract class BaseFirestoreService {
@@ -6,4 +7,5 @@ abstract class BaseFirestoreService {
   Future editPost();
   Future<void> sharePost(PostModel postModel);
   Future<void> updateLikes(PostModel post);
+  Future<AppUser?> getUserData(String userID);
 }

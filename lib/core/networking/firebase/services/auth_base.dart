@@ -1,4 +1,5 @@
 import '../../../../../core/networking/firebase/models/user_model.dart';
+import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 
 abstract class AuthBase {
   Future<AppUser?> currentUser();
@@ -10,4 +11,6 @@ abstract class AuthBase {
   bool? isVerified();
   Future<void> verifyMail();
   bool? isAnonim();
+  Future<void> setLikedPostID(PostModel post, AppUser user);
+
 }
