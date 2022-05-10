@@ -10,10 +10,10 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseViewmodel _userModel = Provider.of<FirebaseViewmodel>(context);
+    final FirebaseVmodel _userModel = Provider.of<FirebaseVmodel>(context);
 
     if (_userModel.state == ViewState.idle) {
-      if (_userModel.user != null ) {
+      if (_userModel.user != null) {
         return const HomeScreen();
       } else {
         return const LoginScreen();

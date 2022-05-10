@@ -18,8 +18,8 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseViewmodel userViewModel = Provider.of<FirebaseViewmodel>(context);
-    final FirestoreViewmodel _firebase = Provider.of<FirestoreViewmodel>(context);
+    final FirebaseVmodel userViewModel = Provider.of<FirebaseVmodel>(context);
+    final FirestoreVmodel _firebase = Provider.of<FirestoreVmodel>(context);
     final TextEditingController commentController = TextEditingController();
 
     return SizedBox(

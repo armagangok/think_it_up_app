@@ -17,14 +17,13 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
-    FirestoreViewmodel().getPosts();
+    FirestoreVmodel().getPosts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final FirestoreViewmodel _firestore =
-        Provider.of<FirestoreViewmodel>(context);
+    final FirestoreVmodel _firestore = Provider.of<FirestoreVmodel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),

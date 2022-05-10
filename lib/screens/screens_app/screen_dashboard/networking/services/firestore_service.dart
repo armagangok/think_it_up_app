@@ -107,4 +107,12 @@ class FirestoreService implements BaseFirestoreService {
         .doc(id)
         .delete();
   }
+
+  @override
+  Future<void> updateLikeState(String postID, bool isLiked) async {
+    await _firestore
+        .collection("posts")
+        .doc(postID)
+        .update({"isLiked": isLiked});
+  }
 }

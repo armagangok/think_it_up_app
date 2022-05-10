@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController _passwordLogin =
         TextEditingController(text: "1234567");
 
-    final FirebaseViewmodel _userViewModel = Provider.of<FirebaseViewmodel>(context);
+    final FirebaseVmodel _userViewModel = Provider.of<FirebaseVmodel>(context);
 
     return AuthWrapper(
       child: Column(

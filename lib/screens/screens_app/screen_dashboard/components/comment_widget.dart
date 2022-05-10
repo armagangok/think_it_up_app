@@ -25,35 +25,32 @@ class CommentWidget extends StatefulWidget {
 }
 
 class _CommentWidgetState extends State<CommentWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  // final bool _onPressed = false;
-
+  bool liked = false;
   @override
   Widget build(BuildContext context) {
-    FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
-    FirestoreViewmodel _firestore = Provider.of<FirestoreViewmodel>(context);
-    bool checkID2 = checkID(widget.post.postID, _firebase.user!.id!);
-    final AppUser? _user = _firebase.user;
+    final FirebaseVmodel _firebase = Provider.of<FirebaseVmodel>(context);
+    final FirestoreVmodel _firestore = Provider.of<FirestoreVmodel>(context);
+    final PostModel _post = widget.post;
+    final AppUser _user = _firebase.user!;
+    final TextTheme textTheme = context.theme.textTheme;
 
-    bool _isLiked = widget.post.isLiked;
+    bool checkID = _checkPostID(_post.postID, _user.id!);
+    bool _isLiked = _post.isLiked;
+
     return CustomContainer(
-      color: checkID2 ? kColor.bgColor : null,
+      color: checkID ? kColor.bottomSheet : null,
       child: Padding8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "@" + widget.post.userName,
-              style: context.theme.textTheme.bodyText2,
+              "@" + _post.userName,
+              style: textTheme.bodyText2,
             ),
             const SizedBox10H(),
             Text(
-              widget.post.comment,
-              style: context.theme.textTheme.bodyText1,
+              _post.comment,
+              style: textTheme.bodyText1,
             ),
             const SizedBox10H(),
             Row(
@@ -68,22 +65,37 @@ class _CommentWidgetState extends State<CommentWidget> {
                         IconButton(
                           icon: _isLiked ? MyIcon().redHeart : MyIcon().heart,
                           onPressed: () async {
-                            setState(() => _isLiked = !_isLiked);
-
-                            if (_isLiked) {
+                            print(_isLiked);
+                            _isLiked = !_isLiked;
+                            liked = !liked;
+                            if (liked) {
                               await _firestore.addLikedUserID(
-                                widget.post.postID,
-                                _firebase.user!.id!,
+                                _post.postID,
+                                _user.id!,
                               );
+                              setState(() => _post.likes++);
+                              await _firestore.updateLikes(_post);
+                              await _firestore.addLikedUserID(
+                                _post.postID,
+                                _user.id!,
+                              );
+                              _firestore.updateLikeState(_post.postID, liked);
                             } else {
                               await _firestore.deleteLikedUserID(
-                                widget.post.postID,
-                                _firebase.user!.id!,
+                                _post.postID,
+                                _user.id!,
                               );
+                              setState(() => _post.likes--);
+                              await _firestore.updateLikes(_post);
+                              await _firestore.addLikedUserID(
+                                _post.postID,
+                                _user.id!,
+                              );
+                              _firestore.updateLikeState(_post.postID, liked);
                             }
                           },
                         ),
-                        Text("${widget.post.likes}"),
+                        Text("${_post.likes}"),
                       ],
                     ),
                     const SizedBox20W(),
@@ -106,7 +118,7 @@ class _CommentWidgetState extends State<CommentWidget> {
 
   Widget setIcon(bool isLiked) => isLiked ? MyIcon().redHeart : MyIcon().heart;
 
-  bool checkID(String postID, String userID) {
+  bool _checkPostID(String postID, String userID) {
     if (postID == userID) {
       return true;
     } else {

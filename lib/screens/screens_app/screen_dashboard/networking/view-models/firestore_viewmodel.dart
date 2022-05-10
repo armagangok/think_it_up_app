@@ -5,10 +5,10 @@ import '../base_services/firestore_base_service.dart';
 import '../models/post_model.dart';
 import '../services/firestore_service.dart';
 
-class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
-  FirestoreViewmodel._private();
-  static final FirestoreViewmodel _instance = FirestoreViewmodel._private();
-  factory FirestoreViewmodel() => _instance;
+class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
+  FirestoreVmodel._private();
+  static final FirestoreVmodel _instance = FirestoreVmodel._private();
+  factory FirestoreVmodel() => _instance;
   final FirestoreService _firestoreService = FirestoreService();
 
   List<PostModel> posts = [];
@@ -46,5 +46,10 @@ class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
   @override
   Future deleteLikedUserID(String postID, String id) async {
     await _firestoreService.deleteLikedUserID(postID, id);
+  }
+
+  @override
+  Future<void> updateLikeState(String postID, bool isLiked) async {
+    await _firestoreService.updateLikeState(postID, isLiked);
   }
 }

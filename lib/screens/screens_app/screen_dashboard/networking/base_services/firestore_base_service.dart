@@ -8,6 +8,6 @@ abstract class BaseFirestoreService {
   Future<void> updateLikes(PostModel post);
   Future<AppUser?> getUserData(String userID);
   Future<void> addLikedUserID(String postID, String id);
-    Future<void> deleteLikedUserID(String postID, String id);
-
+  Future<void> deleteLikedUserID(String postID, String id);
+  Future<void> updateLikeState(String postID, bool liked);
 }
