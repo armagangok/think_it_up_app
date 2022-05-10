@@ -21,7 +21,8 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
-    final FirebaseViewmodel _userViewModel = Provider.of<FirebaseViewmodel>(context);
+    final FirebaseViewmodel _userViewModel =
+        Provider.of<FirebaseViewmodel>(context);
     final TextEditingController _username = TextEditingController();
     final TextEditingController _email =
         TextEditingController(text: "1armagangok@gmail.com");
@@ -57,21 +58,17 @@ class _SignupViewState extends State<SignupView> {
               CustomElevatedButton(
                 text: "Signup",
                 onPressed: () async {
-
                   AppUser user = AppUser(
                     id: "id",
                     email: _email.text,
                     userName: _username.text,
                     password: _password1.text,
-                    likedPosts: [],
+                    likedPostsIDS: [],
                   );
 
                   try {
                     AppUser? response =
                         await _userViewModel.createUserByEmailPassword(user);
-                        
-
-                    print("response => $response");
 
                     response == null
                         ? dialog(context, ConstText().error)

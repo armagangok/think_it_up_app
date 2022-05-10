@@ -29,12 +29,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-            const WinnerScreen(),
+            WinnerScreen(),
             SharePostScreen(),
-            const DashBoardScreen(),
-            const SettingScreen(),
+            DashBoardScreen(),
+            SettingScreen(),
           ],
         ),
       ),

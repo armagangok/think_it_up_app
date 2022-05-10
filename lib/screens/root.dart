@@ -13,7 +13,7 @@ class RootView extends StatelessWidget {
     final FirebaseViewmodel _userModel = Provider.of<FirebaseViewmodel>(context);
 
     if (_userModel.state == ViewState.idle) {
-      if (_userModel.user != null && _userModel.isVerified() == true) {
+      if (_userModel.user != null ) {
         return const HomeScreen();
       } else {
         return const LoginScreen();
@@ -25,3 +25,5 @@ class RootView extends StatelessWidget {
     }
   }
 }
+
+// && _userModel.isVerified() == true

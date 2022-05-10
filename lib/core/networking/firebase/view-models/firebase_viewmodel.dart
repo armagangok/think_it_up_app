@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 import '../locator/locator.dart';
 import '../models/user_model.dart';
 import '../repository/user_repository.dart';
@@ -11,7 +10,7 @@ enum ViewState { idle, busy }
 class FirebaseViewmodel with ChangeNotifier implements AuthBase {
   final UserRepository _userRepository = locator<UserRepository>();
 
-  AppUser? _user;
+  AppUser? _user ;
   ViewState _state = ViewState.idle;
   ViewState get state => _state;
   AppUser? get user => _user;
@@ -78,7 +77,8 @@ class FirebaseViewmodel with ChangeNotifier implements AuthBase {
       _user = await _userRepository.signInByGoogle();
       return _user;
     } catch (e) {
-      debugPrint("Error in FirebaseViewmodel, at signInByGoogle() method. \n [$e]");
+      debugPrint(
+          "Error in FirebaseViewmodel, at signInByGoogle() method. \n [$e]");
       return null;
     } finally {
       state = ViewState.idle;
@@ -95,7 +95,7 @@ class FirebaseViewmodel with ChangeNotifier implements AuthBase {
 
         return _user;
       } catch (e) {
-        return null;
+        return null; 
       }
     } else {
       return null;
@@ -124,23 +124,24 @@ class FirebaseViewmodel with ChangeNotifier implements AuthBase {
     }
   }
 
-  @override
-  bool? isVerified() {
-    return _userRepository.isVerified();
-  }
+  // @override
+  // bool? isVerified() {
+  //   return _userRepository.isVerified();
+  // }
 
-  @override
-  Future<void> verifyMail() async {
-    try {
-      await _userRepository.verifyMail();
-    } catch (e) {
-      debugPrint("Error in FirebaseViewmodel, at verifyMail() method. \n [$e]");
-    }
-  }
+  // @override
+  // Future<void> verifyMail() async {
+  //   try {
+  //     await _userRepository.verifyMail();
+  //   } catch (e) {
+  //     debugPrint("Error in FirebaseViewmodel, at verifyMail() method. \n [$e]");
+  //   }
+  // }
 
   @override
   bool? isAnonim() {
-    debugPrint("FirebaseViewmodel , at isANonim \n ${_userRepository.isAnonim()}");
+    debugPrint(
+        "FirebaseViewmodel , at isANonim \n ${_userRepository.isAnonim()}");
     return _userRepository.isAnonim();
   }
 
@@ -153,8 +154,8 @@ class FirebaseViewmodel with ChangeNotifier implements AuthBase {
   }
 
   @override
-  Future<void> setLikedPostID(PostModel post, AppUser user) async {
-    await _userRepository.setLikedPostID(post, user);
+  Future<void> setLikedPostID(AppUser user, String likedPost) async {
+    await _userRepository.setLikedPostID(user, likedPost);
   }
 
   // bool passwordControll(String password1, String password2) {
@@ -164,4 +165,5 @@ class FirebaseViewmodel with ChangeNotifier implements AuthBase {
   //     return false;
   //   }
   // }
+
 }

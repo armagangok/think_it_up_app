@@ -23,23 +23,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final FirestoreViewmodel _firebase =
+    final FirestoreViewmodel _firestore =
         Provider.of<FirestoreViewmodel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),
       body: ListView.builder(
-        itemCount: _firebase.posts.length,
+        itemCount: _firestore.posts.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            key: Key("$index"),
-            title: Column(
-              children: [
-                const SizedBox002(),
-                CommentWidget(post: _firebase.posts[index]),
-                const SizedBox002(),
-              ],
-            ),
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CommentWidget(post: _firestore.posts[index]),
           );
         },
       ),

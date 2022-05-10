@@ -4,7 +4,7 @@ class AppUser {
   String? userName;
   String? password;
   String? passwordRepeat;
-  List<dynamic> likedPosts;
+  List<dynamic> likedPostsIDS;
 
   AppUser({
     required this.id,
@@ -12,7 +12,7 @@ class AppUser {
     required this.userName,
     required this.password,
     this.passwordRepeat,
-    required this.likedPosts,
+    required this.likedPostsIDS,
   });
 
   set setID(String? uid) => id = uid;
@@ -24,7 +24,7 @@ class AppUser {
       "userName": userName,
       "password": password,
       "password2": passwordRepeat,
-      "likedPosts":likedPosts,
+      "likedPosts": likedPostsIDS,
     };
   }
 }

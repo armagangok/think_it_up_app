@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
-import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 import 'auth_base.dart';
 
 class CurrentService implements AuthBase {
@@ -29,11 +28,11 @@ class CurrentService implements AuthBase {
       DocumentSnapshot<Map<String, dynamic>> userFromFirebase =
           await _firestore.collection("users").doc(user.uid).get();
       return AppUser(
-        email: user.email,
-        password: "admin",
+        email: userFromFirebase["email"],
+        password: userFromFirebase["password"],
         id: user.uid,
         userName: userFromFirebase["userName"],
-        likedPosts: userFromFirebase["likedPosts"],
+        likedPostsIDS: userFromFirebase["likedPosts"],
       );
     }
   }
@@ -125,13 +124,10 @@ class CurrentService implements AuthBase {
   @override
   Future<AppUser?> signInByEmailPassword(String email, String password) async {
     try {
-      debugPrint(
-          "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
-      UserCredential authCredential =
-          await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      // debugPrint(
+      //     "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
+      UserCredential authCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
       return _userFromFirebase(authCredential.user);
     } catch (e) {
       debugPrint("Error in services, signInWithEmailAndPassword: [$e]");
@@ -139,16 +135,16 @@ class CurrentService implements AuthBase {
     }
   }
 
-  @override
-  bool? isVerified() {
-    bool? isVerified = _firebaseAuth.currentUser?.emailVerified;
-    return isVerified;
-  }
+  // @override
+  // bool? isVerified() {
+  //   bool? isVerified = _firebaseAuth.currentUser?.emailVerified;
+  //   return isVerified;
+  // }
 
-  @override
-  Future<void> verifyMail() async {
-    await _firebaseAuth.currentUser?.sendEmailVerification();
-  }
+  // @override
+  // Future<void> verifyMail() async {
+  //   await _firebaseAuth.currentUser?.sendEmailVerification();
+  // }
 
   @override
   bool? isAnonim() {
@@ -157,13 +153,8 @@ class CurrentService implements AuthBase {
   }
 
   @override
-  Future<void> setLikedPostID(PostModel post, AppUser user) async{
-
-    await _firestore
-          .collection("users")
-          .doc(user.id)
-          .set(post.toMap());
-
-    
+  Future<void> setLikedPostID(AppUser user, String likedPosts) async {
+    DocumentReference a = _firestore.collection("users").doc(user.id);
+    await a.set({"likedPosts": likedPosts}, SetOptions(merge: true));
   }
 }

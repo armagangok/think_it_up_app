@@ -6,11 +6,11 @@ import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/buttons.dart';
 import '../../../../core/components/widgets/icons.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/networking/firebase/models/user_model.dart';
 import '../../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../../../../global/constants/constants.dart';
 import '../networking/models/post_model.dart';
 import '../networking/view-models/firestore_viewmodel.dart';
-import '../view-models/icon_state.dart';
 
 class CommentWidget extends StatefulWidget {
   final PostModel post;
@@ -26,15 +26,22 @@ class CommentWidget extends StatefulWidget {
 
 class _CommentWidgetState extends State<CommentWidget> {
   @override
-  Widget build(BuildContext context) {
-    FirebaseViewmodel _userViewodel = Provider.of<FirebaseViewmodel>(context);
-    IconState _iconState = Provider.of<IconState>(context);
-    FirestoreViewmodel _firestore = Provider.of<FirestoreViewmodel>(context);
+  void initState() {
+    super.initState();
+  }
 
+  // final bool _onPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseViewmodel _firebase = Provider.of<FirebaseViewmodel>(context);
+    FirestoreViewmodel _firestore = Provider.of<FirestoreViewmodel>(context);
+    bool checkID2 = checkID(widget.post.postID, _firebase.user!.id!);
+    final AppUser? _user = _firebase.user;
+
+    bool _isLiked = widget.post.isLiked;
     return CustomContainer(
-      color: checkID(widget.post.postID, _userViewodel.user!.id!)
-          ? kColor.bgColor
-          : null,
+      color: checkID2 ? kColor.bgColor : null,
       child: Padding8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,27 +65,20 @@ class _CommentWidgetState extends State<CommentWidget> {
                   children: [
                     Row(
                       children: [
-                        CustomIconButton(
-                          icon: setIcon(
-                            _iconState,
-                            _userViewodel.user!.likedPosts,
-                            widget.post,
-                          ),
+                        IconButton(
+                          icon: _isLiked ? MyIcon().redHeart : MyIcon().heart,
                           onPressed: () async {
-                            setState(() => _iconState.like());
-                            if (_iconState.isLiked == true) {
-                              setState(() => {widget.post.likes++});
-                              await _firestore.updateLikes(widget.post);
-                              await _userViewodel.setLikedPostID(
-                                widget.post,
-                                _userViewodel.user!,
+                            setState(() => _isLiked = !_isLiked);
+
+                            if (_isLiked) {
+                              await _firestore.addLikedUserID(
+                                widget.post.postID,
+                                _firebase.user!.id!,
                               );
-                            } else if (_iconState.isLiked == false) {
-                              setState(() => {widget.post.likes--});
-                              await _firestore.updateLikes(widget.post);
-                              await _userViewodel.setLikedPostID(
-                                widget.post,
-                                _userViewodel.user!,
+                            } else {
+                              await _firestore.deleteLikedUserID(
+                                widget.post.postID,
+                                _firebase.user!.id!,
                               );
                             }
                           },
@@ -104,29 +104,7 @@ class _CommentWidgetState extends State<CommentWidget> {
     );
   }
 
-  // Future<void> _state(
-  //   IconState _iconState,
-  //   FirestoreViewmodel _firestore,
-  //   FirebaseViewmodel _firebase,
-  // ) async {
-
-  // }
-
-  Widget setIcon(
-    IconState iconState,
-    List<dynamic> likedPostsIDS,
-    PostModel post,
-  ) {
-    for (String likedPostID in likedPostsIDS) {
-      if (likedPostID == post.postID) {
-        return AssetIcon().redHeart;
-      } else {
-        return AssetIcon().heart;
-      }
-    }
-
-    return iconState.isLiked ? AssetIcon().redHeart : AssetIcon().heart;
-  }
+  Widget setIcon(bool isLiked) => isLiked ? MyIcon().redHeart : MyIcon().heart;
 
   bool checkID(String postID, String userID) {
     if (postID == userID) {
@@ -135,6 +113,19 @@ class _CommentWidgetState extends State<CommentWidget> {
       return false;
     }
   }
+}
+
+Widget setIconState(List? likedPostsIDS, String currentPostID) {
+  for (String likedPostID in likedPostsIDS!) {
+    if (likedPostID == currentPostID) {
+      // print("likedpost $likedPostID");
+      // print("current post   -> " + currentPostID);
+      return MyIcon().redHeart;
+    } else {
+      return MyIcon().heart;
+    }
+  }
+  return const SizedBox();
 }
 
 class ShareButton extends StatelessWidget {
@@ -150,3 +141,11 @@ class ShareButton extends StatelessWidget {
     );
   }
 }
+
+
+// await _userViewodel.setLikedPostID(
+                              //   _userViewodel.user!,
+                              //   widget.post.postID,
+                              // );
+
+

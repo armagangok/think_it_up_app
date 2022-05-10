@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
-import '../models/post_model.dart';
 import '../base_services/firestore_base_service.dart';
+import '../models/post_model.dart';
 import '../services/firestore_service.dart';
 
 class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
@@ -10,12 +10,8 @@ class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
   static final FirestoreViewmodel _instance = FirestoreViewmodel._private();
   factory FirestoreViewmodel() => _instance;
   final FirestoreService _firestoreService = FirestoreService();
-  
 
   List<PostModel> posts = [];
-
-  @override
-  Future deletePost() async {}
 
   @override
   Future editPost() async {}
@@ -32,18 +28,23 @@ class FirestoreViewmodel with ChangeNotifier implements BaseFirestoreService {
     await _firestoreService.updateLikes(post);
   }
 
-  
-
   @override
   Future<void> sharePost(PostModel postModel) async {
     await _firestoreService.sharePost(postModel);
   }
 
   @override
-  Future<AppUser?> getUserData(String userID) async{
+  Future<AppUser?> getUserData(String userID) async {
     return await _firestoreService.getUserData(userID);
   }
 
-  
+  @override
+  Future<void> addLikedUserID(String postID, String id) async {
+    await _firestoreService.addLikedUserID(postID, id);
+  }
 
+  @override
+  Future deleteLikedUserID(String postID, String id) async {
+    await _firestoreService.deleteLikedUserID(postID, id);
+  }
 }

@@ -11,19 +11,19 @@ class CustomIcon extends StatelessWidget {
   }
 }
 
-class AssetIcon {
-  static final AssetIcon _singleton = AssetIcon._internal();
+class MyIcon {
+  static final MyIcon _singleton = MyIcon._internal();
 
-  factory AssetIcon() => _singleton;
+  factory MyIcon() => _singleton;
 
-  AssetIcon._internal();
+  MyIcon._internal();
 
   Icon heart = const Icon(CupertinoIcons.heart);
   Icon redHeart = const Icon(
     CupertinoIcons.heart_fill,
     color: Colors.redAccent,
   );
-Icon brokenHeart = const Icon(
+  Icon brokenHeart = const Icon(
     CupertinoIcons.heart_fill,
     color: Colors.redAccent,
   );

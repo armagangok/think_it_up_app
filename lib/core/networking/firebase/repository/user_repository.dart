@@ -1,4 +1,3 @@
-import 'package:think_it_up_app/screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 
 import '../locator/locator.dart';
 import '../models/user_model.dart';
@@ -73,23 +72,23 @@ class UserRepository implements AuthBase {
     }
   }
 
-  @override
-  bool? isVerified() {
-    if (appMode == AppMode.debug) {
-      return _dummyAuthService.isVerified();
-    } else {
-      return _authService.isVerified();
-    }
-  }
+  // @override
+  // bool? isVerified() {
+  //   if (appMode == AppMode.debug) {
+  //     return _dummyAuthService.isVerified();
+  //   } else {
+  //     return _authService.isVerified();
+  //   }
+  // }
 
-  @override
-  Future<void> verifyMail() async {
-    if (appMode == AppMode.debug) {
-      await _dummyAuthService.verifyMail();
-    } else {
-      await _authService.verifyMail();
-    }
-  }
+  // @override
+  // Future<void> verifyMail() async {
+  //   if (appMode == AppMode.debug) {
+  //     await _dummyAuthService.verifyMail();
+  //   } else {
+  //     await _authService.verifyMail();
+  //   }
+  // }
 
   @override
   bool? isAnonim() {
@@ -101,11 +100,11 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<void> setLikedPostID(PostModel post, AppUser user) async {
-    if (appMode == AppMode.debug) {
-      await _dummyAuthService.setLikedPostID(post, user);
+  Future<void> setLikedPostID(AppUser user, String likedPosts) async{
+        if (appMode == AppMode.debug) {
+      await _dummyAuthService.setLikedPostID(user, likedPosts);
     } else {
-      await _authService.setLikedPostID(post, user);
+      await _authService.setLikedPostID(user,likedPosts);
     }
   }
 }

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
-import '../../../../screens/screens_app/screen_dashboard/networking/models/post_model.dart';
 import 'auth_base.dart';
 
 class DummyService implements AuthBase {
@@ -27,7 +26,7 @@ class DummyService implements AuthBase {
         email: "email",
         userName: "userName",
         password: 'admin',
-        likedPosts: [],
+        likedPostsIDS: [],
       );
     }
   }
@@ -72,7 +71,7 @@ class DummyService implements AuthBase {
       email: "email",
       userName: "userName",
       password: 'admin',
-      likedPosts: [],
+      likedPostsIDS: [],
     );
   }
 
@@ -83,23 +82,23 @@ class DummyService implements AuthBase {
       email: "email",
       userName: "userName",
       password: 'admin',
-      likedPosts: [],
+      likedPostsIDS: [],
     );
   }
 
-  @override
-  bool? isVerified() => true;
+  // @override
+  // bool? isVerified() => true;
 
-  @override
-  Future<bool> verifyMail() async {
-    return await Future.value(true);
-  }
+  // @override
+  // Future<bool> verifyMail() async {
+  //   return await Future.value(true);
+  // }
 
   @override
   bool? isAnonim() => true;
 
   @override
-  Future<void> setLikedPostID(PostModel post, AppUser user) async{
+  Future<void> setLikedPostID(AppUser user, String likedPosts) async{
     
   }
 }
