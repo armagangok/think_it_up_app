@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
-import '../base_services/firestore_base_service.dart';
+import 'firestore_base_service.dart';
 import '../models/post_model.dart';
 
 class FirestoreService implements BaseFirestoreService {
@@ -63,19 +63,7 @@ class FirestoreService implements BaseFirestoreService {
   //
   //
 
-  @override
-  Future editPost() async {}
 
-  //
-  //
-
-  @override
-  Future<void> updateLikes(PostModel post) async {
-    await _firestore.collection("posts").doc(post.postID).set(post.toMap());
-  }
-
-  //
-  //
 
   @override
   Future<AppUser?> getUserData() async {
@@ -83,41 +71,23 @@ class FirestoreService implements BaseFirestoreService {
     return null;
   }
 
-  //
-  //
+  ///
+  ///
 
-  @override
-  Future<void> addLikedUserID(String postID) async {
-    try {
-      await _firestore
-          .collection("posts")
-          .doc(postID)
-          .collection("usersLiked")
-          .doc(_auth.currentUser!.uid)
-          .set({"id": _auth.currentUser!.uid});
-    } catch (e) {
-      print(e);
-    }
-  }
+ @override 
+  Future<void> updatePost(PostModel post) async {
+                              DocumentReference uidRef =
+                                  FirebaseFirestore.instance
+                                      .collection("posts")
+                                      .doc(post.postID)
+                                      .collection("usersLiked") //user1,user2,
+                                      .doc(_auth.currentUser!.uid);
 
-  //
-  //
+                              if (post.isLiked) {
+                                await uidRef.delete();
+                              } else {
+                                await uidRef.set({"id": _auth.currentUser!.uid});
+                              }
+                            }
 
-  @override
-  Future deleteLikedUserID(String postID) async {
-    await _firestore
-        .collection("posts")
-        .doc(postID)
-        .collection("usersLiked")
-        .doc(_auth.currentUser!.uid)
-        .delete();
-  }
-
-  @override
-  Future<void> updateLikeState(String postID, bool isLiked) async {
-    await _firestore
-        .collection("posts")
-        .doc(postID)
-        .update({"isLiked": isLiked});
-  }
 }

@@ -1,12 +1,10 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './share_button.dart';
 import '../../../../core/components/alignment/alignment.dart';
-import '../../../../core/components/widgets/buttons.dart';
 import '../../../../core/components/widgets/icons.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/networking/firebase/models/user_model.dart';
@@ -63,26 +61,10 @@ class CommentWidget extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                          icon: _post.isLiked
-                              ? MyIcon().redHeart
-                              : MyIcon().heart,
+                          icon: setIcon(_post.isLiked),
                           onPressed: () async {
-                            updatePost(PostModel post) async {
-                              DocumentReference uidRef =
-                                  FirebaseFirestore.instance
-                                      .collection("posts")
-                                      .doc(post.postID)
-                                      .collection("usersLiked") //user1,user2,
-                                      .doc(_user.id);
-
-                              if (_post.isLiked) {
-                                await uidRef.delete();
-                              } else {
-                                await uidRef.set({"id": _user.id});
-                              }
-                            }
-
-                            await updatePost(_post)
+                            await _firestore
+                                .updatePost(_post)
                                 .then((value) => setstate!());
                           },
                         ),
@@ -115,33 +97,5 @@ class CommentWidget extends StatelessWidget {
     } else {
       return false;
     }
-  }
-}
-
-Widget setIconState(List? likedPostsIDS, String currentPostID) {
-  for (String likedPostID in likedPostsIDS!) {
-    if (likedPostID == currentPostID) {
-      // print("likedpost $likedPostID");
-      // print("current post   -> " + currentPostID);
-      return MyIcon().redHeart;
-    } else {
-      return MyIcon().heart;
-    }
-  }
-  return const SizedBox();
-}
-
-class ShareButton extends StatelessWidget {
-  const ShareButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
-    return const CustomIconButton(
-      icon: Icon(
-        CupertinoIcons.share,
-        color: Colors.greenAccent,
-      ),
-    );
   }
 }
