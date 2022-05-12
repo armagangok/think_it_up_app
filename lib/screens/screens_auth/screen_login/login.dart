@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     final TextEditingController _emailLogin =
         TextEditingController(text: "1armagangok@gmail.com");
     final TextEditingController _passwordLogin =

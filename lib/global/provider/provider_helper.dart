@@ -14,7 +14,7 @@ class ProviderHelper {
     ChangeNotifierProvider(create: (_) => NotificationProvider()),
     ChangeNotifierProvider(create: (_) => FirebaseVmodel()),
     ChangeNotifierProvider(create: (_) => DashVievmodel()),
-    ChangeNotifierProvider(create: (_) => FirestoreVmodel()),
+    ChangeNotifierProvider(create: (_) => GlobalViewModel()),
     // Provider(create: (_) => IconState()),
     Provider(create: (_) => QuestionService()),
   ];

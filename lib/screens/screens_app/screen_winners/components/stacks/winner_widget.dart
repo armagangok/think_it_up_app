@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/alignment/alignment.dart';
@@ -9,6 +11,7 @@ class WinnerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return CustomContainer(
       width: context.getWidth(1),
       color: null,

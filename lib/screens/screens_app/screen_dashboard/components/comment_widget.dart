@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,31 +15,27 @@ import '../../../../global/constants/constants.dart';
 import '../networking/models/post_model.dart';
 import '../networking/view-models/firestore_viewmodel.dart';
 
-class CommentWidget extends StatefulWidget {
+class CommentWidget extends StatelessWidget {
   final PostModel post;
 
   const CommentWidget({
     Key? key,
+    this.setstate,
     required this.post,
   }) : super(key: key);
 
-  @override
-  State<CommentWidget> createState() => _CommentWidgetState();
-}
+  final void Function()? setstate;
 
-class _CommentWidgetState extends State<CommentWidget> {
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     final FirebaseVmodel _firebase = Provider.of<FirebaseVmodel>(context);
-    final FirestoreVmodel _firestore = Provider.of<FirestoreVmodel>(context);
-    final PostModel _post = widget.post;
+    final GlobalViewModel _firestore = Provider.of<GlobalViewModel>(context);
+    final PostModel _post = post;
     final AppUser _user = _firebase.user!;
     final TextTheme textTheme = context.theme.textTheme;
 
     bool checkID = _checkPostID(_post.postID, _user.id!);
-    bool _isLiked = _post.isLiked;
-
-    print("->" "$_isLiked");
 
     return CustomContainer(
       color: checkID ? kColor.bottomSheet : null,
@@ -65,42 +63,27 @@ class _CommentWidgetState extends State<CommentWidget> {
                     Row(
                       children: [
                         IconButton(
-                          icon: _isLiked ? MyIcon().redHeart : MyIcon().heart,
+                          icon: _post.isLiked
+                              ? MyIcon().redHeart
+                              : MyIcon().heart,
                           onPressed: () async {
-// PostModel(userName: userName, comment: comment, postID: postID, likes: likes,);
+                            updatePost(PostModel post) async {
+                              DocumentReference uidRef =
+                                  FirebaseFirestore.instance
+                                      .collection("posts")
+                                      .doc(post.postID)
+                                      .collection("usersLiked") //user1,user2,
+                                      .doc(_user.id);
 
-                            // updatePost(PostModel post) async {
-                            //   FirebaseFirestore.instance
-                            //       .collection("posts")
-                            //       .doc(post.postID)
-                            //       .collection("usersLiked").doc(_user.id);
-                            // }
-
-                            // updatePost(_post);
-
-                            print("-->" "$_isLiked");
-
-                            setState(() => _isLiked = !_isLiked);
-
-                            if (_isLiked) {
-                              await _firestore.addLikedUserID(_post.postID);
-                              setState(() => _post.likes++);
-                              await _firestore.updateLikes(_post);
-                              await _firestore.addLikedUserID(_post.postID);
-                              await _firestore.updateLikeState(
-                                _post.postID,
-                                _isLiked,
-                              );
-                            } else {
-                              await _firestore.deleteLikedUserID(_post.postID);
-                              setState(() => _post.likes--);
-                              await _firestore.updateLikes(_post);
-                              await _firestore.addLikedUserID(_post.postID);
-                              await _firestore.updateLikeState(
-                                _post.postID,
-                                _isLiked,
-                              );
+                              if (_post.isLiked) {
+                                await uidRef.delete();
+                              } else {
+                                await uidRef.set({"id": _user.id});
+                              }
                             }
+
+                            await updatePost(_post)
+                                .then((value) => setstate!());
                           },
                         ),
                         Text("${_post.likes}"),
@@ -153,6 +136,7 @@ class ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return const CustomIconButton(
       icon: Icon(
         CupertinoIcons.share,

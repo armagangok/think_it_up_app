@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,26 +18,33 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
-  void initState() {
-    FirestoreVmodel().getPosts();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final FirestoreVmodel _firestore = Provider.of<FirestoreVmodel>(context);
+    log(context.widget.runtimeType.toString() + "build run");
+    final GlobalViewModel _firestore = Provider.of<GlobalViewModel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),
-      body: ListView.builder(
-        itemCount: _firestore.posts.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CommentWidget(post: _firestore.posts[index]),
-          );
-        },
-      ),
+      body: FutureBuilder(
+          future: GlobalViewModel().getPosts(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: _firestore.posts.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CommentWidget(
+                        setstate: () {
+                          setState(() {});
+                        },
+                        post: _firestore.posts[index]),
+                  );
+                },
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
 }
@@ -45,6 +54,7 @@ class SizedBox002 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(height: context.getHeight(0.02));
   }
 }

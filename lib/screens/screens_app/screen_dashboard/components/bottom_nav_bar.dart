@@ -1,5 +1,5 @@
 // import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart'; import 'dart:developer';
 // import 'package:think_it_up_app/app/core/components/common/alignment/alignment.dart';
 // import 'package:think_it_up_app/app/core/components/common/widgets/buttons.dart';
 // import 'package:think_it_up_app/app/views/winners/winner_view.dart';
@@ -10,6 +10,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
+ //   log(context.widget.runtimeType.toString() + "build run");
 //     return Column(
 //       mainAxisSize: MainAxisSize.min,
 //       children: [

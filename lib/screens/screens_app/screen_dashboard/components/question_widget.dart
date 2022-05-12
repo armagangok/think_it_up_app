@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +12,7 @@ class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     final QuestionService _question = Provider.of<QuestionService>(context);
     return FutureBuilder(
       future: _question.getQuestion(),
@@ -37,6 +40,7 @@ class Q extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return CustomContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

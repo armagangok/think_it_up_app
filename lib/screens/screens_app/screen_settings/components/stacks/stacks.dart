@@ -1,8 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-
 import '../../../../../core/components/alignment/alignment.dart';
-
 
 class SettingItem extends StatelessWidget {
   final String text;
@@ -18,6 +18,7 @@ class SettingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return InkWell(
       onTap: () => onPressed(),
       child: Padding5(

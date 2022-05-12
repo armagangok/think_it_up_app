@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -14,6 +16,7 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return IconButton(
       onPressed: () => onPressed!(),
       icon: icon,
@@ -35,6 +38,7 @@ class CustomElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(
       width: MediaQuery.of(context).size.longestSide,
       height: 30,
@@ -55,5 +59,3 @@ class CustomElevatedButton extends StatelessWidget {
     );
   }
 }
-
-

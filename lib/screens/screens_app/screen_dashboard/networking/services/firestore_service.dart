@@ -15,7 +15,6 @@ class FirestoreService implements BaseFirestoreService {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  
 
   //
   //
@@ -27,18 +26,22 @@ class FirestoreService implements BaseFirestoreService {
     List<PostModel> _postModels = [];
 
     for (var postModel in querySnapshot.docs) {
-      var snapshot = await _firestore
+      var usersLikedRef = _firestore
           .collection("posts")
           .doc(postModel.id)
-          .collection("usersLiked")
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .get();
+          .collection("usersLiked");
+      var snapshot =
+          await usersLikedRef.doc(FirebaseAuth.instance.currentUser!.uid).get();
+
+      var usersLiked = await usersLikedRef.get();
 
       var post = PostModel.fromMap(postModel.data());
 
-      // if (snapshot.exists) {
-      //   post.isLiked = true;
-      // }
+      if (snapshot.exists) {
+        post.isLiked = true;
+      }
+
+      post.likes = usersLiked.size;
 
       _postModels.add(post);
     }
@@ -76,7 +79,6 @@ class FirestoreService implements BaseFirestoreService {
 
   @override
   Future<AppUser?> getUserData() async {
-    
     await _firestore.collection("users").doc(_auth.currentUser!.uid).get();
     return null;
   }

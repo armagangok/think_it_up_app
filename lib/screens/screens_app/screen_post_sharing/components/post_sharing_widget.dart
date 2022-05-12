@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:think_it_up_app/screens/screens_app/screen_dashboard/networking/view-models/firestore_viewmodel.dart';
@@ -18,8 +20,9 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     final FirebaseVmodel userViewModel = Provider.of<FirebaseVmodel>(context);
-    final FirestoreVmodel _firebase = Provider.of<FirestoreVmodel>(context);
+    final GlobalViewModel _firebase = Provider.of<GlobalViewModel>(context);
     final TextEditingController commentController = TextEditingController();
 
     return SizedBox(

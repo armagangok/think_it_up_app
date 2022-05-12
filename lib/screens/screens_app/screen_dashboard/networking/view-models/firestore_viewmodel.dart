@@ -5,14 +5,13 @@ import '../base_services/firestore_base_service.dart';
 import '../models/post_model.dart';
 import '../services/firestore_service.dart';
 
-class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
-  FirestoreVmodel._private();
-  static final FirestoreVmodel _instance = FirestoreVmodel._private();
-  factory FirestoreVmodel() => _instance;
+class GlobalViewModel with ChangeNotifier implements BaseFirestoreService {
+  GlobalViewModel._private();
+  static final GlobalViewModel _instance = GlobalViewModel._private();
+  factory GlobalViewModel() => _instance;
   final FirestoreService _firestoreService = FirestoreService();
 
   List<PostModel> posts = [];
-
 
   @override
   Future editPost() async {}
@@ -40,14 +39,18 @@ class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
 
   @override
   Future<void> addLikedUserID(String postID) async {
-    await _firestoreService.addLikedUserID(postID, );
+    await _firestoreService.addLikedUserID(
+      postID,
+    );
   }
 
   @override
   Future deleteLikedUserID(
     String postID,
   ) async {
-    await _firestoreService.deleteLikedUserID(postID, );
+    await _firestoreService.deleteLikedUserID(
+      postID,
+    );
   }
 
   @override
@@ -55,3 +58,4 @@ class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
     await _firestoreService.updateLikeState(postID, isLiked);
   }
 }
+

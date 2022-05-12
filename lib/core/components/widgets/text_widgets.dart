@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ class Text24B extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: Theme.of(context).textTheme.caption,
@@ -28,6 +31,7 @@ class AutoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return AutoSizeText(
       text,
       maxLines: 1,
@@ -48,6 +52,7 @@ class Text13 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: Theme.of(context).textTheme.bodyText1,
@@ -65,6 +70,7 @@ class Text16 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: Theme.of(context).textTheme.bodyText2,

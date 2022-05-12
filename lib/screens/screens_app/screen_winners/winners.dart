@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import '../../../core/components/alignment/alignment.dart';
-import '../../../core/components/widgets/text_widgets.dart';
 import './components/stacks/top_bar.dart';
 import './components/stacks/winner_widget.dart';
+import '../../../core/components/alignment/alignment.dart';
+import '../../../core/components/widgets/text_widgets.dart';
 
 class WinnerScreen extends StatelessWidget {
   const WinnerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Wrapper(
       topBar: TopBar(
         text: "Winners",

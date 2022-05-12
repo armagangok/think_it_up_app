@@ -1,10 +1,9 @@
-
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/alignment/alignment.dart';
 import '../../../../../core/components/widgets/text_widgets.dart';
-
 
 class TopBar extends StatelessWidget {
   final String text;
@@ -20,6 +19,7 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return CustomContainer(
       heigth: heigth,
       child: Padding8(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -17,7 +19,7 @@ class CustomTextField extends StatefulWidget {
     this.inputType,
     this.maxLines,
     this.iconButton,
-     this.isObscure = false,
+    this.isObscure = false,
     this.height,
     required this.controller,
   }) : super(key: key);
@@ -31,6 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return TextFormField(
       //initialValue: widget.initialValue,
       controller: widget.controller,
@@ -71,6 +74,7 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Icon(
       widget.isObscure
           ? _passwordVisible

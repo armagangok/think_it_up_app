@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class AuthTextField extends StatefulWidget {
@@ -25,6 +27,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(
       height: 30,
       child: TextFormField(
@@ -68,6 +71,7 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(context.widget.runtimeType.toString() + "build run");
     return Icon(
       widget.isObscure
           ? _passwordVisible
