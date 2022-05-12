@@ -18,7 +18,6 @@ class GlobalViewModel with ChangeNotifier implements BaseFirestoreService {
   @override
   Future<List<PostModel>> getPosts() async {
     posts = await _firestoreService.getPosts();
-    notifyListeners();
     return posts;
   }
 
@@ -58,4 +57,3 @@ class GlobalViewModel with ChangeNotifier implements BaseFirestoreService {
     await _firestoreService.updateLikeState(postID, isLiked);
   }
 }
-
