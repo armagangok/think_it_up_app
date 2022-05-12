@@ -13,9 +13,9 @@ class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
 
   List<PostModel> posts = [];
 
+
   @override
   Future editPost() async {}
-
   @override
   Future<List<PostModel>> getPosts() async {
     posts = await _firestoreService.getPosts();
@@ -34,18 +34,20 @@ class FirestoreVmodel with ChangeNotifier implements BaseFirestoreService {
   }
 
   @override
-  Future<AppUser?> getUserData(String userID) async {
-    return await _firestoreService.getUserData(userID);
+  Future<AppUser?> getUserData() async {
+    return await _firestoreService.getUserData();
   }
 
   @override
-  Future<void> addLikedUserID(String postID, String id) async {
-    await _firestoreService.addLikedUserID(postID, id);
+  Future<void> addLikedUserID(String postID) async {
+    await _firestoreService.addLikedUserID(postID, );
   }
 
   @override
-  Future deleteLikedUserID(String postID, String id) async {
-    await _firestoreService.deleteLikedUserID(postID, id);
+  Future deleteLikedUserID(
+    String postID,
+  ) async {
+    await _firestoreService.deleteLikedUserID(postID, );
   }
 
   @override

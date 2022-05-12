@@ -14,6 +14,8 @@ class FirestoreService implements BaseFirestoreService {
   //
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  
 
   //
   //
@@ -34,9 +36,9 @@ class FirestoreService implements BaseFirestoreService {
 
       var post = PostModel.fromMap(postModel.data());
 
-      if (snapshot.exists) {
-        post.isLiked = true;
-      }
+      // if (snapshot.exists) {
+      //   post.isLiked = true;
+      // }
 
       _postModels.add(post);
     }
@@ -73,8 +75,9 @@ class FirestoreService implements BaseFirestoreService {
   //
 
   @override
-  Future<AppUser?> getUserData(String userID) async {
-    await _firestore.collection("users").doc(userID).get();
+  Future<AppUser?> getUserData() async {
+    
+    await _firestore.collection("users").doc(_auth.currentUser!.uid).get();
     return null;
   }
 
@@ -82,14 +85,14 @@ class FirestoreService implements BaseFirestoreService {
   //
 
   @override
-  Future<void> addLikedUserID(String postID, String id) async {
+  Future<void> addLikedUserID(String postID) async {
     try {
       await _firestore
           .collection("posts")
           .doc(postID)
           .collection("usersLiked")
-          .doc(id)
-          .set({"id": id});
+          .doc(_auth.currentUser!.uid)
+          .set({"id": _auth.currentUser!.uid});
     } catch (e) {
       print(e);
     }
@@ -99,12 +102,12 @@ class FirestoreService implements BaseFirestoreService {
   //
 
   @override
-  Future deleteLikedUserID(String postID, String id) async {
+  Future deleteLikedUserID(String postID) async {
     await _firestore
         .collection("posts")
         .doc(postID)
         .collection("usersLiked")
-        .doc(id)
+        .doc(_auth.currentUser!.uid)
         .delete();
   }
 

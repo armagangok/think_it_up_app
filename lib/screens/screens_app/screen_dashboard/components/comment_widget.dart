@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,6 @@ class CommentWidget extends StatefulWidget {
 }
 
 class _CommentWidgetState extends State<CommentWidget> {
-  bool liked = false;
   @override
   Widget build(BuildContext context) {
     final FirebaseVmodel _firebase = Provider.of<FirebaseVmodel>(context);
@@ -36,6 +36,8 @@ class _CommentWidgetState extends State<CommentWidget> {
 
     bool checkID = _checkPostID(_post.postID, _user.id!);
     bool _isLiked = _post.isLiked;
+
+    print("->" "$_isLiked");
 
     return CustomContainer(
       color: checkID ? kColor.bottomSheet : null,
@@ -65,33 +67,39 @@ class _CommentWidgetState extends State<CommentWidget> {
                         IconButton(
                           icon: _isLiked ? MyIcon().redHeart : MyIcon().heart,
                           onPressed: () async {
-                            print(_isLiked);
-                            _isLiked = !_isLiked;
-                            liked = !liked;
-                            if (liked) {
-                              await _firestore.addLikedUserID(
-                                _post.postID,
-                                _user.id!,
-                              );
+// PostModel(userName: userName, comment: comment, postID: postID, likes: likes,);
+
+                            // updatePost(PostModel post) async {
+                            //   FirebaseFirestore.instance
+                            //       .collection("posts")
+                            //       .doc(post.postID)
+                            //       .collection("usersLiked").doc(_user.id);
+                            // }
+
+                            // updatePost(_post);
+
+                            print("-->" "$_isLiked");
+
+                            setState(() => _isLiked = !_isLiked);
+
+                            if (_isLiked) {
+                              await _firestore.addLikedUserID(_post.postID);
                               setState(() => _post.likes++);
                               await _firestore.updateLikes(_post);
-                              await _firestore.addLikedUserID(
+                              await _firestore.addLikedUserID(_post.postID);
+                              await _firestore.updateLikeState(
                                 _post.postID,
-                                _user.id!,
+                                _isLiked,
                               );
-                              _firestore.updateLikeState(_post.postID, liked);
                             } else {
-                              await _firestore.deleteLikedUserID(
-                                _post.postID,
-                                _user.id!,
-                              );
+                              await _firestore.deleteLikedUserID(_post.postID);
                               setState(() => _post.likes--);
                               await _firestore.updateLikes(_post);
-                              await _firestore.addLikedUserID(
+                              await _firestore.addLikedUserID(_post.postID);
+                              await _firestore.updateLikeState(
                                 _post.postID,
-                                _user.id!,
+                                _isLiked,
                               );
-                              _firestore.updateLikeState(_post.postID, liked);
                             }
                           },
                         ),
@@ -153,11 +161,3 @@ class ShareButton extends StatelessWidget {
     );
   }
 }
-
-
-// await _userViewodel.setLikedPostID(
-                              //   _userViewodel.user!,
-                              //   widget.post.postID,
-                              // );
-
-
