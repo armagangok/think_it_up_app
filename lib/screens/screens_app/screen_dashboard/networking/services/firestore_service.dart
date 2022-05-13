@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/networking/firebase/models/user_model.dart';
-import 'firestore_base_service.dart';
 import '../models/post_model.dart';
+import 'firestore_base_service.dart';
 
 class FirestoreService implements BaseFirestoreService {
   FirestoreService._private();
@@ -63,8 +63,6 @@ class FirestoreService implements BaseFirestoreService {
   //
   //
 
-
-
   @override
   Future<AppUser?> getUserData() async {
     await _firestore.collection("users").doc(_auth.currentUser!.uid).get();
@@ -74,20 +72,29 @@ class FirestoreService implements BaseFirestoreService {
   ///
   ///
 
- @override 
+  @override
   Future<void> updatePost(PostModel post) async {
-                              DocumentReference uidRef =
-                                  FirebaseFirestore.instance
-                                      .collection("posts")
-                                      .doc(post.postID)
-                                      .collection("usersLiked") //user1,user2,
-                                      .doc(_auth.currentUser!.uid);
+    DocumentReference uidRef = FirebaseFirestore.instance
+        .collection("posts")
+        .doc(post.postID)
+        .collection("usersLiked") //user1,user2,
+        .doc(_auth.currentUser!.uid);
 
-                              if (post.isLiked) {
-                                await uidRef.delete();
-                              } else {
-                                await uidRef.set({"id": _auth.currentUser!.uid});
-                              }
-                            }
+    if (post.isLiked) {
+      await uidRef.delete();
+    } else {
+      await uidRef.set({"id": _auth.currentUser!.uid});
+    }
+  }
 
+  ///
+  ///
+
+  @override
+  Future<String> getQuestion() async {
+    var querySnapshot = await _firestore.collection("question").get();
+    var questionModel = querySnapshot.docs;
+
+    return questionModel[0].data()['question'];
+  }
 }

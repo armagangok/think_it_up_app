@@ -20,12 +20,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");
-    final GlobalViewModel _firestore = Provider.of<GlobalViewModel>(context);
+    final FirestoreVModel _firestore = Provider.of<FirestoreVModel>(context);
     return Wrapper(
       topBarHeight: context.longestSide(0.235),
       topBar: const QuestionWidget(),
       body: FutureBuilder(
-          future: GlobalViewModel().getPosts(),
+          future: FirestoreVModel().getPosts(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(

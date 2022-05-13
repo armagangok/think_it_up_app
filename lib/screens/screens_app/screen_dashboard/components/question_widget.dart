@@ -6,19 +6,19 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/text_widgets.dart';
-import '../networking/services/question_service.dart';
+import '../networking/view-models/firestore_viewmodel.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");
-    final QuestionService _question = Provider.of<QuestionService>(context);
+    final FirestoreVModel _firestore = Provider.of<FirestoreVModel>(context);
     return FutureBuilder(
-      future: _question.getQuestion(),
+      future: _firestore.getQuestion(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return Q(data: snapshot.data);
+          return QuestionTextStack(data: snapshot.data);
         } else if (snapshot.hasError) {
           return const Center(
             child: Text("ERROR"),
@@ -31,9 +31,9 @@ class QuestionWidget extends StatelessWidget {
   }
 }
 
-class Q extends StatelessWidget {
+class QuestionTextStack extends StatelessWidget {
   final String data;
-  const Q({
+  const QuestionTextStack({
     Key? key,
     required this.data,
   }) : super(key: key);

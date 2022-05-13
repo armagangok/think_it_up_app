@@ -10,6 +10,9 @@ class CurrentService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  //
+  //
+
   @override
   Future<AppUser?> currentUser() async {
     try {
@@ -20,6 +23,9 @@ class CurrentService implements AuthBase {
       return null;
     }
   }
+
+  //
+  //
 
   Future<AppUser?> _userFromFirebase(User? user) async {
     if (user == null) {
@@ -36,6 +42,9 @@ class CurrentService implements AuthBase {
       );
     }
   }
+
+  //
+  //
 
   @override
   Future<bool> signOut() async {
@@ -62,6 +71,9 @@ class CurrentService implements AuthBase {
     }
   }
 
+  //
+  //
+
   @override
   Future<AppUser?> signinAnonim() async {
     try {
@@ -72,6 +84,9 @@ class CurrentService implements AuthBase {
       return null;
     }
   }
+
+  //
+  //
 
   @override
   Future<AppUser?> signInByGoogle() async {
@@ -98,6 +113,9 @@ class CurrentService implements AuthBase {
     }
   }
 
+  //
+  //
+
   @override
   Future<AppUser?> createUserByEmailPassword(AppUser user) async {
     try {
@@ -121,6 +139,9 @@ class CurrentService implements AuthBase {
     }
   }
 
+  //
+  //
+
   @override
   Future<AppUser?> signInByEmailPassword(String email, String password) async {
     try {
@@ -141,16 +162,25 @@ class CurrentService implements AuthBase {
   //   return isVerified;
   // }
 
+  //
+  //
+
   // @override
   // Future<void> verifyMail() async {
   //   await _firebaseAuth.currentUser?.sendEmailVerification();
   // }
+
+  //
+  //
 
   @override
   bool? isAnonim() {
     debugPrint("isAnonim: [${_firebaseAuth.currentUser?.isAnonymous}]");
     return _firebaseAuth.currentUser?.isAnonymous;
   }
+
+  //
+  //
 
   @override
   Future<void> setLikedPostID(AppUser user, String likedPosts) async {

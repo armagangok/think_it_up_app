@@ -1,17 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-class QuestionService {
-  QuestionService._private();
+// class QuestionService {
+//   QuestionService._private();
 
-  static final QuestionService _instance = QuestionService._private();
-  factory QuestionService() => _instance;
+//   static final QuestionService _instance = QuestionService._private();
+//   factory QuestionService() => _instance;
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future getQuestion() async {
-    var querySnapshot = await _firestore.collection("question").get();
-    var questionModel = querySnapshot.docs;
+//   Future<String> getQuestion() async {
+//     var querySnapshot = await _firestore.collection("question").get();
+//     var questionModel = querySnapshot.docs;
 
-    return questionModel[0].data()['question'];
-  }
-}
+//     return questionModel[0].data()['question'];
+//   }
+// }

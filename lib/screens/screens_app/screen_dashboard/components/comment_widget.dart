@@ -28,7 +28,7 @@ class CommentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");
     final FirebaseVmodel _firebase = Provider.of<FirebaseVmodel>(context);
-    final GlobalViewModel _firestore = Provider.of<GlobalViewModel>(context);
+    final FirestoreVModel _firestore = Provider.of<FirestoreVModel>(context);
     final PostModel _post = post;
     final AppUser _user = _firebase.user!;
     final TextTheme textTheme = context.theme.textTheme;
