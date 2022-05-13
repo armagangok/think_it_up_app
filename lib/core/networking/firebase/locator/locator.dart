@@ -12,5 +12,4 @@ void setupLocator() {
   locator.registerLazySingleton(() => DummyService());
   locator.registerLazySingleton(() => UserRepository());
   locator.registerLazySingleton(() => FirestoreService());
-  locator.registerLazySingleton(() => FirestoreService());
 }

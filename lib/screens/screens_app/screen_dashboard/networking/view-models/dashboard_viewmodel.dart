@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashVievmodel with ChangeNotifier {
-  DashVievmodel._private();
-  static final DashVievmodel _instance = DashVievmodel._private();
-  factory DashVievmodel() => _instance;
-
-  int indexOfComment = 0;
-  void changeIndexOfComment(int index) => indexOfComment = index;
+class DashboardVModel with ChangeNotifier {
+  DashboardVModel._private();
+  static final DashboardVModel _instance = DashboardVModel._private();
+  factory DashboardVModel() => _instance;
 }

@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../../core/networking/firebase/models/user_model.dart';
+import './base_database_service.dart';
 import '../models/post_model.dart';
-import 'firestore_base_service.dart';
 
-class FirestoreService implements BaseFirestoreService {
+class FirestoreService implements BaseDatabaseService {
   FirestoreService._private();
   static final FirestoreService _instance = FirestoreService._private();
   factory FirestoreService() => _instance;
@@ -58,15 +57,6 @@ class FirestoreService implements BaseFirestoreService {
         .collection("posts")
         .doc(postModel.postID)
         .set(postModel.toMap());
-  }
-
-  //
-  //
-
-  @override
-  Future<AppUser?> getUserData() async {
-    await _firestore.collection("users").doc(_auth.currentUser!.uid).get();
-    return null;
   }
 
   ///

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../models/post_model.dart';
-import '../services/firestore_base_service.dart';
+import '../services/base_database_service.dart';
 import '../services/firestore_service.dart';
 
-class FirestoreVModel with ChangeNotifier implements BaseFirestoreService {
+class FirestoreVModel with ChangeNotifier implements BaseDatabaseService {
   FirestoreVModel._private();
   static final FirestoreVModel _instance = FirestoreVModel._private();
   factory FirestoreVModel() => _instance;
