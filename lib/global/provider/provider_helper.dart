@@ -5,8 +5,8 @@ import '../../core/networking/firebase/view-models/firebase_viewmodel.dart';
 import '../../screens/screens_app/screen_dashboard/networking/services/question_service.dart';
 import '../../screens/screens_app/screen_dashboard/networking/view-models/dashboard_viewmodel.dart';
 import '../../screens/screens_app/screen_dashboard/networking/view-models/firestore_viewmodel.dart';
-import '../local/viewmodels/notification_provider.dart';
-import '../local/viewmodels/theme_provider.dart';
+import '../local/view-models/notification_provider.dart';
+import '../local/view-models/theme_provider.dart';
 
 class ProviderHelper {
   List<SingleChildWidget> providers = [

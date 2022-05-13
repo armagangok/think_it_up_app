@@ -41,15 +41,9 @@ class CommentWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "@" + _post.userName,
-              style: textTheme.bodyText2,
-            ),
+            Text("@" + _post.userName, style: textTheme.bodyText2),
             const SizedBox10H(),
-            Text(
-              _post.comment,
-              style: textTheme.bodyText1,
-            ),
+            Text(_post.comment, style: textTheme.bodyText1),
             const SizedBox10H(),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -91,11 +85,6 @@ class CommentWidget extends StatelessWidget {
 
   Widget setIcon(bool isLiked) => isLiked ? MyIcon().redHeart : MyIcon().heart;
 
-  bool _checkPostID(String postID, String userID) {
-    if (postID == userID) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  bool _checkPostID(String postID, String userID) =>
+      (postID == userID) ? true : false;
 }

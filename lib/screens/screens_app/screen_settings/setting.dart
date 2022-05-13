@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../../../core/components/alignment/alignment.dart';
 import '../../../core/networking/firebase/view-models/firebase_viewmodel.dart';
-import '../../../global/local/viewmodels/notification_provider.dart';
-import '../../../global/local/viewmodels/theme_provider.dart';
+import '../../../global/local/view-models/notification_provider.dart';
+import '../../../global/local/view-models/theme_provider.dart';
 import '../screen_winners/components/stacks/top_bar.dart';
 import 'components/stacks/stacks.dart';
 import 'components/widgets/switch_widget.dart';

@@ -36,7 +36,9 @@ class CustomContainer extends StatelessWidget {
   }
 }
 
+///
 /*PADDING  WIDGETS*/
+///
 class Padding8 extends StatelessWidget {
   final Widget child;
 
@@ -95,8 +97,9 @@ class Padding5 extends StatelessWidget {
   }
 }
 
+///
 /*SIZED BOX WIDGETS */
-
+///
 class SizedBox5H extends StatelessWidget {
   const SizedBox5H({Key? key}) : super(key: key);
 
