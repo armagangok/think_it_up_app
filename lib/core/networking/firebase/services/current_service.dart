@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../../../core/networking/firebase/models/user_model.dart';
+import '/core/networking/firebase/models/user_model.dart';
 import 'auth_base.dart';
 
-class CurrentService implements AuthBase {
+class CurrentService extends AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -15,13 +15,8 @@ class CurrentService implements AuthBase {
 
   @override
   Future<AppUser?> currentUser() async {
-    try {
-      User? user = _firebaseAuth.currentUser;
-      return await _userFromFirebase(user);
-    } catch (e) {
-      debugPrint("$e");
-      return null;
-    }
+    User? user = _firebaseAuth.currentUser;
+    return await _userFromFirebase(user);
   }
 
   //
@@ -49,26 +44,22 @@ class CurrentService implements AuthBase {
   @override
   Future<bool> signOut() async {
     debugPrint("current user state: " "${_firebaseAuth.currentUser}");
-    try {
-      final GoogleSignIn _googleSigniIn = GoogleSignIn();
-      if (_googleSigniIn.currentUser != null) {
-        await _googleSigniIn.signOut();
-      }
 
-      if (_firebaseAuth.currentUser?.isAnonymous == true) {
-        debugPrint(
-            "anonim user state: ${_firebaseAuth.currentUser?.isAnonymous}");
-        await _firebaseAuth.currentUser?.delete();
-      } else {
-        debugPrint(
-            "anonim user state: ${_firebaseAuth.currentUser?.isAnonymous}");
-      }
-      await _firebaseAuth.signOut();
-      return true;
-    } catch (e) {
-      debugPrint("error in services at signOut: [$e]");
-      return false;
+    final GoogleSignIn _googleSigniIn = GoogleSignIn();
+    if (_googleSigniIn.currentUser != null) {
+      await _googleSigniIn.signOut();
     }
+
+    if (_firebaseAuth.currentUser?.isAnonymous == true) {
+      debugPrint(
+          "anonim user state: ${_firebaseAuth.currentUser?.isAnonymous}");
+      await _firebaseAuth.currentUser?.delete();
+    } else {
+      debugPrint(
+          "anonim user state: ${_firebaseAuth.currentUser?.isAnonymous}");
+    }
+    await _firebaseAuth.signOut();
+    return true;
   }
 
   //
@@ -76,13 +67,8 @@ class CurrentService implements AuthBase {
 
   @override
   Future<AppUser?> signinAnonim() async {
-    try {
-      UserCredential authCredential = await _firebaseAuth.signInAnonymously();
-      return _userFromFirebase(authCredential.user);
-    } catch (e) {
-      debugPrint("Error in Services, at siginAnonim [$e]");
-      return null;
-    }
+    UserCredential authCredential = await _firebaseAuth.signInAnonymously();
+    return _userFromFirebase(authCredential.user);
   }
 
   //
@@ -118,43 +104,38 @@ class CurrentService implements AuthBase {
 
   @override
   Future<AppUser?> createUserByEmailPassword(AppUser user) async {
-    try {
-      UserCredential authCredential =
-          await _firebaseAuth.createUserWithEmailAndPassword(
-        email: user.email!,
-        password: user.password!,
-      );
+    UserCredential authCredential =
+        await _firebaseAuth.createUserWithEmailAndPassword(
+      email: user.email!,
+      password: user.password!,
+    );
 
-      user.setID = authCredential.user!.uid;
+    user.setID = authCredential.user!.uid;
 
-      await _firestore
-          .collection("users")
-          .doc(authCredential.user!.uid)
-          .set(user.toMap());
+    await _firestore
+        .collection("users")
+        .doc(authCredential.user!.uid)
+        .set(user.toMap());
 
-      return _userFromFirebase(authCredential.user);
-    } catch (e) {
-      debugPrint("Error in services, at createUserWithEmailAndPassword: [$e]");
-      return null;
-    }
+    return _userFromFirebase(authCredential.user);
   }
 
   //
   //
 
-  @override
-  Future<AppUser?> signInByEmailPassword(String email, String password) async {
-    try {
-      // debugPrint(
-      //     "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
-      UserCredential authCredential = await _firebaseAuth
-          .signInWithEmailAndPassword(email: email, password: password);
-      return _userFromFirebase(authCredential.user);
-    } catch (e) {
-      debugPrint("Error in services, signInWithEmailAndPassword: [$e]");
-      return null;
-    }
-  }
+  // @override
+  // Future<AppUser?> signInByEmailPassword(String email, String password) async {
+  //   try {
+  //     // debugPrint(
+  //     //     "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
+  //     UserCredential authCredential = await _firebaseAuth
+  //         .signInWithEmailAndPassword(email: email, password: password);
+  //     return _userFromFirebase(authCredential.user);
+  //   } catch (e) {
+  //     debugPrint("Error in services, signInWithEmailAndPassword: [$e]");
+  //     return null;
+  //   }
+  // }
 
   // @override
   // bool? isVerified() {

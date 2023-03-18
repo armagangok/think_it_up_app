@@ -21,7 +21,6 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Container(
       height: heigth,
       width: width,
@@ -49,7 +48,6 @@ class Padding8 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Padding(
       padding: const EdgeInsets.all(8),
       child: child,
@@ -71,7 +69,6 @@ class SymmetricPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: horizontal ?? 0,
@@ -89,7 +86,6 @@ class Padding5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Padding(
       padding: const EdgeInsets.all(5),
       child: child,
@@ -105,7 +101,6 @@ class SizedBox5H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const SizedBox(height: 5);
   }
 }
@@ -115,7 +110,6 @@ class SizedBox10H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const SizedBox(height: 10);
   }
 }
@@ -125,7 +119,6 @@ class SizedBox20H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const SizedBox(height: 20);
   }
 }
@@ -135,7 +128,6 @@ class SizedBox20W extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const SizedBox(width: 20);
   }
 }
@@ -156,7 +148,6 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return SafeArea(
       child: Padding8(
         child: Scaffold(
