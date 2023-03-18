@@ -41,7 +41,7 @@ class NavigationRoute {
         return _getRoute(const SharePostPage());
 
       case KRoute.dashboardPage:
-        return _getRoute(const DashBoardPage());
+        return _getRoute(const DashboardPage());
 
       // case KRoute.HOROSCOPE_DETAIL_PAGE:
       //   return _getRoute(HoroscopeDetailPage(horoscopeModel: horoscopeModel));

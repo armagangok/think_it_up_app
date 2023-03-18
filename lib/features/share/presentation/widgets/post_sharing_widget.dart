@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/export/core_export.dart';
-import '../../../../injection/injection_container.dart';
-import '../../../dashboard/data/services/base_database_service.dart';
 
 class PostSharingWidget extends StatefulWidget {
   const PostSharingWidget({
@@ -15,7 +13,7 @@ class PostSharingWidget extends StatefulWidget {
 
 class _PostSharingWidgetState extends State<PostSharingWidget> {
   final userViewModel = getit.get<AuthViewModel>();
-  final _firebase = getit.get<BaseDataService>();
+  final _firebase = getit.get<DashboardDataSourceContract>();
   @override
   Widget build(BuildContext context) {
     final TextEditingController commentController = TextEditingController();

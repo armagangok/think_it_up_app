@@ -36,7 +36,7 @@ class TabBarWidget extends StatelessWidget {
       children: [
         WinnerPage(),
         SharePostPage(),
-        DashBoardPage(),
+        DashboardPage(),
         SettingPage(),
       ],
     );

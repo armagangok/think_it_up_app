@@ -1,7 +1,11 @@
-import '../../../core/export/core_export.dart';
+import '../data/models/post_model.dart';
 
-abstract class DashBoardDataSourceContract {
-  Future<AppUser?> currentUser();
+abstract class DashboardDataSourceContract {
+  Future<List<PostModel>> fetchPosts();
 
-  Future<void> setLikedPostID(AppUser user, String likedPost);
+  Future<void> sharePost(PostModel postModel);
+
+  Future<void> updatePost(PostModel post);
+
+  Future<String> getQuestion();
 }

@@ -1,29 +1,29 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:think_it_up_app/injection/injection_container.dart';
+import '/core/export/core_export.dart';
+import '../viewmodels/dashboard_viewmodel.dart';
 
-import '../../../../core/components/alignment/alignment.dart';
-import '../../../../core/components/widgets/text_widgets.dart';
-import '../../data/services/base_database_service.dart';
-
-class QuestionWidget extends StatelessWidget {
+class QuestionWidget extends ConsumerWidget {
   const QuestionWidget({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    final BaseDataService _firestore = getit.get<BaseDataService>();
-    return FutureBuilder(
-      future: _firestore.getQuestion(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return QuestionTextStack(data: snapshot.data);
-        } else if (snapshot.hasError) {
-          return const Center(
-            child: Text("ERROR"),
-          );
-        } else {
-          return const SizedBox();
-        }
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ref.watch(dashboardViewModel).fetchQuestionState.when(
+      initial: () {
+        return const Center();
+      },
+      loading: () {
+        return const Center(
+          child: CupertinoActivityIndicator(),
+        );
+      },
+      completed: (data) {
+        print(data);
+        return QuestionTextStack(data: data);
+      },
+      failed: (failure) {
+        return Text(failure.message);
       },
     );
   }

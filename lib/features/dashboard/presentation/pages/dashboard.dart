@@ -1,26 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:think_it_up_app/features/dashboard/data/models/post_model.dart';
-import 'package:think_it_up_app/features/dashboard/data/services/base_database_service.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:think_it_up_app/features/dashboard/presentation/viewmodels/dashboard_viewmodel.dart';
 
 import '../../../../core/export/core_export.dart';
-import '../../../../injection/injection_container.dart';
-import '../../data/view-models/firestore_viewmodel.dart';
+
 import '../widgets/comment_widget.dart';
 import '../widgets/question_widget.dart';
 
-class DashBoardPage extends StatefulWidget {
-  const DashBoardPage({Key? key}) : super(key: key);
+class DashboardPage extends ConsumerStatefulWidget {
+  const DashboardPage({Key? key}) : super(key: key);
 
   @override
-  State<DashBoardPage> createState() => _DashBoardPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _DashboardScreenState();
 }
 
-class _DashBoardPageState extends State<DashBoardPage> {
-  final _firestore = getit.get<BaseDataService>();
-  List<PostModel> postList = [];
+class _DashboardScreenState extends ConsumerState<DashboardPage> {
   @override
   void initState() {
-    _firestore.getPosts().then((value) => postList = value);
     super.initState();
   }
 
@@ -29,28 +26,33 @@ class _DashBoardPageState extends State<DashBoardPage> {
     return Wrapper(
       topBarHeight: context.width(0.235),
       topBar: const QuestionWidget(),
-      body: FutureBuilder(
-          future: FirestoreVModel().getPosts(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: postList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CommentWidget(
-                      setstate: () {
-                        setState(() {});
-                      },
-                      post: postList[index],
-                    ),
-                  );
-                },
+      body: ref.watch(dashboardViewModel).postState.when(
+        initial: () {
+          return const Text("initial");
+        },
+        loading: () {
+          return const Center(child: CupertinoActivityIndicator());
+        },
+        completed: (data) {
+          return ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CommentWidget(
+                  setstate: () {
+                    setState(() {});
+                  },
+                  post: data[index],
+                ),
               );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+            },
+          );
+        },
+        failed: (failure) {
+          return Text(failure.message);
+        },
+      ),
     );
   }
 }
@@ -63,34 +65,3 @@ class SizedBox002 extends StatelessWidget {
     return SizedBox(height: context.height(0.02));
   }
 }
-
-
-
-
-// FutureBuilder<List<PostModel>>(
-//       future: _posts.getPosts(),
-//       builder: (BuildContext context, AsyncSnapshot snapshot) {
-//         late final List<PostModel> posts = snapshot.data;
-
-//         if (snapshot.hasData) {
-//           return Wrapper(
-//             topBarHeight: context.longestSide(0.235),
-//             topBar: const QuestionWidget(),
-//             body: ListView.builder(
-//               itemCount: posts.length,
-//               itemBuilder: (context, index) {
-//                 return Column(
-//                   children: [
-//                     CommentWidget(post: posts[index]),
-//                     const SizedBox002(),
-//                   ],
-//                 );
-//               },
-//             ),
-//           );
-//         } else if (snapshot.hasError) {
-//           return const Center(child: Text("There is a problem."));
-//         }
-//         return const Center(child: CircularProgressIndicator());
-//       },
-//     );
