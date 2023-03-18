@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../../core/networking/firebase/models/user_model.dart';
 import 'auth_base.dart';
 
-class CurrentService implements AuthBase {
+class CurrentService extends AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -142,19 +142,19 @@ class CurrentService implements AuthBase {
   //
   //
 
-  @override
-  Future<AppUser?> signInByEmailPassword(String email, String password) async {
-    try {
-      // debugPrint(
-      //     "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
-      UserCredential authCredential = await _firebaseAuth
-          .signInWithEmailAndPassword(email: email, password: password);
-      return _userFromFirebase(authCredential.user);
-    } catch (e) {
-      debugPrint("Error in services, signInWithEmailAndPassword: [$e]");
-      return null;
-    }
-  }
+  // @override
+  // Future<AppUser?> signInByEmailPassword(String email, String password) async {
+  //   try {
+  //     // debugPrint(
+  //     //     "DEBUG in FirebaseAuthService at signInByEmailPassword. \n  S${_firebaseAuth.currentUser?.emailVerified}");
+  //     UserCredential authCredential = await _firebaseAuth
+  //         .signInWithEmailAndPassword(email: email, password: password);
+  //     return _userFromFirebase(authCredential.user);
+  //   } catch (e) {
+  //     debugPrint("Error in services, signInWithEmailAndPassword: [$e]");
+  //     return null;
+  //   }
+  // }
 
   // @override
   // bool? isVerified() {

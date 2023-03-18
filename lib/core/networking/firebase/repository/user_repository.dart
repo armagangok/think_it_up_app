@@ -1,5 +1,5 @@
 
-import '../locator/locator.dart';
+import '../../../../injection/injection_container.dart';
 import '../models/user_model.dart';
 import '../services/auth_base.dart';
 import '../services/current_service.dart';
@@ -8,8 +8,10 @@ import '../services/dummy_service.dart';
 enum AppMode { debug, release }
 
 class UserRepository implements AuthBase {
-  final CurrentService _authService = locator<CurrentService>();
-  final DummyService _dummyAuthService = locator<DummyService>();
+  final CurrentService _authService = getit<CurrentService>();
+  final DummyService _dummyAuthService = getit<DummyService>();
+
+  
 
   AppMode appMode = AppMode.release;
 
@@ -49,17 +51,17 @@ class UserRepository implements AuthBase {
     }
   }
 
-  @override
-  Future<AppUser?> signInByEmailPassword(
-    String email,
-    String password,
-  ) async {
-    if (appMode == AppMode.debug) {
-      return await _dummyAuthService.signInByEmailPassword(email, password);
-    } else {
-      return await _authService.signInByEmailPassword(email, password);
-    }
-  }
+  // @override
+  // Future<AppUser?> signInByEmailPassword(
+  //   String email,
+  //   String password,
+  // ) async {
+  //   if (appMode == AppMode.debug) {
+  //     return await _dummyAuthService.signInByEmailPassword(email, password);
+  //   } else {
+  //     return await _authService.signInByEmailPassword(email, password);
+  //   }
+  // }
 
   @override
   Future<AppUser?> createUserByEmailPassword(AppUser user) async {
@@ -100,11 +102,11 @@ class UserRepository implements AuthBase {
   }
 
   @override
-  Future<void> setLikedPostID(AppUser user, String likedPosts) async{
-        if (appMode == AppMode.debug) {
+  Future<void> setLikedPostID(AppUser user, String likedPosts) async {
+    if (appMode == AppMode.debug) {
       await _dummyAuthService.setLikedPostID(user, likedPosts);
     } else {
-      await _authService.setLikedPostID(user,likedPosts);
+      await _authService.setLikedPostID(user, likedPosts);
     }
   }
 }

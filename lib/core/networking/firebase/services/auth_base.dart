@@ -6,7 +6,7 @@ abstract class AuthBase {
   Future<AppUser?> signinAnonim();
   Future<bool> signOut();
   Future<AppUser?> signInByGoogle();
-  Future<AppUser?> signInByEmailPassword(String email, String password);
+  // Future<AppUser?> signInByEmailPassword(String email, String password);
   Future<AppUser?> createUserByEmailPassword(AppUser appUser);
   // bool? isVerified();
   // Future<void> verifyMail();

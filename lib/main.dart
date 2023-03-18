@@ -1,9 +1,10 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import './core/theme/theme.dart';
-import './global/initilization/initapp.dart';
-import './screens/root.dart';
+import 'core/theme/theme.dart';
+import 'features/auth/presentation/pages/login/login.dart';
+import 'global/initilization/initapp.dart';
 
 void main() async => await initApp();
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomTheme().darkTheme,
-      home: const RootView(),
+      home: const LoginPage(),
     );
   }
 }
