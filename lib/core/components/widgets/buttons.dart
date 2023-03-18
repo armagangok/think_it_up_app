@@ -57,7 +57,7 @@ class CustomElevatedButton extends StatelessWidget {
             ? const Center(child: CupertinoActivityIndicator())
             : Text(
                 text,
-                style: context.bodyMedium,
+                style: context.bodyLarge,
               ),
       ),
     );

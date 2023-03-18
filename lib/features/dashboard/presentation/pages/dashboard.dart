@@ -8,14 +8,14 @@ import '../../data/view-models/firestore_viewmodel.dart';
 import '../widgets/comment_widget.dart';
 import '../widgets/question_widget.dart';
 
-class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({Key? key}) : super(key: key);
+class DashBoardPage extends StatefulWidget {
+  const DashBoardPage({Key? key}) : super(key: key);
 
   @override
-  State<DashBoardScreen> createState() => _DashBoardScreenState();
+  State<DashBoardPage> createState() => _DashBoardPageState();
 }
 
-class _DashBoardScreenState extends State<DashBoardScreen> {
+class _DashBoardPageState extends State<DashBoardPage> {
   @override
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");

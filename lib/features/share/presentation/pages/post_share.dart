@@ -7,8 +7,8 @@ import '../../../../core/components/alignment/alignment.dart';
 import '../../../dashboard/presentation/widgets/question_widget.dart';
 import '../widgets/post_sharing_widget.dart';
 
-class SharePostScreen extends StatelessWidget {
-  const SharePostScreen({Key? key}) : super(key: key);
+class SharePostPage extends StatelessWidget {
+  const SharePostPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

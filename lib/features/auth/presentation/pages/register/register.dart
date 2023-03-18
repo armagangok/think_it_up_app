@@ -3,18 +3,17 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/export/core_export.dart';
-import '../../viewmodel/auth_viewmodel.dart';
 import '../../widgets/dialogs.dart';
 import '../../widgets/text_form_field.dart';
 
-class SignupView extends StatefulWidget {
-  const SignupView({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<SignupView> createState() => _SignupViewState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SignupViewState extends State<SignupView> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");

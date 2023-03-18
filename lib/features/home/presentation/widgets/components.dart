@@ -34,10 +34,10 @@ class TabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TabBarView(
       children: [
-        WinnerScreen(),
-        SharePostScreen(),
-        DashBoardScreen(),
-        SettingScreen(),
+        WinnerPage(),
+        SharePostPage(),
+        DashBoardPage(),
+        SettingPage(),
       ],
     );
   }

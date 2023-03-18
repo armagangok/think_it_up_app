@@ -1,20 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/injection/injection_container.dart';
 
-import '../../../../core/components/alignment/alignment.dart';
-
-import '../../../../global/local/view-models/notification_provider.dart';
-import '../../../../global/local/view-models/theme_provider.dart';
-
+import '/injection/injection_container.dart';
+import '/core/components/alignment/alignment.dart';
+import '/global/local/view-models/notification_provider.dart';
+import '/global/local/view-models/theme_provider.dart';
 import '../../../auth/presentation/viewmodel/auth_viewmodel.dart';
 import '../../../winners/presentation/widgets/top_bar.dart';
 import '../widgets/stacks.dart';
 import '../widgets/switch_widget.dart';
 
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+class SettingPage extends StatelessWidget {
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

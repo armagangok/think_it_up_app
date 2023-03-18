@@ -46,7 +46,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SignupView(),
+                    builder: (context) => const RegisterPage(),
                   ),
                 ),
                 child: Row(

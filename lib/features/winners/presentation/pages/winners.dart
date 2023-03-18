@@ -2,14 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-
 import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/text_widgets.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/winner_widget.dart';
 
-class WinnerScreen extends StatelessWidget {
-  const WinnerScreen({Key? key}) : super(key: key);
+class WinnerPage extends StatelessWidget {
+  const WinnerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
