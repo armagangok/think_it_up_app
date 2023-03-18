@@ -1,30 +1,23 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/export/core_export.dart';
-import '../../widgets/dialogs.dart';
 import '../../widgets/text_form_field.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends ConsumerState<RegisterPage> {
+  final _username = TextEditingController();
+  final _email = TextEditingController(text: "1armagangok@gmail.com");
+  final _password1 = TextEditingController(text: "1234567");
+  final _password2 = TextEditingController(text: "1234567");
   @override
   Widget build(BuildContext context) {
-    // final AuthViewModel _userViewModel = Provider.of<AuthViewModel>(context);
-    final TextEditingController _username = TextEditingController();
-    final TextEditingController _email =
-        TextEditingController(text: "1armagangok@gmail.com");
-    final TextEditingController _password1 =
-        TextEditingController(text: "1234567");
-    final TextEditingController _password2 =
-        TextEditingController(text: "1234567");
-
     return AuthWrapper(
       appBar: PreferredSize(
         child: AppBar(backgroundColor: Colors.black),
@@ -50,6 +43,10 @@ class _RegisterPageState extends State<RegisterPage> {
               AuthTextField(controller: _password2, isObscure: true),
               const SizedBox(height: 40),
               CustomElevatedButton(
+                isLoading: ref.watch(authViewModel).registerState ==
+                        const StateResult.loading()
+                    ? true
+                    : false,
                 text: "Signup",
                 onPressed: () async {
                   AppUser user = AppUser(
@@ -57,19 +54,30 @@ class _RegisterPageState extends State<RegisterPage> {
                     email: _email.text,
                     userName: _username.text,
                     password: _password1.text,
+                    passwordRepeat: _password2.text,
                     likedPostsIDS: [],
                   );
 
-                  try {
-                    // AppUser? response =
-                    //     await _userViewModel.createUserByEmailPassword(user);
+                  await ref.read(authViewModel).register(userModel: user);
 
-                    // response == null
-                    //     ? dialog(context, ConstText().error)
-                    //     : dialog(context, ConstText().verification);
-                  } catch (e) {
-                    dialog(context, "$e");
-                  }
+                  ref.watch(authViewModel).registerState.when(
+                        initial: () {},
+                        loading: () {},
+                        completed: (data) {
+                          context.showSnackBar(
+                            SnackBar(
+                              content: Text("$data"),
+                            ),
+                          );
+                        },
+                        failed: (failure) {
+                          context.showSnackBar(
+                            SnackBar(
+                              content: Text(failure.message),
+                            ),
+                          );
+                        },
+                      );
                 },
               ),
               const SizedBox20H(),

@@ -1,6 +1,6 @@
-import '../../../../core/networking/firebase/models/user_model.dart';
-import '../../data/models/user_login_model.dart';
+import '../../../../core/export/core_export.dart';
 
 abstract class AuthRepositoryContract {
-  Future<AppUser?> login({required UserLoginModel userModel});
+  Future<Result<AppUser?>> login({required UserLoginModel userModel});
+  Future<Result<AppUser?>> register({required AppUser userModel});
 }

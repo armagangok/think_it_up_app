@@ -2,14 +2,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '/core/networking/firebase/models/user_model.dart';
-import '/features/auth/data/contract/login_datasource_contract.dart';
-import '/features/auth/data/models/user_login_model.dart';
+import '../../../../core/export/core_export.dart';
 
-class LoginDataSource implements LoginDataSourceContract {
+class AuthDataSource implements AuthDataSourceContract {
   late final FirebaseAuth _firebaseAuth;
   late final FirebaseFirestore _firestore;
-  LoginDataSource({
+  AuthDataSource({
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firebaseFirestore,
   }) {
@@ -36,10 +34,29 @@ class LoginDataSource implements LoginDataSourceContract {
       return AppUser(
         email: userFromFirebase["email"],
         password: userFromFirebase["password"],
+        passwordRepeat: "",
         id: user.uid,
         userName: userFromFirebase["userName"],
         likedPostsIDS: userFromFirebase["likedPosts"],
       );
     }
+  }
+
+  @override
+  Future<AppUser?> register({required AppUser user}) async {
+    UserCredential authCredential =
+        await _firebaseAuth.createUserWithEmailAndPassword(
+      email: user.email,
+      password: user.password,
+    );
+
+    user.setID = authCredential.user!.uid;
+
+    await _firestore
+        .collection("users")
+        .doc(authCredential.user!.uid)
+        .set(user.toMap());
+
+    return _userFromFirebase(authCredential.user);
   }
 }

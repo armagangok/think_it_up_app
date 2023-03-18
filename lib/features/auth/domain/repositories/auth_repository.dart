@@ -1,25 +1,33 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import '/core/networking/firebase/models/user_model.dart';
-import '/features/auth/data/contract/login_datasource_contract.dart';
-import '/features/auth/data/models/user_login_model.dart';
-import '/features/auth/domain/contract/auth_repository.dart';
+import 'package:think_it_up_app/core/export/core_export.dart';
 
 class AuthRepository implements AuthRepositoryContract {
-  late final LoginDataSourceContract _loginDataSource;
+  late final AuthDataSourceContract _loginDataSource;
 
   @override
   AuthRepository({
-    required LoginDataSourceContract loginDataSource,
+    required AuthDataSourceContract loginDataSource,
   }) {
     _loginDataSource = loginDataSource;
   }
 
   @override
-  Future<AppUser?> login({required UserLoginModel userModel}) async {
+  Future<Result<AppUser?>> login({required UserLoginModel userModel}) async {
     try {
-      return await _loginDataSource.login(userModel: userModel);
+      var response = await _loginDataSource.login(userModel: userModel);
+      return Result.success(response);
     } catch (e) {
-      return null;
+      return Result.failure(CustomFailure(message: "$e"));
+    }
+  }
+
+  @override
+  Future<Result<AppUser?>> register({required AppUser userModel}) async {
+    try {
+      var response = await _loginDataSource.register(user: userModel);
+      return Result.success(response);
+    } catch (e) {
+      return Result.failure(CustomFailure(message: "$e"));
     }
   }
 }

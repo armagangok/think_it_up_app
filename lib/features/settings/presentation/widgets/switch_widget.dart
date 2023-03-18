@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
-import 'package:think_it_up_app/global/local/base/switch_base.dart';
+
+import '/core/local/base/switch_base.dart';
 
 class SwitchWidget extends StatelessWidget {
   final BaseSwitchVModel switchProvider;

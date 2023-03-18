@@ -1,9 +1,9 @@
 class AppUser {
-  String? id;
-  String? email;
-  String? userName;
-  String? password;
-  String? passwordRepeat;
+  String id;
+  String email;
+  String userName;
+  String password;
+  String passwordRepeat;
   List<dynamic> likedPostsIDS;
 
   AppUser({
@@ -11,11 +11,11 @@ class AppUser {
     required this.email,
     required this.userName,
     required this.password,
-    this.passwordRepeat,
+    required this.passwordRepeat,
     required this.likedPostsIDS,
   });
 
-  set setID(String? uid) => id = uid;
+  set setID(String uid) => id = uid;
 
   Map<String, dynamic> toMap() {
     return {
