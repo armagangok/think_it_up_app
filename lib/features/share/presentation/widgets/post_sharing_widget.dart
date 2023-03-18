@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/export/core_export.dart';
 import '../../../../injection/injection_container.dart';
-import '../../../dashboard/data/view-models/firestore_viewmodel.dart';
+import '../../../dashboard/data/services/base_database_service.dart';
 
-class PostSharingWidget extends StatelessWidget {
+class PostSharingWidget extends StatefulWidget {
   const PostSharingWidget({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<PostSharingWidget> createState() => _PostSharingWidgetState();
+}
+
+class _PostSharingWidgetState extends State<PostSharingWidget> {
+  final userViewModel = getit.get<AuthViewModel>();
+  final _firebase = getit.get<BaseDataService>();
+  @override
   Widget build(BuildContext context) {
-    final userViewModel = getit.get<AuthViewModel>();
-    final _firebase = getit.get<FirestoreVModel>();
     final TextEditingController commentController = TextEditingController();
 
     return SizedBox(

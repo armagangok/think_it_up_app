@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import './base_database_service.dart';
 import '../models/post_model.dart';
 
-class FirestoreService implements BaseDatabaseService {
+class FirestoreService implements BaseDataService {
   FirestoreService._private();
   static final FirestoreService _instance = FirestoreService._private();
   factory FirestoreService() => _instance;

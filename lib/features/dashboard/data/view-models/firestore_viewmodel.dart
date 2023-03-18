@@ -4,7 +4,7 @@ import '../models/post_model.dart';
 import '../services/base_database_service.dart';
 import '../services/firestore_service.dart';
 
-class FirestoreVModel with ChangeNotifier implements BaseDatabaseService {
+class FirestoreVModel with ChangeNotifier implements BaseDataService {
   FirestoreVModel._private();
   static final FirestoreVModel _instance = FirestoreVModel._private();
   factory FirestoreVModel() => _instance;

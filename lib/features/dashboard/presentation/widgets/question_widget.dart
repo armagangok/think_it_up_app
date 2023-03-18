@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +5,13 @@ import 'package:think_it_up_app/injection/injection_container.dart';
 
 import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/text_widgets.dart';
-import '../../data/view-models/firestore_viewmodel.dart';
+import '../../data/services/base_database_service.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final FirestoreVModel _firestore = getit.get<FirestoreVModel>();
+    final BaseDataService _firestore = getit.get<BaseDataService>();
     return FutureBuilder(
       future: _firestore.getQuestion(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {

@@ -1,6 +1,6 @@
 import '../models/post_model.dart';
 
-abstract class BaseDatabaseService {
+abstract class BaseDataService {
   Future<List<PostModel>> getPosts();
 
   Future<void> sharePost(PostModel postModel);

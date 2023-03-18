@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/features/dashboard/data/models/post_model.dart';
+import 'package:think_it_up_app/features/dashboard/data/services/base_database_service.dart';
 
 import '../../../../core/export/core_export.dart';
 import '../../../../injection/injection_container.dart';
@@ -14,9 +16,16 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class _DashBoardPageState extends State<DashBoardPage> {
+  final _firestore = getit.get<BaseDataService>();
+  List<PostModel> postList = [];
+  @override
+  void initState() {
+    _firestore.getPosts().then((value) => postList = value);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _firestore = getit.get<FirestoreVModel>();
     return Wrapper(
       topBarHeight: context.width(0.235),
       topBar: const QuestionWidget(),
@@ -25,15 +34,16 @@ class _DashBoardPageState extends State<DashBoardPage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                itemCount: _firestore.posts.length,
+                itemCount: postList.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CommentWidget(
-                        setstate: () {
-                          setState(() {});
-                        },
-                        post: _firestore.posts[index]),
+                      setstate: () {
+                        setState(() {});
+                      },
+                      post: postList[index],
+                    ),
                   );
                 },
               );

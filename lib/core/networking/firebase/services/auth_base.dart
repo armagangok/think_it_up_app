@@ -12,6 +12,4 @@ abstract class AuthBase {
   // Future<void> verifyMail();
   bool? isAnonim();
   Future<void> setLikedPostID(AppUser user, String likedPost);
-  
-
 }

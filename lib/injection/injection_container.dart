@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import '../features/dashboard/data/services/base_database_service.dart';
+import '../features/dashboard/data/view-models/firestore_viewmodel.dart';
 
 import '../core/export/core_export.dart';
 
@@ -37,7 +39,9 @@ void setupDataSources() {
 }
 
 void setupRepositories() {
-  getit.registerLazySingleton<UserRepository>(() => UserRepository());
+  getit.registerLazySingleton<UserRepository>(
+    () => UserRepository(),
+  );
   getit.registerLazySingleton<AuthRepositoryContract>(
     () => AuthRepository(
       loginDataSource: getit(),
@@ -50,6 +54,10 @@ void setupViewModels() {
     () => AuthViewModel(
       authUseCase: getit(),
     ),
+  );
+
+  getit.registerLazySingleton<BaseDataService>(
+    () => FirestoreVModel(),
   );
 }
 

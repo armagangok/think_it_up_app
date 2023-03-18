@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/features/dashboard/data/services/base_database_service.dart';
 
 import '../../../../injection/injection_container.dart';
 import '../../../auth/presentation/viewmodel/auth_viewmodel.dart';
 import '../../data/models/post_model.dart';
-import '../../data/view-models/firestore_viewmodel.dart';
 import './share_button.dart';
 import '../../../../core/components/alignment/alignment.dart';
 import '../../../../core/components/widgets/icons.dart';
@@ -13,7 +11,7 @@ import '../../../../core/extensions/context_extension.dart';
 
 import '../../../../global/constants/constants.dart';
 
-class CommentWidget extends StatelessWidget {
+class CommentWidget extends StatefulWidget {
   final PostModel post;
 
   const CommentWidget({
@@ -25,15 +23,16 @@ class CommentWidget extends StatelessWidget {
   final void Function()? setstate;
 
   @override
+  State<CommentWidget> createState() => _CommentWidgetState();
+}
+
+class _CommentWidgetState extends State<CommentWidget> {
+  final _firebase = getit.get<AuthViewModel>();
+  final _firestore = getit.get<BaseDataService>();
+  @override
   Widget build(BuildContext context) {
-    final _firebase = getit.get<AuthViewModel>();
-    final _firestore = getit.get<FirestoreVModel>();
-
-    final PostModel _post = post;
-    // final AppUser _user = _firebase.user!;
+    final PostModel _post = widget.post;
     final TextTheme textTheme = context.theme.textTheme;
-
-    // bool checkID = _checkPostID(_post.postID, _user.id!);
 
     return CustomContainer(
       color: kColor.bottomSheet,
@@ -41,9 +40,15 @@ class CommentWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("@" + _post.userName, style: textTheme.bodyMedium),
+            Text(
+              "@" + _post.userName,
+              style: textTheme.bodyMedium,
+            ),
             const SizedBox10H(),
-            Text(_post.comment, style: textTheme.bodyLarge),
+            Text(
+              _post.comment,
+              style: textTheme.bodyLarge,
+            ),
             const SizedBox10H(),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -59,7 +64,7 @@ class CommentWidget extends StatelessWidget {
                           onPressed: () async {
                             await _firestore
                                 .updatePost(_post)
-                                .then((value) => setstate!());
+                                .then((value) => widget.setstate!());
                           },
                         ),
                         Text("${_post.likes}"),
