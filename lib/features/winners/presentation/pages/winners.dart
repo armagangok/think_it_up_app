@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/alignment/alignment.dart';
@@ -12,7 +10,6 @@ class WinnerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Wrapper(
       topBar: TopBar(
         text: "Winners",

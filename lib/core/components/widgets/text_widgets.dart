@@ -15,7 +15,6 @@ class Text24B extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: context.bodySmall,
@@ -33,7 +32,6 @@ class AutoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return AutoSizeText(
       text,
       maxLines: 1,
@@ -54,7 +52,6 @@ class Text13 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: context.bodyMedium,
@@ -72,7 +69,6 @@ class Text16 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Text(
       text,
       style: context.bodyMedium,

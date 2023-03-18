@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:think_it_up_app/injection/injection_container.dart';
+import 'package:think_it_up_app/injection/injection_service.dart';
 
 import '../../../../core/export/core_export.dart';
 
@@ -25,8 +26,10 @@ class AuthViewModel with ChangeNotifier {
 
     try {
       var response = await _authUseCase.login(userModel: userModel);
+
       loginState = StateResult.completed(response);
       notifyListeners();
+       navigator.navigaToClear(path: KRoute.homePage);
     } catch (e) {
       loginState = StateResult.failed(CustomFailure(message: "$e"));
       notifyListeners();

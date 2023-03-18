@@ -8,7 +8,6 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const DefaultTabController(
       length: 4,
       child: SafeArea(

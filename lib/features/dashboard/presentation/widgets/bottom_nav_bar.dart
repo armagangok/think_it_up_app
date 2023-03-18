@@ -10,7 +10,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
- //   log(context.widget.runtimeType.toString() + "build run");
+ //   
 //     return Column(
 //       mainAxisSize: MainAxisSize.min,
 //       children: [

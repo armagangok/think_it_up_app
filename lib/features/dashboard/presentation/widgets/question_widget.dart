@@ -13,7 +13,6 @@ class QuestionWidget extends StatelessWidget {
   const QuestionWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     final FirestoreVModel _firestore = getit.get<FirestoreVModel>();
     return FutureBuilder(
       future: _firestore.getQuestion(),
@@ -41,7 +40,6 @@ class QuestionTextStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return CustomContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

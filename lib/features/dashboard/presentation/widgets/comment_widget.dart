@@ -26,7 +26,6 @@ class CommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     final _firebase = getit.get<AuthViewModel>();
     final _firestore = getit.get<FirestoreVModel>();
 

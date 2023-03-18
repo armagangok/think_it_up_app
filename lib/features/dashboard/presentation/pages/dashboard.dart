@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/export/core_export.dart';
@@ -18,7 +16,6 @@ class DashBoardPage extends StatefulWidget {
 class _DashBoardPageState extends State<DashBoardPage> {
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     final _firestore = getit.get<FirestoreVModel>();
     return Wrapper(
       topBarHeight: context.width(0.235),
@@ -53,7 +50,6 @@ class SizedBox002 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(height: context.height(0.02));
   }
 }

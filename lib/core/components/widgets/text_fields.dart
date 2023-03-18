@@ -73,7 +73,6 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Icon(
       widget.isObscure
           ? _passwordVisible

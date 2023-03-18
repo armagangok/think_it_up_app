@@ -9,7 +9,6 @@ class TimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Row(
       children: const [
         TimeContainer(text: "22" "h"),
@@ -32,7 +31,6 @@ class TimeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return Text24B(text: text);
   }
 }

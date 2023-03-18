@@ -16,7 +16,6 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     // final AuthViewModel _userViewModel = Provider.of<AuthViewModel>(context);
     final TextEditingController _username = TextEditingController();
     final TextEditingController _email =

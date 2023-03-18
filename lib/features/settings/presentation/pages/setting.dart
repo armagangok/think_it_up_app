@@ -16,7 +16,6 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     final _authViewModel = getit.get<AuthViewModel>();
 
     return Wrapper(

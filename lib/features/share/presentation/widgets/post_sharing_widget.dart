@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/export/core_export.dart';
 import '../../../../injection/injection_container.dart';
-import '../../../auth/presentation/viewmodel/auth_viewmodel.dart';
 import '../../../dashboard/data/view-models/firestore_viewmodel.dart';
 
 class PostSharingWidget extends StatelessWidget {
@@ -14,7 +11,6 @@ class PostSharingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     final userViewModel = getit.get<AuthViewModel>();
     final _firebase = getit.get<FirestoreVModel>();
     final TextEditingController commentController = TextEditingController();

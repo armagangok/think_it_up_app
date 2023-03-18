@@ -24,3 +24,7 @@ export '../../features/auth/domain/usecases/auth_usecase.dart';
 export '../../features/auth/presentation/viewmodel/auth_viewmodel.dart';
 export '../../features/dashboard/data/services/firestore_service.dart';
 export '../extensions/context_extension.dart';
+export '/core/navigation/constant/routes.dart';
+export '/core/navigation/navigation_route.dart';
+
+export '/core/theme/theme.dart';

@@ -10,7 +10,6 @@ class ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return const CustomIconButton(
       icon: Icon(
         CupertinoIcons.share,
