@@ -1,6 +1,8 @@
-import 'dart:developer';
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:think_it_up_app/core/extensions/context_extension.dart';
 
 class CustomIconButton extends StatelessWidget {
   final Widget icon;
@@ -16,7 +18,6 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return IconButton(
       onPressed: () => onPressed!(),
       icon: icon,
@@ -29,19 +30,20 @@ class CustomIconButton extends StatelessWidget {
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final void Function() onPressed;
+  final bool isLoading;
 
   const CustomElevatedButton({
     Key? key,
     required this.text,
     required this.onPressed,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(
-      width: MediaQuery.of(context).size.longestSide,
-      height: 30,
+      width: double.infinity,
+      height: 40,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -51,10 +53,12 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.headline3,
-        ),
+        child: isLoading
+            ? const Center(child: CupertinoActivityIndicator())
+            : Text(
+                text,
+                style: context.bodyMedium,
+              ),
       ),
     );
   }

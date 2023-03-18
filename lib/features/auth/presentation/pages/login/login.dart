@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:think_it_up_app/core/export/core_export.dart';
-import 'package:think_it_up_app/injection/injection_container.dart';
+
+import '../../../../../core/export/core_export.dart';
+import '../../../../../injection/injection_container.dart';
 
 import '../../viewmodel/auth_viewmodel.dart';
 import '../../widgets/text_form_field.dart';
@@ -16,7 +17,7 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class _LoginPageState extends ConsumerState<LoginPage> {
   final _emailLogin = TextEditingController(text: "1armagangok@gmail.com");
-  final _passwordLogin = TextEditingController(text: "1234567");
+  final _passwordController = TextEditingController(text: "1234567");
 
   final AuthViewModel _userViewModel = getit.get<AuthViewModel>();
 
@@ -34,23 +35,32 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               AuthTextField(controller: _emailLogin),
               const SizedBox20H(),
               const Text13(text: "password"),
-              AuthTextField(controller: _passwordLogin, isObscure: true),
+              AuthTextField(
+                controller: _passwordController,
+                isObscure: true,
+              ),
               const SizedBox(height: 40),
-              _loginButton(_emailLogin, _passwordLogin, _userViewModel),
+              _loginButton(),
               const SizedBox(height: 40),
               InkWell(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SignupView()),
+                  MaterialPageRoute(
+                    builder: (context) => const SignupView(),
+                  ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text16(text: "New to  "),
-                    Text("Think It Up ?  ",
-                        style: Theme.of(context).textTheme.displaySmall),
-                    Text("SignUp",
-                        style: Theme.of(context).textTheme.displayMedium),
+                    Text(
+                      "Think It Up ?  ",
+                      style: context.bodyLarge,
+                    ),
+                    Text(
+                      "SignUp",
+                      style: context.bodyMedium,
+                    ),
                   ],
                 ),
               ),
@@ -61,16 +71,37 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-  Widget _loginButton(TextEditingController _emailLogin,
-      TextEditingController _passwordLogin, AuthViewModel _userViewModel) {
+  Widget _loginButton() {
     return CustomElevatedButton(
+      isLoading:
+          ref.watch(authViewModel).loginState == const StateResult.loading()
+              ? true
+              : false,
       text: "Login",
       onPressed: () async {
         var _userModel = UserLoginModel(
           email: _emailLogin.text,
-          password: _passwordLogin.text,
+          password: _passwordController.text,
         );
         await _userViewModel.login(userModel: _userModel);
+        ref.watch(authViewModel).loginState.when(
+              initial: () {},
+              loading: () {},
+              completed: (data) {
+                context.showSnackBar(
+                  const SnackBar(
+                    content: Text("Login successful"),
+                  ),
+                );
+              },
+              failed: (failure) {
+                context.showSnackBar(
+                  SnackBar(
+                    content: Text(failure.message),
+                  ),
+                );
+              },
+            );
       },
     );
   }

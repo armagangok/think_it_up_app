@@ -29,7 +29,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   Widget build(BuildContext context) {
     log(context.widget.runtimeType.toString() + "build run");
     return SizedBox(
-      height: 30,
+      height: 40,
       child: TextFormField(
         initialValue: widget.initialValue,
         controller: widget.controller,

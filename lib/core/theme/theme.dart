@@ -51,23 +51,61 @@ class CustomTheme {
 
     /**TEXT THEME */
     textTheme: TextTheme(
-      caption: GoogleFonts.aleo(
+      bodySmall: GoogleFonts.poppins(
+        fontSize: 12,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w500,
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 14,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w500,
+      ),
+      bodyLarge: GoogleFonts.poppins(
+        fontSize: 16,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w400,
+      ),
+      displayLarge: GoogleFonts.poppins(
+        fontSize: 52,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.bold,
+      ),
+      labelLarge: GoogleFonts.poppins(
+        fontSize: 15,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w600,
+      ),
+      displayMedium: GoogleFonts.poppins(
         fontSize: 24,
-        color: Colors.white,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w600,
       ),
-      headline1: GoogleFonts.aleo(
-        fontSize: 36,
-        color: Colors.white,
+      displaySmall: GoogleFonts.poppins(
+        fontSize: 22,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w800,
       ),
-      headline2: GoogleFonts.aleo(
-        fontSize: 16,
-        color: Colors.amber[700],
+      headlineMedium: GoogleFonts.poppins(
+        fontSize: 15,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w600,
       ),
-      headline3: GoogleFonts.aleo(
-        fontSize: 16,
+      headlineSmall: GoogleFonts.poppins(
+        fontSize: 22,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w600,
       ),
-      bodyText1: GoogleFonts.lato(fontSize: 13, color: const Color(0XFFE2E2E2)),
-      bodyText2: GoogleFonts.lato(fontSize: 16, color: const Color(0XFFE2E2E2)),
+      titleLarge: GoogleFonts.poppins(
+        fontSize: 20,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w500,
+      ),
+      titleMedium: GoogleFonts.poppins(
+        fontSize: 18,
+        color: const Color.fromARGB(255, 204, 204, 204),
+        fontWeight: FontWeight.w700,
+      ),
     ),
   );
 }

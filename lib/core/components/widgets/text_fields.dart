@@ -33,7 +33,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    log(context.widget.runtimeType.toString() + "build run");
     return TextFormField(
       //initialValue: widget.initialValue,
       controller: widget.controller,
