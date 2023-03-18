@@ -19,7 +19,6 @@ class QuestionWidget extends ConsumerWidget {
         );
       },
       completed: (data) {
-        print(data);
         return QuestionTextStack(data: data);
       },
       failed: (failure) {
