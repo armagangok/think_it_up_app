@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: CustomTheme().darkTheme,
         home: const LoginPage(),
-        initialRoute: KRoute.loginPage,
+        initialRoute: KRoute.rootPage,
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         navigatorKey: NavigationService.instance.navigatorKey,
       ),

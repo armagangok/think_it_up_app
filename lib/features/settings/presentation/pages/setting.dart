@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/local/view-models/notification_provider.dart';
-import '../../../../core/local/view-models/theme_provider.dart';
-import '/injection/injection_container.dart';
-import '/core/components/alignment/alignment.dart';
-
-import '../../../auth/presentation/viewmodel/auth_viewmodel.dart';
+import '../../../../core/export/core_export.dart';
 import '../../../winners/presentation/widgets/top_bar.dart';
 import '../widgets/stacks.dart';
 import '../widgets/switch_widget.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerStatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final _authViewModel = getit.get<AuthViewModel>();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SettingPageState();
+}
 
+class _SettingPageState extends ConsumerState<SettingPage> {
+  final _authViewModel = getit.get<AuthViewModel>();
+  @override
+  Widget build(BuildContext context) {
     return Wrapper(
       topBar: const TopBar(text: "Settings"),
       body: SizedBox(
@@ -69,14 +69,39 @@ class SettingPage extends StatelessWidget {
                 text: 'Terms & Co',
                 onPressed: () {},
               ),
-              SettingItem(
-                text: 'Logout',
-                onPressed: () async => await _authViewModel.signout(),
-              ),
+              _logoutButton(context),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget _logoutButton(BuildContext context) => SettingItem(
+        text: 'Logout',
+        onPressed: () async {
+          await _authViewModel.logout(
+            ref.read(homeViewModel),
+          );
+
+          ref.watch(authViewModel).logoutState.when(
+                initial: () {},
+                loading: () {},
+                completed: (data) {
+                  context.showSnackBar(
+                    const SnackBar(
+                      content: Text("Logout succesfull"),
+                    ),
+                  );
+                },
+                failed: (failure) {
+                  context.showSnackBar(
+                    SnackBar(
+                      content: Text(failure.message),
+                    ),
+                  );
+                },
+              );
+        },
+      );
 }

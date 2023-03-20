@@ -30,4 +30,14 @@ class AuthRepository implements AuthRepositoryContract {
       return Result.failure(CustomFailure(message: "$e"));
     }
   }
+
+  @override
+  Future<Result> logout() async {
+    try {
+      await _loginDataSource.logout();
+      return const Result.success(true);
+    } catch (e) {
+      return Result.failure(CustomFailure(message: "$e"));
+    }
+  }
 }

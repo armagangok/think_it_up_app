@@ -16,5 +16,8 @@ class AuthUseCase {
     return response;
   }
 
-
+  Future<Result> logout() async {
+    var response = await _authRepository.logout();
+    return response;
+  }
 }

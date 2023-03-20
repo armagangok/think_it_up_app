@@ -17,12 +17,17 @@ class AuthDataSource implements AuthDataSourceContract {
 
   @override
   Future<AppUser?> login({required UserLoginModel userModel}) async {
-    UserCredential authCredential =
-        await _firebaseAuth.signInWithEmailAndPassword(
-      email: userModel.email,
-      password: userModel.password,
-    );
-    return await _userFromFirebase(authCredential.user);
+    if (_firebaseAuth.currentUser != null) {
+      return await _userFromFirebase(_firebaseAuth.currentUser!);
+    } else {
+      UserCredential authCredential =
+          await _firebaseAuth.signInWithEmailAndPassword(
+        email: userModel.email,
+        password: userModel.password,
+      );
+      await _userFromFirebase(authCredential.user);
+    }
+    return null;
   }
 
   Future<AppUser?> _userFromFirebase(User? user) async {
@@ -58,5 +63,10 @@ class AuthDataSource implements AuthDataSourceContract {
         .set(user.toMap());
 
     return _userFromFirebase(authCredential.user);
+  }
+
+  @override
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
   }
 }

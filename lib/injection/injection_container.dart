@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
+
 import '../core/export/core_export.dart';
 
 final GetIt getit = GetIt.asNewInstance();
@@ -28,6 +29,13 @@ void setupDataSources() {
   getit.registerLazySingleton<DashboardDataSourceContract>(
     () => DashboardDataSource(),
   );
+
+  getit.registerLazySingleton<HomeDataSourceContract>(
+    () => HomeDataSource(
+      firebaseAuth: FirebaseAuth.instance,
+      firebaseFirestore: FirebaseFirestore.instance,
+    ),
+  );
 }
 
 void setupRepositories() {
@@ -42,6 +50,12 @@ void setupRepositories() {
       dashboardDataSource: getit(),
     ),
   );
+
+  getit.registerLazySingleton<HomeRepository>(
+    () => HomeRepository(
+      homeDataSource: getit(),
+    ),
+  );
 }
 
 void setupViewModels() {
@@ -54,12 +68,22 @@ void setupViewModels() {
   getit.registerLazySingleton<DashboardViewModel>(
     () => DashboardViewModel(dashboardUseCase: getit()),
   );
+
+  getit.registerLazySingleton<HomeViewModel>(
+    () => HomeViewModel(homeUseCase: getit()),
+  );
 }
 
 void setupUseCases() {
   getit.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
       authRepository: getit(),
+    ),
+  );
+
+  getit.registerLazySingleton<HomeUseCase>(
+    () => HomeUseCase(
+      homeRepository: getit(),
     ),
   );
 

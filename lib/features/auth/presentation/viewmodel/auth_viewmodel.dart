@@ -17,11 +17,13 @@ class AuthViewModel with ChangeNotifier {
     _authUseCase = authUseCase;
   }
 
-  StateResult<AppUser?> loginState = const StateResult.initial();
+  StateResult loginState = const StateResult.initial();
   StateResult registerState = const StateResult.initial();
+  StateResult logoutState = const StateResult.initial();
 
   Future<void> login({required UserLoginModel userModel}) async {
     loginState = const StateResult.loading();
+    notifyListeners();
 
     var response = await _authUseCase.login(userModel: userModel);
 
@@ -57,7 +59,21 @@ class AuthViewModel with ChangeNotifier {
     );
   }
 
-  Future<void> signout() async {
-    try {} catch (e) {}
+  Future<void> logout(HomeViewModel _homeViewModel) async {
+    logoutState = const StateResult.loading();
+    notifyListeners();
+
+    var response = await _authUseCase.logout();
+
+    response.when(
+      success: (data) async {
+        logoutState = StateResult.completed(data);
+        notifyListeners();
+        await _homeViewModel.checkCurrentUser();
+      },
+      failure: (failure) {
+        logoutState = StateResult.failed(failure);
+      },
+    );
   }
 }

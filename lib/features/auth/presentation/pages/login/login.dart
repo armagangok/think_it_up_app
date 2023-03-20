@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/export/core_export.dart';
-import '../../../../../injection/injection_container.dart';
 
-import '../../viewmodel/auth_viewmodel.dart';
 import '../../widgets/text_form_field.dart';
 import '../register/register.dart';
 
@@ -16,6 +14,11 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   final _emailLogin = TextEditingController(text: "1armagangok@gmail.com");
   final _passwordController = TextEditingController(text: "1234567");
 

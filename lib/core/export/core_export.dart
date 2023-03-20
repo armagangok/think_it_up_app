@@ -1,4 +1,5 @@
 export 'package:auto_size_text/auto_size_text.dart';
+export 'package:think_it_up_app/core/constants/constants.dart';
 
 export '/core/components/alignment/alignment.dart';
 export '/core/components/stacks/stacks.dart';
@@ -15,7 +16,6 @@ export '/core/navigation/contract/base_navigation_service.dart';
 export '/core/navigation/navigation_route.dart';
 export '/core/navigation/navigation_service.dart';
 export '/core/theme/theme.dart';
-export '/features/auth/data/contract/login_datasource_contract.dart';
 export '/features/auth/data/datasources/auth_datasource.dart';
 export '/features/auth/data/models/in_app_user_model.dart';
 export '/features/auth/data/models/user_login_model.dart';
@@ -30,8 +30,14 @@ export '/features/dashboard/data/models/post_model.dart';
 export '/features/dashboard/domain/repositories/dashboard_repository.dart';
 export '/features/dashboard/domain/usecases/dashboard_usecase.dart';
 export '/features/dashboard/presentation/viewmodels/dashboard_viewmodel.dart';
-
 export '/injection/injection_container.dart';
+export '../../features/auth/data/contract/auth_datasource_contract.dart';
+export '../../features/home/data/contract/home_data_source.dart';
+export '../../features/home/data/datasources/home_data_source.dart';
+export '../../features/home/domain/repositories/home_repository.dart';
+export '../../features/home/domain/usecases/home_usecase.dart';
+export '../../features/home/presentation/viewmodel/home_viewmodel.dart';
 export '../extensions/context_extension.dart';
 
-export 'package:think_it_up_app/core/constants/constants.dart';
+export '../../../../core/local/view-models/notification_provider.dart';
+export '../../../../core/local/view-models/theme_provider.dart';

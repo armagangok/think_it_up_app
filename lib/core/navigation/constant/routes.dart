@@ -10,4 +10,5 @@ class KRoute {
   static const edittingUserPage = '/edittingUserPage';
   static const postSharePage = '/postSharePage';
   static const winnersPage = '/winnersPage';
+  static const rootPage = '/rootPage';
 }
