@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/export/core_export.dart';
+import '/core/export/core_export.dart';
 import '../../../winners/presentation/widgets/top_bar.dart';
 import '../widgets/stacks.dart';
 import '../widgets/switch_widget.dart';

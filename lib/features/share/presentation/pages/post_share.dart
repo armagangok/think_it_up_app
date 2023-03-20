@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/alignment/alignment.dart';
-
 import '../../../dashboard/presentation/widgets/question_widget.dart';
 import '../widgets/post_sharing_widget.dart';
 

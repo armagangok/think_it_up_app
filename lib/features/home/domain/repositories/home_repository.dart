@@ -1,6 +1,6 @@
-import 'package:think_it_up_app/features/home/data/contract/home_data_source.dart';
+import '../../data/contract/home_data_source.dart';
 
-import '../../../../core/export/core_export.dart';
+import '/core/export/core_export.dart';
 
 class HomeRepository {
   late final HomeDataSourceContract _homeDataSource;

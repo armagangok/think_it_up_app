@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/export/core_export.dart';
 import 'core/initilization/initapp.dart';
-import 'features/auth/presentation/pages/login/login.dart';
+
 
 void main() async => await initApp();
 

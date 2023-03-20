@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/features/root_page.dart';
-import '../../features/auth/presentation/pages/login/login.dart';
-import '../../features/auth/presentation/pages/register/register.dart';
-import '../../features/dashboard/presentation/pages/dashboard.dart';
-import '../../features/settings/presentation/pages/editting_user_profile.dart';
-import '../../features/settings/presentation/pages/setting.dart';
-import '../../features/share/presentation/pages/post_share.dart';
-import '../../features/winners/presentation/pages/winners.dart';
-import '/features/home/presentation/pages/home.dart';
-import 'constant/routes.dart';
+
+import '../export/core_export.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();

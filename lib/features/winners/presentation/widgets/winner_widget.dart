@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/export/core_export.dart';
+import '/core/export/core_export.dart';
 
 class WinnerWidget extends StatelessWidget {
   const WinnerWidget({Key? key}) : super(key: key);

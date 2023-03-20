@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/export/core_export.dart';
-
+import '/core/export/core_export.dart';
 import '../../widgets/text_form_field.dart';
-import '../register/register.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
