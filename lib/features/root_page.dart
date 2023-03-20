@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'auth/presentation/pages/login/login.dart';
-import 'home/presentation/pages/home.dart';
-import 'home/presentation/viewmodel/home_viewmodel.dart';
+import '../core/export/core_export.dart';
 
 class RootPage extends ConsumerStatefulWidget {
   const RootPage({Key? key}) : super(key: key);
