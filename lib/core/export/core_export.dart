@@ -1,4 +1,5 @@
 export 'package:auto_size_text/auto_size_text.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
 
 export '/core/components/alignment/alignment.dart';
 export '/core/components/stacks/stacks.dart';
@@ -50,4 +51,3 @@ export '/injection/injection_container.dart';
 export '../extensions/context_extension.dart';
 export '../local/viewmodels/notification_provider.dart';
 export '../local/viewmodels/theme_provider.dart';
-

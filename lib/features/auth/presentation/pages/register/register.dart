@@ -13,7 +13,8 @@ class RegisterPage extends ConsumerStatefulWidget {
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _username = TextEditingController();
-  final _email = TextEditingController(text: "1armagangok@gmail.com");
+  final _email = TextEditingController();
+  // text: "1armagangok@gmail.com"
   final _password1 = TextEditingController(text: "1234567");
   final _password2 = TextEditingController(text: "1234567");
   @override
@@ -31,17 +32,17 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text13(text: "username"),
-              AuthTextField(controller: _username),
+              _usernameTextField(),
               const SizedBox20H(),
               const Text13(text: "mail"),
-              AuthTextField(controller: _email),
+              _emailTextField(),
               const SizedBox20H(),
               const Text13(text: "password"),
-              AuthTextField(controller: _password1, isObscure: true),
+              _password1TextField(),
               const SizedBox20H(),
               const Text13(text: "password"),
-              AuthTextField(controller: _password2, isObscure: true),
-              const SizedBox(height: 40),
+              _password2TextField(),
+              SizedBox(height: 45.h),
               CustomElevatedButton(
                 isLoading: ref.watch(authViewModel).registerState ==
                         const StateResult.loading()
@@ -85,6 +86,89 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _password2TextField() {
+    return AuthTextField(
+      controller: _password2,
+      isObscure: true,
+      validator: (val) {
+        var hasSpecialCharacter =
+            RegexHelper.shared.hasSpecialCharacter(email: val ?? "");
+        if (val!.isEmpty) {
+          return "Please enter password.";
+        } else {
+          if (hasSpecialCharacter) {
+            return null;
+          } else {
+            return "You can't use special characters.";
+          }
+        }
+      },
+    );
+  }
+
+  Widget _password1TextField() {
+    return AuthTextField(
+      controller: _password1,
+      isObscure: true,
+      validator: (val) {
+        var hasSpecialCharacter =
+            RegexHelper.shared.hasSpecialCharacter(email: val ?? "");
+        if (val!.isEmpty) {
+          return "Please enter password.";
+        } else {
+          if (val.length < 7) {
+            return "Please enter more than 7 characters.";
+          } else {
+            if (hasSpecialCharacter) {
+              return null;
+            } else {
+              return "You can't use special characters.";
+            }
+          }
+        }
+      },
+    );
+  }
+
+  Widget _emailTextField() {
+    return AuthTextField(
+      controller: _email,
+      validator: (val) {
+        if (val!.isEmpty) {
+          return "Please enter email.";
+        } else {
+          var isCorrectEmail = RegexHelper.shared.isCorrectEmail(email: val);
+          if (isCorrectEmail) {
+            print(isCorrectEmail);
+            return null;
+          } else {
+            return "Enter correct e-mail.";
+          }
+        }
+      },
+    );
+  }
+
+  Widget _usernameTextField() {
+    return AuthTextField(
+      controller: _username,
+      validator: (val) {
+        if (val!.isEmpty) {
+          return "Please enter username.";
+        } else {
+          var hasSpecialCharacter =
+              RegexHelper.shared.hasSpecialCharacter(email: val);
+
+          if (hasSpecialCharacter) {
+            return null;
+          } else {
+            return "Don't use special characters.";
+          }
+        }
+      },
     );
   }
 }

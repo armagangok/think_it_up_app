@@ -33,13 +33,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text13(text: "mail"),
-              AuthTextField(controller: _emailLogin),
+              _emailTextField(),
               const SizedBox20H(),
               const Text13(text: "password"),
-              AuthTextField(
-                controller: _passwordController,
-                isObscure: true,
-              ),
+              _signinButton(),
               const SizedBox(height: 40),
               _loginButton(),
               const SizedBox(height: 40),
@@ -69,6 +66,39 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           ),
         ],
       ),
+    );
+  }
+
+  AuthTextField _signinButton() {
+    return AuthTextField(
+      controller: _passwordController,
+      isObscure: true,
+      validator: (val) {
+        var result = RegexHelper.shared.hasSpecialCharacter(email: val ?? "");
+
+        if (!result) {
+          return "You can't use special characters.";
+        } else {
+          return null;
+        }
+      },
+    );
+  }
+
+  AuthTextField _emailTextField() {
+    return AuthTextField(
+      controller: _emailLogin,
+      validator: (val) {
+        var isCorrectEmail = RegexHelper.shared.isCorrectEmail(
+          email: val ?? "",
+        );
+
+        if (!isCorrectEmail) {
+          return "Invalid e-mail adress.";
+        } else {
+          return null;
+        }
+      },
     );
   }
 
