@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../base/switch_base.dart';
+import '../contracts/switch_base.dart';
 
-class ThemeProvider extends ChangeNotifier implements BaseSwitchVModel {
+class NotificationProvider extends ChangeNotifier implements BaseSwitchVModel {
   @override
   bool switchVal = true;
 
