@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
-import '../../../global/constants/constants.dart';
+import '../../constants/constants.dart';
 
 /* CUSTOM CONTAINER */
 class CustomContainer extends StatelessWidget {

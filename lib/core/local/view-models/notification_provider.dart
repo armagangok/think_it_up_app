@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:think_it_up_app/global/local/base/switch_base.dart';
+
+import '../base/switch_base.dart';
 
 class NotificationProvider extends ChangeNotifier implements BaseSwitchVModel {
   @override

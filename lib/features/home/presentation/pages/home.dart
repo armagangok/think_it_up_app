@@ -16,6 +16,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     ref.read(dashboardViewModel).fetchPosts();
     ref.read(dashboardViewModel).fetchQuestion();
+
     super.initState();
   }
 

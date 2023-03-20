@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/features/root_page.dart';
 import '../../features/auth/presentation/pages/login/login.dart';
 import '../../features/auth/presentation/pages/register/register.dart';
 import '../../features/dashboard/presentation/pages/dashboard.dart';
@@ -42,6 +43,9 @@ class NavigationRoute {
 
       case KRoute.dashboardPage:
         return _getRoute(const DashboardPage());
+
+      case KRoute.rootPage:
+        return _getRoute(const RootPage());
 
       // case KRoute.HOROSCOPE_DETAIL_PAGE:
       //   return _getRoute(HoroscopeDetailPage(horoscopeModel: horoscopeModel));

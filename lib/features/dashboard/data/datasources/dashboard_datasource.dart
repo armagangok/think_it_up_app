@@ -8,14 +8,8 @@ class DashboardDataSource implements DashboardDataSourceContract {
   static final DashboardDataSource _instance = DashboardDataSource._private();
   factory DashboardDataSource() => _instance;
 
-  //
-  //
-
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  //
-  //
 
   @override
   Future<List<PostModel>> fetchPosts() async {
@@ -32,7 +26,6 @@ class DashboardDataSource implements DashboardDataSourceContract {
           await usersLikedRef.doc(FirebaseAuth.instance.currentUser!.uid).get();
 
       var usersLiked = await usersLikedRef.get();
-
       var post = PostModel.fromMap(postModel.data());
 
       if (snapshot.exists) {
@@ -47,9 +40,6 @@ class DashboardDataSource implements DashboardDataSourceContract {
     return _postModels;
   }
 
-  //
-  //
-
   @override
   Future<void> sharePost(PostModel postModel) async {
     await _firestore
@@ -57,9 +47,6 @@ class DashboardDataSource implements DashboardDataSourceContract {
         .doc(postModel.postID)
         .set(postModel.toMap());
   }
-
-  ///
-  ///
 
   @override
   Future<void> updatePost(PostModel post) async {
@@ -75,9 +62,6 @@ class DashboardDataSource implements DashboardDataSourceContract {
       await uidRef.set({"id": _auth.currentUser!.uid});
     }
   }
-
-  ///
-  ///
 
   @override
   Future<String> getQuestion() async {

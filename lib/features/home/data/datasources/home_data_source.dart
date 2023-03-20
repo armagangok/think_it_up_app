@@ -1,30 +1,23 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:think_it_up_app/features/auth/data/models/in_app_user_model.dart';
+import 'package:think_it_up_app/features/home/data/contract/home_data_source.dart';
 
-import '/core/networking/firebase/models/user_model.dart';
-import '/features/auth/data/contract/login_datasource_contract.dart';
-import '/features/auth/data/models/user_login_model.dart';
-
-class LoginDataSource implements LoginDataSourceContract {
+class HomeDataSource implements HomeDataSourceContract {
   late final FirebaseAuth _firebaseAuth;
   late final FirebaseFirestore _firestore;
-  LoginDataSource({
+  HomeDataSource({
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firebaseFirestore,
   }) {
     _firebaseAuth = firebaseAuth;
     _firestore = firebaseFirestore;
   }
-
   @override
-  Future<AppUser?> login({required UserLoginModel userModel}) async {
-    UserCredential authCredential =
-        await _firebaseAuth.signInWithEmailAndPassword(
-      email: userModel.email,
-      password: userModel.password,
-    );
-    return await _userFromFirebase(authCredential.user);
+  Future<AppUser?> checkCurrentUser() async {
+    return _firebaseAuth.currentUser != null
+        ? await _userFromFirebase(_firebaseAuth.currentUser)
+        : null;
   }
 
   Future<AppUser?> _userFromFirebase(User? user) async {
@@ -36,6 +29,7 @@ class LoginDataSource implements LoginDataSourceContract {
       return AppUser(
         email: userFromFirebase["email"],
         password: userFromFirebase["password"],
+        passwordRepeat: "",
         id: user.uid,
         userName: userFromFirebase["userName"],
         likedPostsIDS: userFromFirebase["likedPosts"],

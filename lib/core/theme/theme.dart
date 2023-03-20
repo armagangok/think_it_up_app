@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../global/constants/constants.dart';
+import '../export/core_export.dart';
 
 class CustomTheme {
   final darkTheme =

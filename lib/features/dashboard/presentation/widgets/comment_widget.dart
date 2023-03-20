@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/export/core_export.dart';
-
-import '../../../../injection/injection_container.dart';
-import '../../data/models/post_model.dart';
-import './share_button.dart';
-import '../../../../core/components/widgets/icons.dart';
+import '/core/components/widgets/icons.dart';
+import '/core/export/core_export.dart';
+import '../viewmodels/dashboard_viewmodel.dart';
+import 'share_button.dart';
 
 class CommentWidget extends StatefulWidget {
   final PostModel post;
@@ -23,8 +21,9 @@ class CommentWidget extends StatefulWidget {
 }
 
 class _CommentWidgetState extends State<CommentWidget> {
-  final _firebase = getit.get<AuthViewModel>();
-  final _firestore = getit.get<DashboardDataSourceContract>();
+  // final _firebase = getit.get<AuthViewModel>();
+  final _dashboardViewModel = getit.get<DashboardViewModel>();
+
   @override
   Widget build(BuildContext context) {
     final PostModel _post = widget.post;
@@ -58,9 +57,12 @@ class _CommentWidgetState extends State<CommentWidget> {
                         IconButton(
                           icon: setIcon(_post.isLiked),
                           onPressed: () async {
-                            await _firestore
+                            await _dashboardViewModel
                                 .updatePost(_post)
                                 .then((value) => widget.setstate!());
+
+                            await _dashboardViewModel.fetchPosts();
+                            print("a");
                           },
                         ),
                         Text("${_post.likes}"),

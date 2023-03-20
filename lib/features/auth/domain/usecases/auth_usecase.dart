@@ -1,7 +1,4 @@
-import 'package:think_it_up_app/features/auth/domain/contract/auth_repository.dart';
-
-import '../../../../core/networking/firebase/models/user_model.dart';
-import '../../data/models/user_login_model.dart';
+import '../../../../core/export/core_export.dart';
 
 class AuthUseCase {
   AuthUseCase({required AuthRepositoryContract authRepository}) {
@@ -9,7 +6,18 @@ class AuthUseCase {
   }
   late final AuthRepositoryContract _authRepository;
 
-  Future<AppUser?> login({required UserLoginModel userModel}) async {
-    return await _authRepository.login(userModel: userModel);
+  Future<Result<AppUser?>> login({required UserLoginModel userModel}) async {
+    var response = await _authRepository.login(userModel: userModel);
+    return response;
+  }
+
+  Future<Result<AppUser?>> register({required AppUser userModel}) async {
+    var response = await _authRepository.register(userModel: userModel);
+    return response;
+  }
+
+  Future<Result> logout() async {
+    var response = await _authRepository.logout();
+    return response;
   }
 }

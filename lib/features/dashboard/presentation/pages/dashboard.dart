@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:think_it_up_app/features/dashboard/presentation/viewmodels/dashboard_viewmodel.dart';
 
 import '../../../../core/export/core_export.dart';
-
+import '../viewmodels/dashboard_viewmodel.dart';
 import '../widgets/comment_widget.dart';
 import '../widgets/question_widget.dart';
 
@@ -24,7 +23,7 @@ class _DashboardScreenState extends ConsumerState<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Wrapper(
-      topBarHeight: context.width(0.235),
+      topBarHeight: context.width(0.60),
       topBar: const QuestionWidget(),
       body: ref.watch(dashboardViewModel).postState.when(
         initial: () {
