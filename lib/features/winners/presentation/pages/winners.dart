@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/alignment/alignment.dart';
-import '../../../../core/components/widgets/text_widgets.dart';
+import '../../../../core/export/core_export.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/winner_widget.dart';
 

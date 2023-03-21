@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import '/core/export/core_export.dart';
 
 class AuthTextField extends StatefulWidget {
   final String? initialValue;
@@ -6,6 +9,7 @@ class AuthTextField extends StatefulWidget {
   final double? height;
   final TextEditingController controller;
   final bool isObscure;
+  final String? Function(String? text)? validator;
 
   const AuthTextField({
     Key? key,
@@ -14,6 +18,7 @@ class AuthTextField extends StatefulWidget {
     this.height,
     required this.controller,
     this.isObscure = false,
+    required this.validator,
   }) : super(key: key);
 
   @override
@@ -26,20 +31,31 @@ class _AuthTextFieldState extends State<AuthTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         initialValue: widget.initialValue,
         controller: widget.controller,
-        style: const TextStyle(color: Colors.black, fontSize: 14),
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 14,
+        ),
         maxLines: 1,
         textAlign: TextAlign.start,
         obscureText: _passwordVisible,
         keyboardType: widget.inputType,
         decoration: InputDecoration(
+          errorStyle: const TextStyle(fontSize: 10),
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 2.5.h,
+            horizontal: 10.0.w,
+          ),
           hintStyle: const TextStyle(color: Colors.black),
           suffixIcon: IconButton(
             padding: EdgeInsets.zero,
-            icon: NewWidget(widget: widget, passwordVisible: _passwordVisible),
+            icon: NewWidget(
+              widget: widget,
+              passwordVisible: _passwordVisible,
+            ),
             onPressed: () {
               if (widget.isObscure == true) {
                 setState(() => _passwordVisible = !_passwordVisible);
@@ -50,6 +66,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
+        validator: widget.validator,
+        onSaved: (newValue) {
+          print(newValue);
+        },
+
+        
       ),
     );
   }

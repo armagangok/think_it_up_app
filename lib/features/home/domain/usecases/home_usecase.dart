@@ -1,6 +1,4 @@
-import '../repositories/home_repository.dart';
-
-import '../../../../core/export/core_export.dart';
+import '/core/export/core_export.dart';
 
 class HomeUseCase {
   HomeUseCase({required HomeRepository homeRepository}) {

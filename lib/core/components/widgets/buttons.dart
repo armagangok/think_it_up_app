@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:think_it_up_app/core/extensions/context_extension.dart';
+import 'package:think_it_up_app/core/export/core_export.dart';
 
 class CustomIconButton extends StatelessWidget {
   final Widget icon;
@@ -43,12 +42,12 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 40,
+      height: 50.h,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
           ),
         ),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/components/widgets/icons.dart';
 import '../../../dashboard/presentation/pages/dashboard.dart';
-import '../../../share/presentation/pages/post_share.dart';
 import '../../../settings/presentation/pages/setting.dart';
+import '../../../share/presentation/pages/post_share.dart';
 import '../../../winners/presentation/pages/winners.dart';
 
 class TabWidget extends StatelessWidget {

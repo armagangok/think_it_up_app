@@ -1,4 +1,4 @@
-import 'package:think_it_up_app/core/export/core_export.dart';
+import '../../../../core/export/core_export.dart';
 
 class DashboardRepository {
   DashboardRepository({

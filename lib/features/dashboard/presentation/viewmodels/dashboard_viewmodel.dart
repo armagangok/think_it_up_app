@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/export/core_export.dart';
+import '/core/export/core_export.dart';
 import '../../domain/usecases/dashboard_usecase.dart';
 
 final dashboardViewModel = ChangeNotifierProvider<DashboardViewModel>(

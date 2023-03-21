@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:think_it_up_app/core/export/core_export.dart';
 
 class CustomTextField extends StatefulWidget {
   final String? initialValue;
@@ -53,7 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           },
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
       ),
     );
