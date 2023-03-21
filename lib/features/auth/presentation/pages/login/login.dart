@@ -52,11 +52,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       const Text16(text: "New to  "),
                       Text(
                         "Think It Up ?  ",
-                        style: context.bodyLarge,
+                        style: context.bodyMedium.copyWith(
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      Text(
-                        "SignUp",
-                        style: context.bodyMedium,
+                       CustomBlinkingButton(
+                        
+                        isExpanded: true,
+                         
+                        // "Register",
+                        // style: context.bodyMedium,
                       ),
                     ],
                   ),

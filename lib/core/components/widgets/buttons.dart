@@ -62,3 +62,49 @@ class CustomElevatedButton extends StatelessWidget {
     );
   }
 }
+
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
+class CustomBlinkingButton extends StatefulWidget {
+  const CustomBlinkingButton({
+    Key? key,
+    required this.isExpanded,
+  }) : super(key: key);
+
+  final bool isExpanded;
+
+  @override
+  _CustomBlinkingButtonState createState() => _CustomBlinkingButtonState();
+}
+
+class _CustomBlinkingButtonState extends State<CustomBlinkingButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      lowerBound: 0.45,
+      duration: const Duration(milliseconds: 600),
+    );
+    _animationController.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _animationController,
+      child: widget.isExpanded
+          ? const Text("Register")
+          : const Text("Register"),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+}
