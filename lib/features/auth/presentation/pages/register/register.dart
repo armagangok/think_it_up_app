@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,6 +18,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   // text: "1armagangok@gmail.com"
   final _password1 = TextEditingController(text: "1234567");
   final _password2 = TextEditingController(text: "1234567");
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return AuthWrapper(
@@ -28,24 +32,27 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
         children: [
           const AutoText(text: "Think It Up"),
           const SizedBox20H(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text13(text: "username"),
-              _usernameTextField(),
-              const SizedBox20H(),
-              const Text13(text: "mail"),
-              _emailTextField(),
-              const SizedBox20H(),
-              const Text13(text: "password"),
-              _password1TextField(),
-              const SizedBox20H(),
-              const Text13(text: "password"),
-              _password2TextField(),
-              SizedBox(height: 45.h),
-              _registerButton(context),
-              const SizedBox20H(),
-            ],
+          Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text13(text: "username"),
+                _usernameTextField(),
+                const SizedBox20H(),
+                const Text13(text: "mail"),
+                _emailTextField(),
+                const SizedBox20H(),
+                const Text13(text: "password"),
+                _password1TextField(),
+                const SizedBox20H(),
+                const Text13(text: "password"),
+                _password2TextField(),
+                SizedBox(height: 45.h),
+                _registerButton(context),
+                const SizedBox20H(),
+              ],
+            ),
           ),
         ],
       ),
@@ -54,40 +61,62 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
   Widget _registerButton(BuildContext context) => CustomElevatedButton(
         isLoading: ref.watch(authViewModel).registerState ==
-                const StateResult.loading()
+                const StateResult<AppUser?>.loading()
             ? true
             : false,
         text: "Signup",
         onPressed: () async {
-          AppUser user = AppUser(
-            id: "id",
-            email: _email.text,
-            userName: _username.text,
-            password: _password1.text,
-            passwordRepeat: _password2.text,
-            likedPostsIDS: [],
-          );
+          var isValidated = _validateInputs();
 
-          await ref.read(authViewModel).register(userModel: user);
+          if (isValidated) {
+            AppUser user = AppUser(
+              id: "id",
+              email: _email.text,
+              userName: _username.text,
+              password: _password1.text,
+              passwordRepeat: _password2.text,
+              likedPostsIDS: [],
+            );
+            await ref.read(authViewModel).register(userModel: user);
 
-          ref.watch(authViewModel).registerState.when(
-                initial: () {},
-                loading: () {},
-                completed: (data) {
-                  context.showSnackBar(
-                    SnackBar(
-                      content: Text("$data"),
-                    ),
-                  );
-                },
-                failed: (failure) {
-                  context.showSnackBar(
-                    SnackBar(
-                      content: Text(failure.message),
-                    ),
-                  );
-                },
-              );
+            ref.watch(authViewModel).registerState.when(
+                  initial: () {},
+                  loading: () {},
+                  completed: (data) {
+                    context.cupertinoDialog(
+                      widget: CupertinoAlertDialog(
+                        title: Text(
+                          "Hello, ${_username.text}",
+                          textAlign: TextAlign.center,
+                        ),
+                        content: Padding(
+                          padding: EdgeInsets.only(top: 20.h),
+                          child: Column(
+                            children: [
+                              const Text(
+                                "Registration is successfull.",
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 20.h),
+                              const Text(
+                                "Try to login with e-mail and password that you registered.",
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  failed: (failure) {
+                    context.showSnackBar(
+                      SnackBar(
+                        content: Text(failure.message),
+                      ),
+                    );
+                  },
+                );
+          }
         },
       );
 
@@ -144,7 +173,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           } else {
             var isCorrectEmail = RegexHelper.shared.isCorrectEmail(email: val);
             if (isCorrectEmail) {
-              print(isCorrectEmail);
               return null;
             } else {
               return "Enter correct e-mail.";
@@ -170,4 +198,18 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           }
         },
       );
+
+  bool _validateInputs() {
+    if (_formKey.currentState!.validate()) {
+//    If all data are correct then save data to out variables
+      // _formKey.currentState!.save();
+      return true;
+    } else {
+//    If all data are not valid then start auto validation.
+      // setState(() {
+      //   // _autoValidate = true;
+      // });
+      return false;
+    }
+  }
 }

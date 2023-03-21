@@ -18,7 +18,7 @@ class AuthViewModel with ChangeNotifier {
   }
 
   StateResult loginState = const StateResult.initial();
-  StateResult registerState = const StateResult.initial();
+  StateResult<AppUser?> registerState = const StateResult.initial();
   StateResult logoutState = const StateResult.initial();
 
   Future<void> login({required UserLoginModel userModel}) async {

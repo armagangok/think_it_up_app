@@ -67,6 +67,11 @@ class _AuthTextFieldState extends State<AuthTextField> {
           ),
         ),
         validator: widget.validator,
+        onSaved: (newValue) {
+          print(newValue);
+        },
+
+        
       ),
     );
   }
