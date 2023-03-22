@@ -58,6 +58,7 @@ class _CommentWidgetState extends State<CommentWidget> {
   }
 
   Text _commentText(BuildContext context) {
+    print(widget.post.comment);
     return Text(
       widget.post.comment,
       style: context.bodyLarge,

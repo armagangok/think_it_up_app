@@ -43,6 +43,7 @@ class DashboardViewModel with ChangeNotifier {
 
   Future<void> sharePost(PostModel postModel) async {
     sharePostState = const StateResult.loading();
+    notifyListeners();
 
     var response = await _dashboardUseCase.sharePost(postModel);
 

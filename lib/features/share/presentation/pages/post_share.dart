@@ -4,8 +4,6 @@ import '../../../../core/export/core_export.dart';
 import '../../../dashboard/presentation/widgets/question_widget.dart';
 import '../widgets/post_sharing_widget.dart';
 
-
-
 class SharePostPage extends StatelessWidget {
   const SharePostPage({Key? key}) : super(key: key);
 
