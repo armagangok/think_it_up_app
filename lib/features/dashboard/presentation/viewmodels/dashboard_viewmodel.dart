@@ -20,7 +20,7 @@ class DashboardViewModel with ChangeNotifier {
   late final DashboardUseCase _dashboardUseCase;
 
   StateResult postState = const StateResult.initial();
-  StateResult sharePostState = const StateResult.initial();
+  
   StateResult updatePostState = const StateResult.initial();
   StateResult fetchQuestionState = const StateResult.initial();
 
@@ -41,23 +41,7 @@ class DashboardViewModel with ChangeNotifier {
     );
   }
 
-  Future<void> sharePost(PostModel postModel) async {
-    sharePostState = const StateResult.loading();
-    notifyListeners();
 
-    var response = await _dashboardUseCase.sharePost(postModel);
-
-    response.when(
-      success: (data) {
-        sharePostState = StateResult.completed(data);
-        notifyListeners();
-      },
-      failure: (failure) {
-        sharePostState = StateResult.failed(failure);
-        notifyListeners();
-      },
-    );
-  }
 
   Future<void> updatePost(PostModel post) async {
     updatePostState = const StateResult.loading();

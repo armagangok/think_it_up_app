@@ -31,10 +31,8 @@ class _DashboardScreenState extends ConsumerState<DashboardPage> {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CommentWidget(
-                  post: data[index],
-                ),
+                padding:  EdgeInsets.only(bottom: 15.h),
+                child: CommentWidget(post: data[index]),
               );
             },
           );

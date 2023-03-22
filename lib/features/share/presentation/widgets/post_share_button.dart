@@ -6,20 +6,18 @@ import 'package:think_it_up_app/features/share/presentation/viewmodel/post_share
 import '../../../../core/export/core_export.dart';
 
 class PostShareButton extends ConsumerWidget {
-  
   const PostShareButton({
     Key? key,
-    
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomElevatedButton(
-      isLoading: ref.watch(dashboardViewModel).sharePostState ==
+      isLoading: ref.watch(postShareViewModel).sharePostState ==
           const StateResult.loading(),
       text: "Share",
       onPressed: () async {
-        final _dashboardViewModel = ref.read(dashboardViewModel);
+        final _dashboardViewModel = ref.read(postShareViewModel);
         final _homeViewModel = ref.read(homeViewModel);
 
         PostModel postModel = PostModel(
@@ -30,7 +28,7 @@ class PostShareButton extends ConsumerWidget {
         );
 
         await _dashboardViewModel.sharePost(postModel);
-        await _dashboardViewModel.fetchPosts();
+        await ref.read(dashboardViewModel).fetchPosts();
       },
     );
   }

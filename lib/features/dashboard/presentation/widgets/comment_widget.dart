@@ -18,13 +18,12 @@ class CommentWidget extends StatefulWidget {
 }
 
 class _CommentWidgetState extends State<CommentWidget> {
-  // final _firebase = getit.get<AuthViewModel>();
-
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
       color: kColor.mainColor,
-      child: PaddingAll10(
+      child: Padding(
+        padding: EdgeInsets.all(15.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,7 +57,6 @@ class _CommentWidgetState extends State<CommentWidget> {
   }
 
   Text _commentText(BuildContext context) {
-    print(widget.post.comment);
     return Text(
       widget.post.comment,
       style: context.bodyLarge,
