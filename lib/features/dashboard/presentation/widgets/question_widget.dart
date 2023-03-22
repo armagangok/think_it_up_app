@@ -41,7 +41,7 @@ class QuestionTextStack extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
-            child: PaddingAll8(
+            child: PaddingAll10(
               child: SingleChildScrollView(
                 child: Column(
                   children: [

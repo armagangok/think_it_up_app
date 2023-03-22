@@ -18,7 +18,7 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       heigth: heigth,
-      child: PaddingAll8(
+      child: PaddingAll10(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,7 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '/core/components/widgets/icons.dart';
 import '/core/export/core_export.dart';
+import 'like_button.dart';
 import 'share_button.dart';
 
 class CommentWidget extends StatefulWidget {
@@ -9,11 +10,8 @@ class CommentWidget extends StatefulWidget {
 
   const CommentWidget({
     Key? key,
-    this.setstate,
     required this.post,
   }) : super(key: key);
-
-  final void Function()? setstate;
 
   @override
   State<CommentWidget> createState() => _CommentWidgetState();
@@ -21,28 +19,21 @@ class CommentWidget extends StatefulWidget {
 
 class _CommentWidgetState extends State<CommentWidget> {
   // final _firebase = getit.get<AuthViewModel>();
-  final _dashboardViewModel = getit.get<DashboardViewModel>();
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      color: kColor.bottomSheet,
-      child: PaddingAll8(
+      color: kColor.mainColor,
+      child: PaddingAll10(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "@" + widget.post.userName,
-              style: context.bodyMedium,
-            ),
+            _userNameText(context),
             const SizedBox10H(),
-            Text(
-              widget.post.comment,
-              style: context.bodyLarge,
-            ),
+            _commentText(context),
             const SizedBox10H(),
             Row(
-              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -50,20 +41,14 @@ class _CommentWidgetState extends State<CommentWidget> {
                   children: [
                     Row(
                       children: [
-                        _likeButton(widget.post),
+                        LikeButton(postModel: widget.post),
+                        SizedBox(width: 10.w),
                         Text("${widget.post.likes}"),
                       ],
                     ),
-                    const SizedBox20W(),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    SizedBox20W(),
-                    ShareButton(),
-                  ],
-                ),
+                const ShareButton(),
               ],
             ),
           ],
@@ -72,20 +57,19 @@ class _CommentWidgetState extends State<CommentWidget> {
     );
   }
 
-  IconButton _likeButton(PostModel _post) {
-    return IconButton(
-      icon: setIcon(_post.isLiked),
-      onPressed: () async {
-        await _dashboardViewModel.updatePost(_post).then(
-              (value) => widget.setstate!(),
-            );
-
-        await _dashboardViewModel.fetchPosts();
-      },
+  Text _commentText(BuildContext context) {
+    return Text(
+      widget.post.comment,
+      style: context.bodyLarge,
     );
   }
 
-  Widget setIcon(bool isLiked) => isLiked ? MyIcon().redHeart : MyIcon().heart;
+  Text _userNameText(BuildContext context) {
+    return Text(
+      "@" + widget.post.userName,
+      style: context.bodyMedium,
+    );
+  }
 
   bool _checkPostID(String postID, String userID) =>
       (postID == userID) ? true : false;

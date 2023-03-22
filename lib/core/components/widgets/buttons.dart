@@ -5,23 +5,21 @@ import 'package:think_it_up_app/core/export/core_export.dart';
 
 class CustomIconButton extends StatelessWidget {
   final Widget icon;
-  final Function? onPressed;
+  final Function onPressed;
   // final IconStateBase iconStateBase;
 
   const CustomIconButton({
     Key? key,
     required this.icon,
     // required this.iconStateBase,
-    this.onPressed,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () => onPressed!(),
-      icon: icon,
-      iconSize: 30,
-      splashRadius: 1,
+    return InkWell(
+      onTap: () => onPressed(),
+      child: icon,
     );
   }
 }
@@ -96,9 +94,8 @@ class _CustomBlinkingButtonState extends State<CustomBlinkingButton>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _animationController,
-      child: widget.isExpanded
-          ? const Text("Register")
-          : const Text("Register"),
+      child:
+          widget.isExpanded ? const Text("Register") : const Text("Register"),
     );
   }
 

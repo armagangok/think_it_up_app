@@ -35,10 +35,10 @@ class CustomContainer extends StatelessWidget {
 ///
 /*PADDING  WIDGETS*/
 ///
-class PaddingAll8 extends StatelessWidget {
+class PaddingAll10 extends StatelessWidget {
   final Widget child;
 
-  const PaddingAll8({
+  const PaddingAll10({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -146,7 +146,7 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: PaddingAll8(
+      child: PaddingAll10(
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(topBarHeight.h),

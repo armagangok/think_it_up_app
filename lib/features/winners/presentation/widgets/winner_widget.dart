@@ -10,7 +10,7 @@ class WinnerWidget extends StatelessWidget {
     return CustomContainer(
       width: context.width(1),
       color: null,
-      child: PaddingAll8(
+      child: PaddingAll10(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,

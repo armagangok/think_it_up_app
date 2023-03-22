@@ -21,7 +21,7 @@ class AuthWrapper extends StatelessWidget {
           body: Container(
             alignment: Alignment.center,
             height: MediaQuery.of(context).size.height,
-            child: PaddingAll8(
+            child: PaddingAll10(
               child: SingleChildScrollView(
                 child: child,
               ),
