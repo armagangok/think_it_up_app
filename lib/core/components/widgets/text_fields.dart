@@ -34,14 +34,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       //initialValue: widget.initialValue,
+
       controller: widget.controller,
-      style: const TextStyle(color: Colors.black, fontSize: 14),
+      style: const TextStyle(
+        color: Colors.black,
+        fontSize: 14,
+      ),
       maxLines: widget.maxLines,
+
       textAlign: TextAlign.start,
       obscureText: _passwordVisible,
       keyboardType: widget.inputType,
       decoration: InputDecoration(
         hintStyle: const TextStyle(color: Colors.black),
+        contentPadding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
         suffixIcon: IconButton(
           padding: EdgeInsets.zero,
           icon: NewWidget(widget: widget, passwordVisible: _passwordVisible),

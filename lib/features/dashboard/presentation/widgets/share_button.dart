@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../core/components/widgets/buttons.dart';
 
@@ -8,10 +7,11 @@ class ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomIconButton(
-      icon: Icon(
+    return CustomIconButton(
+      onPressed: () {},
+      icon: const Icon(
         CupertinoIcons.share,
-        color: Colors.greenAccent,
+        color: Color.fromARGB(255, 0, 255, 8),
       ),
     );
   }

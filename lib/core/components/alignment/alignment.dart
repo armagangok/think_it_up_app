@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../constants/constants.dart';
+import 'package:think_it_up_app/core/export/core_export.dart';
 
 /* CUSTOM CONTAINER */
 class CustomContainer extends StatelessWidget {
@@ -36,10 +35,10 @@ class CustomContainer extends StatelessWidget {
 ///
 /*PADDING  WIDGETS*/
 ///
-class Padding8 extends StatelessWidget {
+class PaddingAll10 extends StatelessWidget {
   final Widget child;
 
-  const Padding8({
+  const PaddingAll10({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -47,7 +46,7 @@ class Padding8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.all(10.w),
       child: child,
     );
   }
@@ -55,22 +54,22 @@ class Padding8 extends StatelessWidget {
 
 class SymmetricPadding extends StatelessWidget {
   final Widget child;
-  final double? horizontal;
-  final double? vertical;
+  final double horizontal;
+  final double vertical;
 
   const SymmetricPadding({
     Key? key,
     required this.child,
-    this.horizontal,
-    this.vertical,
+    this.horizontal = 0,
+    this.vertical = 0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: horizontal ?? 0,
-        vertical: vertical ?? 0,
+        horizontal: horizontal.w,
+        vertical: vertical.h,
       ),
       child: child,
     );
@@ -85,7 +84,7 @@ class Padding5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: EdgeInsets.all(5.h),
       child: child,
     );
   }
@@ -99,7 +98,7 @@ class SizedBox5H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: 5);
+    return SizedBox(height: 5.h);
   }
 }
 
@@ -108,7 +107,7 @@ class SizedBox10H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: 10);
+    return SizedBox(height: 10.h);
   }
 }
 
@@ -117,7 +116,7 @@ class SizedBox20H extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: 20);
+    return SizedBox(height: 20.h);
   }
 }
 
@@ -126,7 +125,7 @@ class SizedBox20W extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 20);
+    return SizedBox(width: 20.w);
   }
 }
 
@@ -147,10 +146,10 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding8(
+      child: PaddingAll10(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(topBarHeight),
+            preferredSize: Size.fromHeight(topBarHeight.h),
             child: topBar ?? const SizedBox(),
           ),
           body: Padding5(

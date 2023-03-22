@@ -82,8 +82,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
             ref.watch(authViewModel).registerState.when(
                   initial: () {},
                   loading: () {},
-                  completed: (data) {
-                    context.cupertinoDialog(
+                  completed: (data) async {
+                    await context.cupertinoDialog(
                       widget: CupertinoAlertDialog(
                         title: Text(
                           "Hello, ${_username.text}",
@@ -99,7 +99,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                               ),
                               SizedBox(height: 20.h),
                               const Text(
-                                "Try to login with e-mail and password that you registered.",
+                                "Now you can enjoy Think It Up app!",
                                 textAlign: TextAlign.center,
                               ),
                             ],

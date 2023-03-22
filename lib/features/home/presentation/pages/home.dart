@@ -21,15 +21,13 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return const DefaultTabController(
-      length: 4,
-      child: SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: BottomNavyBar(),
-          body: TabBarWidget(),
+  Widget build(BuildContext context) => const DefaultTabController(
+        length: 4,
+        child: SafeArea(
+          child: Scaffold(
+            bottomNavigationBar: BottomNavyBar(),
+            body: TabBarWidget(),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

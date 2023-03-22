@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../injection/injection_service.dart';
@@ -14,6 +15,10 @@ class HomeViewModel extends ChangeNotifier {
 
   late final HomeUseCase _homeUseCase;
 
+  final firebaseAuth = FirebaseAuth.instance;
+
+  AppUser? _appUser;
+
   StateResult<AppUser?> currentUserState = const StateResult.initial();
 
   Future<void> checkCurrentUser() async {
@@ -23,6 +28,8 @@ class HomeViewModel extends ChangeNotifier {
     response.when(
       success: (currentUser) {
         currentUserState = StateResult.completed(currentUser);
+
+        _appUser = currentUser;
 
         if (currentUser != null) {
           navigator.navigaToClear(path: KRoute.homePage);
@@ -36,4 +43,6 @@ class HomeViewModel extends ChangeNotifier {
       },
     );
   }
+
+  AppUser? get getCurrentUser => _appUser;
 }

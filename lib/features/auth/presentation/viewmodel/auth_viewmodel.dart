@@ -47,10 +47,11 @@ class AuthViewModel with ChangeNotifier {
     var response = await _authUseCase.register(userModel: userModel);
 
     response.when(
-      success: (data) {
+      success: (data) async {
         registerState = StateResult.completed(data);
         notifyListeners();
-        navigator.navigaToClear(path: KRoute.loginPage);
+
+        await getit.get<HomeViewModel>().checkCurrentUser();
       },
       failure: (failure) {
         registerState = StateResult.failed(failure);

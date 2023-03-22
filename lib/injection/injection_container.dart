@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-
+import 'package:think_it_up_app/features/share/domain/usecases/share_post_usecase.dart';
+import 'package:think_it_up_app/features/share/presentation/viewmodel/post_share_viewodel.dart';
 
 import '../core/export/core_export.dart';
 
@@ -72,6 +73,10 @@ void setupViewModels() {
   getit.registerLazySingleton<HomeViewModel>(
     () => HomeViewModel(homeUseCase: getit()),
   );
+
+  getit.registerLazySingleton<PostShareViewModel>(
+    () => PostShareViewModel(postShareUseCase: getit()),
+  );
 }
 
 void setupUseCases() {
@@ -89,6 +94,12 @@ void setupUseCases() {
 
   getit.registerLazySingleton<DashboardUseCase>(
     () => DashboardUseCase(
+      dashboardRepository: getit(),
+    ),
+  );
+
+  getit.registerLazySingleton<PostShareUseCase>(
+    () => PostShareUseCase(
       dashboardRepository: getit(),
     ),
   );

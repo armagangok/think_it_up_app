@@ -15,11 +15,6 @@ class DashboardPage extends ConsumerStatefulWidget {
 
 class _DashboardScreenState extends ConsumerState<DashboardPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Wrapper(
       topBarHeight: context.width(0.60),
@@ -36,13 +31,8 @@ class _DashboardScreenState extends ConsumerState<DashboardPage> {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CommentWidget(
-                  setstate: () {
-                    setState(() {});
-                  },
-                  post: data[index],
-                ),
+                padding:  EdgeInsets.only(bottom: 15.h),
+                child: CommentWidget(post: data[index]),
               );
             },
           );
@@ -52,14 +42,5 @@ class _DashboardScreenState extends ConsumerState<DashboardPage> {
         },
       ),
     );
-  }
-}
-
-class SizedBox002 extends StatelessWidget {
-  const SizedBox002({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(height: context.height(0.02));
   }
 }
