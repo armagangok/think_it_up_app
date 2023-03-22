@@ -60,6 +60,7 @@ class DashboardViewModel with ChangeNotifier {
 
   Future<void> updatePost(PostModel post) async {
     updatePostState = const StateResult.loading();
+    notifyListeners();
 
     var response = await _dashboardUseCase.updatePost(post);
     response.when(

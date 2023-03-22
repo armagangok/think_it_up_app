@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '/core/components/widgets/icons.dart';
 import '/core/export/core_export.dart';
-import '../viewmodels/dashboard_viewmodel.dart';
 import 'share_button.dart';
 
 class CommentWidget extends StatefulWidget {
@@ -26,23 +25,20 @@ class _CommentWidgetState extends State<CommentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final PostModel _post = widget.post;
-    final TextTheme textTheme = context.theme.textTheme;
-
     return CustomContainer(
       color: kColor.bottomSheet,
-      child: Padding8(
+      child: PaddingAll8(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "@" + _post.userName,
-              style: textTheme.bodyMedium,
+              "@" + widget.post.userName,
+              style: context.bodyMedium,
             ),
             const SizedBox10H(),
             Text(
-              _post.comment,
-              style: textTheme.bodyLarge,
+              widget.post.comment,
+              style: context.bodyLarge,
             ),
             const SizedBox10H(),
             Row(
@@ -54,18 +50,8 @@ class _CommentWidgetState extends State<CommentWidget> {
                   children: [
                     Row(
                       children: [
-                        IconButton(
-                          icon: setIcon(_post.isLiked),
-                          onPressed: () async {
-                            await _dashboardViewModel
-                                .updatePost(_post)
-                                .then((value) => widget.setstate!());
-
-                            await _dashboardViewModel.fetchPosts();
-                            print("a");
-                          },
-                        ),
-                        Text("${_post.likes}"),
+                        _likeButton(widget.post),
+                        Text("${widget.post.likes}"),
                       ],
                     ),
                     const SizedBox20W(),
@@ -83,6 +69,19 @@ class _CommentWidgetState extends State<CommentWidget> {
           ],
         ),
       ),
+    );
+  }
+
+  IconButton _likeButton(PostModel _post) {
+    return IconButton(
+      icon: setIcon(_post.isLiked),
+      onPressed: () async {
+        await _dashboardViewModel.updatePost(_post).then(
+              (value) => widget.setstate!(),
+            );
+
+        await _dashboardViewModel.fetchPosts();
+      },
     );
   }
 
