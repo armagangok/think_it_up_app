@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/components/widgets/icons.dart';
-import '../../../dashboard/presentation/pages/dashboard.dart';
-import '../../../settings/presentation/pages/setting.dart';
-import '../../../share/presentation/pages/post_share.dart';
-import '../../../winners/presentation/pages/winners.dart';
+import '../../../../core/export/core_export.dart';
 
 class TabWidget extends StatelessWidget {
   const TabWidget({
@@ -53,7 +49,7 @@ class BottomNavyBar extends StatelessWidget {
     return PreferredSize(
       preferredSize: const Size.fromHeight(0),
       child: Container(
-        height: 50,
+        height: 50.h,
         color: Colors.black,
         child: const TabWidget(),
       ),

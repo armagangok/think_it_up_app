@@ -51,7 +51,7 @@ class QuestionTextStack extends StatelessWidget {
                       data,
                       maxLines: 3,
                       minFontSize: 13,
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
