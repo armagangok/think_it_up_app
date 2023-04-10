@@ -20,6 +20,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final AuthViewModel _userViewModel = getit.get<AuthViewModel>();
 
   @override
+  void dispose() {
+    _emailLogin.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AuthWrapper(
       child: Column(
@@ -57,13 +64,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                       CustomBlinkingButton(
-                        
-                        isExpanded: true,
-                         
-                        // "Register",
-                        // style: context.bodyMedium,
-                      ),
+                      const CustomBlinkingButton(isExpanded: true),
                     ],
                   ),
                 ),
