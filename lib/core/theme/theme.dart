@@ -112,35 +112,6 @@ class CustomTheme {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // final ligthTheme =
   //     ThemeData.from(colorScheme: const ColorScheme.light()).copyWith(
   //   // textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),

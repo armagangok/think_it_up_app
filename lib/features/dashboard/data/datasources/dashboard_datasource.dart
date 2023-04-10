@@ -22,6 +22,7 @@ class DashboardDataSource implements DashboardDataSourceContract {
           .collection("posts")
           .doc(postModel.id)
           .collection("usersLiked");
+  
       var snapshot =
           await usersLikedRef.doc(FirebaseAuth.instance.currentUser!.uid).get();
 
@@ -37,6 +38,10 @@ class DashboardDataSource implements DashboardDataSourceContract {
       _postModels.add(post);
     }
 
+  
+    _postModels.sort((a, b) => b.likes.compareTo(a.likes));
+
+    
     return _postModels;
   }
 
