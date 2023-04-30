@@ -1,10 +1,9 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/cupertino.dart';
 
 CustomColor kColor = CustomColor();
 
 class CustomColor {
   static final CustomColor _singleton = CustomColor._internal();
-
   factory CustomColor() => _singleton;
   CustomColor._internal();
 
@@ -12,7 +11,7 @@ class CustomColor {
   Color mainColor = const Color(0xFF081c34);
   Color bottomSheet = const Color(0xFF646464);
   Color textField = const Color(0xFFC4C4C4);
-}
+} 
 
 class ConstText {
   static final ConstText _singleton = ConstText._internal();

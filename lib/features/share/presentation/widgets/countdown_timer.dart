@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:async';
+
+import 'package:timer_count_down/timer_count_down.dart';
 
 class CountdownTimerWidget extends StatefulWidget {
   const CountdownTimerWidget({Key? key}) : super(key: key);
@@ -10,48 +11,49 @@ class CountdownTimerWidget extends StatefulWidget {
 }
 
 class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
-  late StreamSubscription<DocumentSnapshot> subscription;
-  late DateTime countdownEndTime;
-
   @override
   void initState() {
-    super.initState();
-    subscription = FirebaseFirestore.instance
-        .collection('countdown')
-        .doc('countdownEndTime')
-        .snapshots()
-        .listen((documentSnapshot) {
-      setState(() {
-        countdownEndTime = documentSnapshot.data()!['endTime'].toDate();
-      });
-    });
+    // FirebaseFirestore.instance.collection('timers').add({
+    //   'start_time': DateTime.now(),
+    //   'end_time': DateTime.now().add(
+    //     const Duration(hours: 24),
+    //   ), // replace with your desired timer duration
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Countdown Timer'),
-      ),
-      body: Center(
-        child: countdownEndTime == null
-            ? const CircularProgressIndicator()
-            : StreamBuilder(
-                stream: Stream.periodic(const Duration(seconds: 1)),
-                builder: (BuildContext context, snapshot) {
-                  Duration remainingTime =
-                      countdownEndTime.difference(DateTime.now());
+    return Center(
+      child: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('timers').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return const Text('Loading...');
+            default:
+              var timerDoc = snapshot.data!.docs[0];
+              var startTime = timerDoc['start_time'] as Timestamp;
+              var endTime = timerDoc['end_time'] as Timestamp;
+              return Countdown(
+                seconds: 20,
+                build: (_, time) {
+                  
                   return Text(
-                      '${remainingTime.inHours}:${remainingTime.inMinutes.remainder(60)}:${remainingTime.inSeconds.remainder(60)}');
+                    'Time left: $time',
+                    style: const TextStyle(fontSize: 24),
+                  );
                 },
-              ),
+              );
+          }
+        },
       ),
     );
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    // subscription.cancel();
     super.dispose();
   }
 }

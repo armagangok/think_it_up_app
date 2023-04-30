@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@immutable
 class ScreenUtilHelper {
-  ScreenUtilHelper._();
+  const ScreenUtilHelper._();
 
   static Future<void> ensureInitialized() async {
     await ScreenUtil.ensureScreenSize();

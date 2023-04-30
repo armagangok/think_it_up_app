@@ -43,10 +43,10 @@ dependencies:
   get_it: ^7.2.0
 
   # FIREBASE
-  cloud_firestore: ^4.4.5
+  cloud_firestore: ^4.5.0
   google_sign_in: ^5.2.3
   firebase_auth: ^4.3.0
-  firebase_core: ^2.8.0
+  firebase_core: ^2.9.0
   firebase_analytics: ^10.1.6
   auto_size_text: ^3.0.0
   pull_to_refresh: ^2.0.0
@@ -54,6 +54,7 @@ dependencies:
   get: ^4.6.5
   flutter_screenutil: ^5.7.0
   cloud_functions: ^4.1.0
+  timer_count_down: ^2.2.2
 
 dev_dependencies:
   flutter_test:
